@@ -31,3 +31,6 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+
+leopardrun/Podfile.lock
+leopardrun/Pods/
