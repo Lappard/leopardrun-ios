@@ -52,7 +52,7 @@ class GameScene: SKScene, SRWebSocketDelegate {
     
     
     func socketConnect(token:NSString) {
-        socketio = SRWebSocket(URLRequest: NSURLRequest(URL: NSURL(string: "wss://\(server):1337")!))
+        socketio = SRWebSocket(URLRequest: NSURLRequest(URL: NSURL(string: "ws://\(server):1337")!))
         socketio!.delegate = self
         socketio!.open()
         
