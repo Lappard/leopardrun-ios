@@ -9,15 +9,9 @@
 import Foundation
 
 class RessourceManager {
-    struct Static {
-        static var instance: RessourceManager?
-    }
     
-    class var sharedInstance: RessourceManager {
-        if !(Static.instance != nil) {
-            Static.instance = RessourceManager()
-        }
+    init()
+    {
         
-        return Static.instance!
     }
 }

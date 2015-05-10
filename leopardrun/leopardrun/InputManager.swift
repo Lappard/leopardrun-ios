@@ -9,15 +9,9 @@
 import Foundation
 
 class InputManager {
-    struct Static {
-        static var instance: InputManager?
-    }
     
-    class var sharedInstance: InputManager {
-        if !(Static.instance != nil) {
-            Static.instance = InputManager()
-        }
+    init()
+    {
         
-        return Static.instance!
     }
 }

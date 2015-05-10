@@ -9,15 +9,9 @@
 import Foundation
 
 class NetworkManager {
-    struct Static {
-        static var instance: NetworkManager?
-    }
     
-    class var sharedInstance: NetworkManager {
-        if !(Static.instance != nil) {
-            Static.instance = NetworkManager()
-        }
+    init()
+    {
         
-        return Static.instance!
     }
 }

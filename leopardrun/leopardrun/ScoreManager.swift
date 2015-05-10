@@ -9,15 +9,9 @@
 import Foundation
 
 class ScoreManager {
-    struct Static {
-        static var instance: ScoreManager?
-    }
     
-    class var sharedInstance: ScoreManager {
-        if !(Static.instance != nil) {
-            Static.instance = ScoreManager()
-        }
+    init()
+    {
         
-        return Static.instance!
     }
 }

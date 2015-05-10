@@ -9,15 +9,9 @@
 import Foundation
 
 class SoundManager {
-    struct Static {
-        static var instance: SoundManager?
-    }
     
-    class var sharedInstance: SoundManager {
-        if !(Static.instance != nil) {
-            Static.instance = SoundManager()
-        }
+    init()
+    {
         
-        return Static.instance!
     }
 }

@@ -29,6 +29,9 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let value = UIInterfaceOrientation.LandscapeLeft.rawValue
+        UIDevice.currentDevice().setValue(value, forKey: "orientation")
 
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
             // Configure the view.

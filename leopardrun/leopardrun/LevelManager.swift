@@ -9,15 +9,9 @@
 import Foundation
 
 class LevelManager {
-    struct Static {
-        static var instance: LevelManager?
-    }
     
-    class var sharedInstance: LevelManager {
-        if !(Static.instance != nil) {
-            Static.instance = LevelManager()
-        }
+    init()
+    {
         
-        return Static.instance!
     }
 }
