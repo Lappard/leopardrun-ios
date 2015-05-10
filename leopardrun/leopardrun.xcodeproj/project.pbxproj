@@ -28,7 +28,6 @@
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
 		7B846DC91AFFA5580040F7A8 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC81AFFA5580040F7A8 /* Screen.swift */; };
-		7B846DCD1AFFBC6E0040F7A8 /* ShipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DCC1AFFBC6E0040F7A8 /* ShipNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		7B846DC81AFFA5580040F7A8 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
-		7B846DCC1AFFBC6E0040F7A8 /* ShipNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipNode.swift; sourceTree = "<group>"; };
 		B7112026572AFA980CB5E6C8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA38A97B366B847BA2F9187 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,7 +167,6 @@
 				7B74C5E21AFF95F1007748F3 /* Player.swift */,
 				7B846DC61AFFA54A0040F7A8 /* Entity.swift */,
 				7B846DC81AFFA5580040F7A8 /* Screen.swift */,
-				7B846DCC1AFFBC6E0040F7A8 /* ShipNode.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				7B846DC91AFFA5580040F7A8 /* Screen.swift in Sources */,
 				7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */,
 				7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */,
-				7B846DCD1AFFBC6E0040F7A8 /* ShipNode.swift in Sources */,
 				28DC02201AF238C200B8E9DE /* GameScene.swift in Sources */,
 				7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */,
 				28DC02221AF238C200B8E9DE /* GameViewController.swift in Sources */,

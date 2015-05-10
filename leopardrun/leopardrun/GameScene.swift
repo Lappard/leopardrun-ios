@@ -11,7 +11,7 @@ import UIKit
 
 class GameScene: SKScene, SRWebSocketDelegate {
     
-    var sprite = ShipNode()
+    var player = Player()
     var ground = Obstacle()
     var ground2 = Obstacle()
     
@@ -39,7 +39,7 @@ class GameScene: SKScene, SRWebSocketDelegate {
         swipeUp.direction = .Up
         view.addGestureRecognizer(swipeUp)
         
-        sprite = ShipNode.ship(CGPoint(x: 200, y: 600))
+        player = Player.runner(CGPoint(x: 200, y: 600))
         ground = Obstacle.ground(CGPoint(x: self.size.width/2.0 , y: 120))
         ground2 = Obstacle.ground(CGPoint(x: 2*self.size.width/2.0 , y: 120))
         
@@ -63,7 +63,7 @@ class GameScene: SKScene, SRWebSocketDelegate {
         self.addChild(ground)
         self.addChild(ground2)
         
-        self.addChild(sprite)
+        self.addChild(player)
         
     }
     /*
@@ -86,7 +86,7 @@ class GameScene: SKScene, SRWebSocketDelegate {
         
         super.init(coder: aDecoder)
 
-        self.sprite = ShipNode()
+        self.player = Player()
         self.ground = Obstacle()
         socketConnect("")
     }
@@ -100,7 +100,7 @@ class GameScene: SKScene, SRWebSocketDelegate {
     
     func swipedUp(sender:UISwipeGestureRecognizer){
         println("swiped up")
-        sprite.physicsBody!.velocity.dy = 1000.0
+        player.physicsBody!.velocity.dy = 1000.0
     }
     
     /*override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -159,7 +159,7 @@ class GameScene: SKScene, SRWebSocketDelegate {
             currentRunState++
         }
         
-        sprite.texture = runnerTextures[currentRunState]
+        player.texture = runnerTextures[currentRunState]
         
         
     }
