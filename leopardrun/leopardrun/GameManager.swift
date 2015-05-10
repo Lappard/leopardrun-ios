@@ -9,8 +9,16 @@
 import Foundation
 
 class GameManager {
+    
     struct Static {
         static var instance: GameManager?
+        private var ressourceManager:RessourceManager = RessourceManager()
+        private var soundManager:SoundManager = SoundManager()
+        private var inputManager:InputManager = InputManager()
+        private var levelManager:LevelManager = LevelManager()
+        private var networkManager:NetworkManager = NetworkManager()
+        private var scoreManager:ScoreManager = ScoreManager()
+        
     }
     
     class var sharedInstance: GameManager {
