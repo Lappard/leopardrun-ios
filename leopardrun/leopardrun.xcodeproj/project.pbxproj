@@ -16,6 +16,16 @@
 		28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02281AF238C200B8E9DE /* LaunchScreen.xib */; };
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
 		799434A71617B5AB0A63C8FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7112026572AFA980CB5E6C8 /* libPods.a */; };
+		7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D01AFF956A007748F3 /* RessourceManager.swift */; };
+		7B74C5D31AFF9587007748F3 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D21AFF9587007748F3 /* GameManager.swift */; };
+		7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D41AFF958F007748F3 /* SoundManager.swift */; };
+		7B74C5D71AFF95A9007748F3 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D61AFF95A9007748F3 /* InputManager.swift */; };
+		7B74C5D91AFF95B3007748F3 /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D81AFF95B3007748F3 /* LevelManager.swift */; };
+		7B74C5DB1AFF95C1007748F3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */; };
+		7B74C5DD1AFF95CA007748F3 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5DC1AFF95CA007748F3 /* ScoreManager.swift */; };
+		7B74C5DF1AFF95D7007748F3 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5DE1AFF95D7007748F3 /* Obstacle.swift */; };
+		7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E01AFF95DF007748F3 /* Item.swift */; };
+		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +53,16 @@
 		28DC02341AF238C200B8E9DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DC02351AF238C200B8E9DE /* leopardrunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leopardrunTests.swift; sourceTree = "<group>"; };
 		6CEDD501F473934333A4463F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7B74C5D01AFF956A007748F3 /* RessourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourceManager.swift; sourceTree = "<group>"; };
+		7B74C5D21AFF9587007748F3 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		7B74C5D41AFF958F007748F3 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		7B74C5D61AFF95A9007748F3 /* InputManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
+		7B74C5D81AFF95B3007748F3 /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
+		7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7B74C5DC1AFF95CA007748F3 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		7B74C5DE1AFF95D7007748F3 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		7B74C5E01AFF95DF007748F3 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B7112026572AFA980CB5E6C8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA38A97B366B847BA2F9187 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,10 +109,10 @@
 		28DC02181AF238C200B8E9DE /* leopardrun */ = {
 			isa = PBXGroup;
 			children = (
+				7B74C5CE1AFF9522007748F3 /* Screens */,
+				7B74C5CD1AFF9516007748F3 /* Manager */,
+				7B74C5CC1AFF94EB007748F3 /* Entity */,
 				28DC021B1AF238C200B8E9DE /* AppDelegate.swift */,
-				28DC021D1AF238C200B8E9DE /* GameScene.sks */,
-				28DC021F1AF238C200B8E9DE /* GameScene.swift */,
-				28DC02211AF238C200B8E9DE /* GameViewController.swift */,
 				28DC02231AF238C200B8E9DE /* Main.storyboard */,
 				28DC02261AF238C200B8E9DE /* Images.xcassets */,
 				28DC02281AF238C200B8E9DE /* LaunchScreen.xib */,
@@ -133,6 +153,40 @@
 				B7112026572AFA980CB5E6C8 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B74C5CC1AFF94EB007748F3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				7B74C5DE1AFF95D7007748F3 /* Obstacle.swift */,
+				7B74C5E01AFF95DF007748F3 /* Item.swift */,
+				7B74C5E21AFF95F1007748F3 /* Player.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		7B74C5CD1AFF9516007748F3 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7B74C5D01AFF956A007748F3 /* RessourceManager.swift */,
+				7B74C5D21AFF9587007748F3 /* GameManager.swift */,
+				7B74C5D41AFF958F007748F3 /* SoundManager.swift */,
+				7B74C5D61AFF95A9007748F3 /* InputManager.swift */,
+				7B74C5D81AFF95B3007748F3 /* LevelManager.swift */,
+				7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */,
+				7B74C5DC1AFF95CA007748F3 /* ScoreManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		7B74C5CE1AFF9522007748F3 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				28DC021D1AF238C200B8E9DE /* GameScene.sks */,
+				28DC021F1AF238C200B8E9DE /* GameScene.swift */,
+				28DC02211AF238C200B8E9DE /* GameViewController.swift */,
+			);
+			name = Screens;
 			sourceTree = "<group>";
 		};
 		DA8DB8963D0BA09F96E92885 /* Pods */ = {
@@ -280,9 +334,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B74C5DB1AFF95C1007748F3 /* NetworkManager.swift in Sources */,
+				7B74C5DF1AFF95D7007748F3 /* Obstacle.swift in Sources */,
+				7B74C5D91AFF95B3007748F3 /* LevelManager.swift in Sources */,
+				7B74C5DD1AFF95CA007748F3 /* ScoreManager.swift in Sources */,
+				7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */,
+				7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */,
 				28DC02201AF238C200B8E9DE /* GameScene.swift in Sources */,
+				7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */,
 				28DC02221AF238C200B8E9DE /* GameViewController.swift in Sources */,
 				28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */,
+				7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */,
+				7B74C5D71AFF95A9007748F3 /* InputManager.swift in Sources */,
+				7B74C5D31AFF9587007748F3 /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
