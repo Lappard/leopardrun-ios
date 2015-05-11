@@ -7,36 +7,54 @@
 //
 
 import Foundation
+import SpriteKit
 
-class GameManager {
+class GameManager : SKScene {
     
-    struct Static {
-        static var instance: GameManager?
+
         
-        private var ressourceManager:RessourceManager
-        private var soundManager:SoundManager
-        private var inputManager:InputManager
-        private var levelManager:LevelManager
-        private var networkManager:NetworkManager
-        private var scoreManager:ScoreManager
-        
-        init()
-        {
-            ressourceManager = RessourceManager()
-            soundManager = SoundManager()
-            inputManager = InputManager()
-            levelManager = LevelManager()
-            networkManager = NetworkManager()
-            scoreManager = ScoreManager()
-        }
-        
+    private var ressourceManager : RessourceManager = RessourceManager()
+    private var soundManager : SoundManager = SoundManager()
+    private var inputManager : InputManager = InputManager()
+    private var levelManager : LevelManager = LevelManager()
+    private var networkManager : NetworkManager = NetworkManager()
+    private var scoreManager : ScoreManager = ScoreManager()
+    //private var physicsManager : PhysicsManager = PhysicsManager()
+
+    
+    var gameObjects = [Entity]()
+    
+    func appendGameObject(e : Entity) -> Void {
+        self.gameObjects.append(e)
+        self.addChild(e)
     }
     
-    class var sharedInstance: GameManager {
-        if !(Static.instance != nil) {
-            Static.instance = GameManager()
+    func update() -> Void {
+        for objects in gameObjects {
+            objects.update()
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         
-        return Static.instance!
+        self.physicsWorld.gravity = CGVectorMake(0.0, -4.9)
+    }
+
+    
+    
+    override func didMoveToView(view: SKView) {
+        /* Setup your scene here */
+        let myLabel = SKLabelNode(fontNamed:"Helvica")
+        myLabel.text = "Hello, World!";
+        myLabel.fontSize = 65;
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        
+        
+        
+        let swipeUp:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedUp:"))
+        swipeUp.direction = .Up
+        view.addGestureRecognizer(swipeUp)
+        
     }
 }

@@ -15,6 +15,7 @@
 		28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02261AF238C200B8E9DE /* Images.xcassets */; };
 		28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02281AF238C200B8E9DE /* LaunchScreen.xib */; };
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
+		28E7D1D31B013FB4000F033C /* PhysicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E7D1D21B013FB4000F033C /* PhysicsManager.swift */; };
 		799434A71617B5AB0A63C8FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7112026572AFA980CB5E6C8 /* libPods.a */; };
 		7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D01AFF956A007748F3 /* RessourceManager.swift */; };
 		7B74C5D31AFF9587007748F3 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D21AFF9587007748F3 /* GameManager.swift */; };
@@ -54,6 +55,7 @@
 		28DC022F1AF238C200B8E9DE /* leopardrunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = leopardrunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DC02341AF238C200B8E9DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DC02351AF238C200B8E9DE /* leopardrunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leopardrunTests.swift; sourceTree = "<group>"; };
+		28E7D1D21B013FB4000F033C /* PhysicsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsManager.swift; sourceTree = "<group>"; };
 		6CEDD501F473934333A4463F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B74C5D01AFF956A007748F3 /* RessourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourceManager.swift; sourceTree = "<group>"; };
 		7B74C5D21AFF9587007748F3 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				7B74C5D81AFF95B3007748F3 /* LevelManager.swift */,
 				7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */,
 				7B74C5DC1AFF95CA007748F3 /* ScoreManager.swift */,
+				28E7D1D21B013FB4000F033C /* PhysicsManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				28DC02221AF238C200B8E9DE /* GameViewController.swift in Sources */,
 				28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */,
 				7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */,
+				28E7D1D31B013FB4000F033C /* PhysicsManager.swift in Sources */,
 				7B74C5D71AFF95A9007748F3 /* InputManager.swift in Sources */,
 				7B74C5D31AFF9587007748F3 /* GameManager.swift in Sources */,
 			);
