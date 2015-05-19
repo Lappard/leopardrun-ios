@@ -11,8 +11,6 @@ import SpriteKit
 
 class GameManager : SKScene {
     
-
-        
     private var ressourceManager : RessourceManager = RessourceManager()
     private var soundManager : SoundManager = SoundManager()
     private var inputManager : InputManager = InputManager()
@@ -35,13 +33,19 @@ class GameManager : SKScene {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override init() {
+        super.init()
         
         self.physicsWorld.gravity = CGVectorMake(0.0, -4.9)
     }
-
     
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */

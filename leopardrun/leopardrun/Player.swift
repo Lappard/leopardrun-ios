@@ -9,7 +9,7 @@ class Player: Entity {
     
     init() {
         // super.init(imageNamed:"bubble") You can't do this because you are not calling a designated initializer.
-        let texture = SKTexture(imageNamed: "bubble")
+        let texture = SKTexture(imageNamed: "run1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
         for (var i:Int = 1; i < 7; i++) {
@@ -23,7 +23,7 @@ class Player: Entity {
         
         self.texture = SKTexture(imageNamed: "run1.png")
        
-        self.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "run1.png"), size: CGSize(width: 100, height: 300))
+        self.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "run1.png"), size: CGSize(width: texture.size().width, height: texture.size().height))
 
         
         if let physics = physicsBody {

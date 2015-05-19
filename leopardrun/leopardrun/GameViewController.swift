@@ -16,12 +16,28 @@ extension SKNode {
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
+            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
             archiver.finishDecoding()
             return scene
         } else {
             return nil
         }
+    }
+}
+
+func showScene(scene : SKScene, view : SKView?) -> Void {
+    // Configure the view.
+    if let skView = view as SKView? {
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .AspectFill
+        
+        skView.presentScene(scene)
     }
 }
 
@@ -33,19 +49,8 @@ class GameViewController: UIViewController {
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
 
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-            // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
+        if let scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
+            showScene(scene, self.view as? SKView)
         }
     }
 
