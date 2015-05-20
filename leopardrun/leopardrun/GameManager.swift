@@ -13,13 +13,10 @@ class GameManager : SKScene {
     
     private var ressourceManager : RessourceManager = RessourceManager()
     private var soundManager : SoundManager = SoundManager()
-    private var inputManager : InputManager = InputManager()
     private var levelManager : LevelManager = LevelManager()
     private var networkManager : NetworkManager = NetworkManager()
     private var scoreManager : ScoreManager = ScoreManager()
-    //private var physicsManager : PhysicsManager = PhysicsManager()
 
-    
     var gameObjects = [Entity]()
     
     func appendGameObject(e : Entity) -> Void {

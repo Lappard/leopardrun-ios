@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA21B0CAD0000BB9D54 /* Runner.atlas */; };
+		282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */; };
 		289927F41B0B5E400061FBA3 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289927F31B0B5E400061FBA3 /* MenuScene.swift */; };
 		289927F61B0B62030061FBA3 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 289927F51B0B62030061FBA3 /* MenuScene.sks */; };
 		28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC021B1AF238C200B8E9DE /* AppDelegate.swift */; };
@@ -17,12 +19,10 @@
 		28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02261AF238C200B8E9DE /* Images.xcassets */; };
 		28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02281AF238C200B8E9DE /* LaunchScreen.xib */; };
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
-		28E7D1D31B013FB4000F033C /* PhysicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E7D1D21B013FB4000F033C /* PhysicsManager.swift */; };
 		799434A71617B5AB0A63C8FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7112026572AFA980CB5E6C8 /* libPods.a */; };
 		7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D01AFF956A007748F3 /* RessourceManager.swift */; };
 		7B74C5D31AFF9587007748F3 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D21AFF9587007748F3 /* GameManager.swift */; };
 		7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D41AFF958F007748F3 /* SoundManager.swift */; };
-		7B74C5D71AFF95A9007748F3 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D61AFF95A9007748F3 /* InputManager.swift */; };
 		7B74C5D91AFF95B3007748F3 /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D81AFF95B3007748F3 /* LevelManager.swift */; };
 		7B74C5DB1AFF95C1007748F3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */; };
 		7B74C5DD1AFF95CA007748F3 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5DC1AFF95CA007748F3 /* ScoreManager.swift */; };
@@ -44,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		282DFBA21B0CAD0000BB9D54 /* Runner.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Runner.atlas; sourceTree = "<group>"; };
+		282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
 		283C74DA1AF23EC3005CD9B4 /* leopardrun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "leopardrun-Bridging-Header.h"; sourceTree = "<group>"; };
 		289927F31B0B5E400061FBA3 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		289927F51B0B62030061FBA3 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -59,12 +61,10 @@
 		28DC022F1AF238C200B8E9DE /* leopardrunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = leopardrunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DC02341AF238C200B8E9DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DC02351AF238C200B8E9DE /* leopardrunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leopardrunTests.swift; sourceTree = "<group>"; };
-		28E7D1D21B013FB4000F033C /* PhysicsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsManager.swift; sourceTree = "<group>"; };
 		6CEDD501F473934333A4463F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B74C5D01AFF956A007748F3 /* RessourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourceManager.swift; sourceTree = "<group>"; };
 		7B74C5D21AFF9587007748F3 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		7B74C5D41AFF958F007748F3 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		7B74C5D61AFF95A9007748F3 /* InputManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		7B74C5D81AFF95B3007748F3 /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7B74C5DC1AFF95CA007748F3 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
@@ -96,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282DFBA11B0CAC5200BB9D54 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */,
+				282DFBA21B0CAD0000BB9D54 /* Runner.atlas */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
 		289927F01B0B5AAF0061FBA3 /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +146,7 @@
 		28DC02181AF238C200B8E9DE /* leopardrun */ = {
 			isa = PBXGroup;
 			children = (
+				282DFBA11B0CAC5200BB9D54 /* Sprites */,
 				7B74C5CE1AFF9522007748F3 /* Screens */,
 				7B74C5CD1AFF9516007748F3 /* Manager */,
 				7B74C5CC1AFF94EB007748F3 /* Entity */,
@@ -201,11 +211,9 @@
 				7B74C5D01AFF956A007748F3 /* RessourceManager.swift */,
 				7B74C5D21AFF9587007748F3 /* GameManager.swift */,
 				7B74C5D41AFF958F007748F3 /* SoundManager.swift */,
-				7B74C5D61AFF95A9007748F3 /* InputManager.swift */,
 				7B74C5D81AFF95B3007748F3 /* LevelManager.swift */,
 				7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */,
 				7B74C5DC1AFF95CA007748F3 /* ScoreManager.swift */,
-				28E7D1D21B013FB4000F033C /* PhysicsManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -315,7 +323,9 @@
 				28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */,
 				28DC021E1AF238C200B8E9DE /* GameScene.sks in Resources */,
 				289927F61B0B62030061FBA3 /* MenuScene.sks in Resources */,
+				282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */,
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
+				282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,8 +390,6 @@
 				28DC02221AF238C200B8E9DE /* GameViewController.swift in Sources */,
 				28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */,
 				7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */,
-				28E7D1D31B013FB4000F033C /* PhysicsManager.swift in Sources */,
-				7B74C5D71AFF95A9007748F3 /* InputManager.swift in Sources */,
 				7B74C5D31AFF9587007748F3 /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

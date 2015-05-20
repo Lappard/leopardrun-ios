@@ -1,30 +1,22 @@
 import UIKit
 import SpriteKit
 
-class Player: Entity {
+class Player: SpriteEntity {
     
     var countRunning = 0
     var currentRunState = 1
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     
     init() {
-        // super.init(imageNamed:"bubble") You can't do this because you are not calling a designated initializer.
         let texture = SKTexture(imageNamed: "run1")
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
-        for (var i:Int = 1; i < 7; i++) {
-            var current : SKTexture = SKTexture(imageNamed: "run" + i.description) // run1, run2, ...
-            runnerTextures.append(current)
-        }
+        super.init(atlasName: "Runner", count: 6)
+        
         
         self.xScale = 2
         self.yScale = 2
         self.position = CGPoint(x: 200, y: 600)
         
-        self.texture = SKTexture(imageNamed: "run1.png")
-       
-        self.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "run1.png"), size: CGSize(width: texture.size().width, height: texture.size().height))
-
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
@@ -48,14 +40,15 @@ class Player: Entity {
             currentRunState++
         }
         
-       texture = runnerTextures[currentRunState]
-        
+        texture = runnerTextures[currentRunState]
         
     }
     
+    
+    
     override func update() {
         if countRunning == 2 {
-            animatePlayer()
+           // animatePlayer()
             countRunning = 0
         } else {
             countRunning++
