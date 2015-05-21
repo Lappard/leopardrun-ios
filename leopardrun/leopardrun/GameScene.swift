@@ -9,7 +9,7 @@
 import SpriteKit
 import UIKit
 
-class GameScene: GameManager {
+class GameScene: GameBaseScene {
     
     var player : Player?
     var ground : Obstacle?
