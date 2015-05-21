@@ -13,22 +13,10 @@ class GameScene: GameBaseScene {
     
     var distance = 0;
     
-    
     var player : Player?
-    var ground : Obstacle?
-    var ground2 : Obstacle?
-    
-    var countRunning = 0
-    var currentRunState = 1
     
     var levelManager = LevelManager()
     
-    var camera: SKNode?
-    var world: SKNode?
-    var overlay: SKNode?
-    
-    
-    var blocks:Array<Obstacle> = Array<Obstacle>()
     
     override init() {
         super.init()
@@ -36,29 +24,8 @@ class GameScene: GameBaseScene {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        
-        
-        // Camera setup
-        self.world = SKNode()
-        self.world?.name = "world"
-        addChild(self.world!)
-        self.camera = SKNode()
-        self.camera?.position = self.world!.position
-        self.camera?.name = "camera"
-        self.world?.addChild(self.camera!)
-        
-        // UI setup
-        self.overlay = SKNode()
-        self.overlay?.zPosition = 10
-        self.overlay?.name = "overlay"
-        addChild(self.overlay!)
-        
         self.player = Player()
-        
         self.world?.addChild(self.player!)
-        
-        
         createLevelPart()
     }
     
@@ -78,7 +45,7 @@ class GameScene: GameBaseScene {
     
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
-        
+          
         for o in obstacles {
             self.world?.addChild(o)
         }

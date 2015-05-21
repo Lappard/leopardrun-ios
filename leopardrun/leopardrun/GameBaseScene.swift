@@ -12,6 +12,9 @@ import SpriteKit
 class GameBaseScene : SKScene {
     
     var gameObjects = [Entity]()
+    var camera: SKNode?
+    var world: SKNode?
+    var overlay: SKNode?
     
     func appendGameObject(e : Entity) -> Void {
         self.gameObjects.append(e)
@@ -26,8 +29,6 @@ class GameBaseScene : SKScene {
     
     override init() {
         super.init()
-        
-        self.physicsWorld.gravity = CGVectorMake(0.0, -9.81)
     }
     
     override init(size: CGSize) {
@@ -36,6 +37,23 @@ class GameBaseScene : SKScene {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        
+        self.physicsWorld.gravity = CGVectorMake(0.0, -9.81)
+        // Camera setup
+        self.world = SKNode()
+        self.world?.name = "world"
+        addChild(self.world!)
+        self.camera = SKNode()
+        self.camera?.position = self.world!.position
+        self.camera?.name = "camera"
+        self.world?.addChild(self.camera!)
+        
+        // UI setup
+        self.overlay = SKNode()
+        self.overlay?.zPosition = 10
+        self.overlay?.name = "overlay"
+        addChild(self.overlay!)
     }
     
     override func didMoveToView(view: SKView) {
