@@ -4,8 +4,7 @@ import SpriteKit
 class Obstacle: Entity {
     
     init(imageNamed : String) {
-       super.init(texture: SKTexture(imageNamed: imageNamed))
-        
+        super.init(texture: SKTexture(imageNamed: imageNamed))
         
     }
     
@@ -30,7 +29,6 @@ class Obstacle: Entity {
         }
         return obstacle
     }
-    
     
     class func ground(location: CGPoint) -> Obstacle {
         let sprite = Obstacle(imageNamed:"Ground.png")

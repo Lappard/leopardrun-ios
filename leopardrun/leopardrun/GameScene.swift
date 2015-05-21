@@ -18,7 +18,7 @@ class GameScene: GameBaseScene {
     var countRunning = 0
     var currentRunState = 1
     
-    
+    var levelManager = LevelManager()
     
     var camera: SKNode?
     var world: SKNode?
@@ -55,22 +55,8 @@ class GameScene: GameBaseScene {
         
         self.world?.addChild(self.player!)
         
-        ground = Obstacle.ground(CGPoint(x: self.size.width/2.0 , y: 120))
-        ground2 = Obstacle.ground(CGPoint(x: 2*self.size.width/2.0 , y: 120))
         
-        blocks.append(Obstacle.block(CGPoint(x: (self.size.width/2.0) + 100, y: 200)))
-        blocks.append(Obstacle.block(CGPoint(x: (self.size.width/2.0) + 200, y: 500)))
-        blocks.append(Obstacle.block(CGPoint(x: (self.size.width/2.0) + 300, y: 200)))
-        blocks.append(Obstacle.block(CGPoint(x: (self.size.width/2.0) + 400, y: 500)))
-        
-        self.world?.addChild(blocks[0])
-        self.world?.addChild(blocks[1])
-        self.world?.addChild(blocks[2])
-        self.world?.addChild(blocks[3])
-        
-        self.world?.addChild(ground!)
-        self.world?.addChild(ground2!)
-        
+        createLevelPart()
     }
     
     override init(size: CGSize) {
@@ -97,18 +83,20 @@ class GameScene: GameBaseScene {
         }
     }
     
+    func createLevelPart() -> Void {
+        var obstacles = LevelManager.sharedInstance.getLevelPart()
+        
+        for o in obstacles {
+            self.world?.addChild(o)
+        }
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         super.update()
         self.camera?.position.x -= 1.0
-//        self.player?.position.x += 1.0
+//      self.player?.position.x += 1.0
         self.player?.physicsBody?.applyImpulse(CGVector(dx: 1.0, dy: 0.0))
-        //        ground!.position.x -= 1.0
-//        ground2!.position.x -= 1.0
-      
-//        for(var i=0; i < 4; i++)
-//        {
-//            blocks[i].position.x -= 1.0
-//        }
+
         
     }
     
