@@ -93,10 +93,11 @@ class GameScene: GameBaseScene {
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
-        self.camera?.position.x -= 1.0
-        self.player?.position.x += 1.0
-        distance++
-        if (distance > 500){
+        self.camera?.position.x -= 2.0
+        self.player?.position.x += 2.0
+        distance += 2
+        println(distance)
+        if (distance > 700){
             distance = 0
             createLevelPart()
         }
