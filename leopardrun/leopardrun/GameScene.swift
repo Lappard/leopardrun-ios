@@ -100,7 +100,8 @@ class GameScene: GameBaseScene {
     override func update(currentTime: CFTimeInterval) {
         super.update()
         self.camera?.position.x -= 1.0
-        self.player?.position.x += 1.0
+//        self.player?.position.x += 1.0
+        self.player?.physicsBody?.applyImpulse(CGVector(dx: 1.0, dy: 0.0))
         //        ground!.position.x -= 1.0
 //        ground2!.position.x -= 1.0
       
