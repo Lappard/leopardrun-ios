@@ -23,7 +23,7 @@ class Obstacle: Entity {
         if let physics = obstacle.physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false
-            physics.dynamic = false;
+            physics.dynamic = false
             physics.linearDamping = 0.75
             physics.angularDamping = 0.75
         }

@@ -40,6 +40,18 @@ class LevelManager {
         
         var obstacles = [Obstacle]()
         
+        var top : Bool = false
+        
+        // create obstacles
+        for(var i = 1; i < 6 ; i++) {
+            var x = 200 * i
+            var y = top ? 500 : 200
+            
+            top = !top
+            
+            obstacles.append(Obstacle.block(CGPoint(x: Int(nextPos.x) + x, y: y)))
+        }
+        
         // create ground
         for index in 0...1 {
             var ground = Obstacle.ground(CGPoint(x: nextPos.x , y: 120))
@@ -51,20 +63,9 @@ class LevelManager {
             // shift current pos for next interation
             nextPos.x += ground.size.width
             
-            println(index)
         }
         
-        var top : Bool = false
         
-        // create obstacles
-        for(var i = 1; i < 6 ; i++) {
-            var x = 200 * i
-            var y = top ? 500 : 200
-            
-            top = !top
-            
-            obstacles.append(Obstacle.block(CGPoint(x: x, y: y)))
-        }
 
         
         return obstacles
