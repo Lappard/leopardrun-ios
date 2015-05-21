@@ -16,7 +16,7 @@ class GameScene: GameBaseScene {
     var ground2 : Obstacle?
     
     var countRunning = 0
-    var currentRunState = 1;
+    var currentRunState = 1
     
     var blocks:Array<Obstacle> = Array<Obstacle>()
     
@@ -28,8 +28,6 @@ class GameScene: GameBaseScene {
         super.init(coder: aDecoder)
         
         self.player = Player()
-        self.ground = Obstacle()
-        self.ground2 = Obstacle()
         
         self.appendGameObject(self.player!)
         
@@ -54,20 +52,21 @@ class GameScene: GameBaseScene {
         super.init(size: size)
     }
     
-    func swipedUp(sender:UISwipeGestureRecognizer){
+    func swipedUp(sender:UITapGestureRecognizer) {
         println("swiped up")
-        player!.physicsBody!.velocity.dy = 1000.0
+        // player!.physicsBody!.velocity.dy = 1000.0
+        player!.physicsBody?.applyForce( CGVector(dx: 0, dy: 3000.0))
     }
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
         
-        ground!.position.x-=1.0
-        ground2!.position.x-=1.0
+        ground!.position.x -= 1.0
+        ground2!.position.x -= 1.0
       
-        for(var i=0; i<4; i++)
+        for(var i=0; i < 4; i++)
         {
-            blocks[i].position.x-=1.0
+            blocks[i].position.x -= 1.0
         }
         
     }

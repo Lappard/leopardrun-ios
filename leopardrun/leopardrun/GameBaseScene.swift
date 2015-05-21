@@ -47,8 +47,7 @@ class GameBaseScene : SKScene {
         
         
         
-        let swipeUp:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedUp:"))
-        swipeUp.direction = .Up
+        let swipeUp:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("swipedUp:"))
         view.addGestureRecognizer(swipeUp)
         
     }

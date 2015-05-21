@@ -1,10 +1,12 @@
 import UIKit
 import SpriteKit
 
-class Obstacle: SKSpriteNode {
+class Obstacle: Entity {
     
-    override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
-        super.init(texture: texture, color: color, size: size);
+    init(imageNamed : String) {
+       super.init(texture: SKTexture(imageNamed: imageNamed))
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -12,21 +14,21 @@ class Obstacle: SKSpriteNode {
     }
     
     class func block(location: CGPoint) -> Obstacle {
-        let sprite = Obstacle(imageNamed:"Block.png")
+        let obstacle = Obstacle(imageNamed:"Block.png")
         
-        sprite.xScale = 2.5
-        sprite.yScale = 2.5
-        sprite.position = location
+        obstacle.xScale = 2.5
+        obstacle.yScale = 2.5
+        obstacle.position = location
         
-        sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Block.png"), size: sprite.size)
-        if let physics = sprite.physicsBody {
+        obstacle.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Block.png"), size: obstacle.size)
+        if let physics = obstacle.physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = false;
             physics.linearDamping = 0.75
             physics.angularDamping = 0.75
         }
-        return sprite
+        return obstacle
     }
     
     

@@ -8,7 +8,6 @@ class Player: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     
     init() {
-        let texture = SKTexture(imageNamed: "run1")
         
         super.init(atlasName: "Runner", count: 6)
         
