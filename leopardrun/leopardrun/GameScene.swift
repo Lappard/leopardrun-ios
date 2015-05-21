@@ -11,6 +11,9 @@ import UIKit
 
 class GameScene: GameBaseScene {
     
+    var distance = 0;
+    
+    
     var player : Player?
     var ground : Obstacle?
     var ground2 : Obstacle?
@@ -64,24 +67,14 @@ class GameScene: GameBaseScene {
     }
     
     func swipedUp(sender:UITapGestureRecognizer) {
-        println("swiped up")
-        // player!.physicsBody!.velocity.dy = 1000.0
         player!.physicsBody?.applyForce( CGVector(dx: 0, dy: 3000.0))
     }
     
     
     func centerCamera(node: SKNode) {
-//        let cameraPositionInScene: CGPoint = self.convertPoint(node.position, fromNode: node)
-        
-        self.world!.position = CGPoint(x:node.position.x, y:node.position.y)
+        self.world!.position = CGPoint(x:node.position.x, y:node.position.y )
     }
     
-    
-    override func didSimulatePhysics() {
-        if self.camera != nil {
-            self.centerCamera(self.camera!)
-        }
-    }
     
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
@@ -91,11 +84,24 @@ class GameScene: GameBaseScene {
         }
     }
     
+
+    override func didSimulatePhysics() {
+        if self.camera != nil {
+            self.centerCamera(self.camera!)
+        }
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         super.update()
-        self.camera?.position.x -= 1.0
-//      self.player?.position.x += 1.0
-        self.player?.physicsBody?.applyImpulse(CGVector(dx: 1.0, dy: 0.0))
+        self.camera?.position.x -= 2.0
+        self.player?.position.x += 2.0
+        distance += 2
+        println(distance)
+        if (distance > 700){
+            distance = 0
+            createLevelPart()
+        }
+//        self.player?.physicsBody?.applyImpulse(CGVector(dx: 1.0, dy: 0.0))
 
         
     }
