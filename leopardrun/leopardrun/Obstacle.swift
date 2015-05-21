@@ -15,36 +15,43 @@ class Obstacle: Entity {
     class func block(location: CGPoint) -> Obstacle {
         let obstacle = Obstacle(imageNamed:"Block.png")
         
-        obstacle.xScale = 2.5
-        obstacle.yScale = 2.5
+        obstacle.xScale = 2
+        obstacle.yScale = 2
         obstacle.position = location
         
         obstacle.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Block.png"), size: obstacle.size)
         if let physics = obstacle.physicsBody {
-            physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = false;
-            physics.linearDamping = 0.75
-            physics.angularDamping = 0.75
+            //should not slow down the player
+            physics.linearDamping = 0.0
+            physics.angularDamping = 0.0
+            physics.friction = 0.0
         }
+        // for collision
+        obstacle.physicsBody!.contactTestBitMask = BodyType.box.rawValue
         return obstacle
     }
     
     class func ground(location: CGPoint) -> Obstacle {
-        let sprite = Obstacle(imageNamed:"Ground.png")
+        let ground = Obstacle(imageNamed:"Ground.png")
         
-        sprite.xScale = 3
-        sprite.yScale = 3
-        sprite.position = location
+        ground.xScale = 3
+        ground.yScale = 3
+        ground.position = location
         
-        sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Ground.png"), size: sprite.size)
-        if let physics = sprite.physicsBody {
+        ground.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Ground.png"), size: ground.size)
+        if let physics = ground.physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = false;
-            physics.linearDamping = 0.75
-            physics.angularDamping = 0.75
+            //should not slow down the player
+            physics.linearDamping = 0.0
+            physics.angularDamping = 0.0
+            physics.friction = 0.0
         }
-        return sprite
+        // for collision
+        ground.physicsBody!.contactTestBitMask = BodyType.ground.rawValue
+        return ground
     }
 }

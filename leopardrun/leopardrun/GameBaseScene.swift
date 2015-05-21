@@ -15,6 +15,7 @@ class GameBaseScene : SKScene {
     var camera: SKNode?
     var world: SKNode?
     var overlay: SKNode?
+
     
     func appendGameObject(e : Entity) -> Void {
         self.gameObjects.append(e)
@@ -46,6 +47,9 @@ class GameBaseScene : SKScene {
         addChild(self.world!)
         self.camera = SKNode()
         self.camera?.position = self.world!.position
+        self.camera!.physicsBody = SKPhysicsBody()
+        self.camera?.physicsBody?.affectedByGravity = false
+        
         self.camera?.name = "camera"
         self.world?.addChild(self.camera!)
         
@@ -65,7 +69,7 @@ class GameBaseScene : SKScene {
         
         
         
-        let swipeUp:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("swipedUp:"))
+        let swipeUp:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tapped:"))
         view.addGestureRecognizer(swipeUp)
         
     }

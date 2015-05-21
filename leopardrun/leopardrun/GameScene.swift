@@ -9,7 +9,7 @@
 import SpriteKit
 import UIKit
 
-class GameScene: GameBaseScene {
+class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
     
@@ -24,6 +24,7 @@ class GameScene: GameBaseScene {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.physicsWorld.contactDelegate = self
         self.player = Player()
         self.world?.addChild(self.player!)
         createLevelPart()
@@ -33,8 +34,8 @@ class GameScene: GameBaseScene {
         super.init(size: size)
     }
     
-    func swipedUp(sender:UITapGestureRecognizer) {
-        player!.physicsBody?.applyForce( CGVector(dx: 0, dy: 3000.0))
+    func tapped(sender:UITapGestureRecognizer) {
+        self.player!.jump()
     }
     
     
@@ -51,26 +52,34 @@ class GameScene: GameBaseScene {
         }
     }
     
+    func didBeginContact(contact: SKPhysicsContact) {
+        if contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.ground.rawValue
+            || contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.ground.rawValue {
+                self.player!.isOnGround(true)
+        }
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+    }
+
+    
 
     override func didSimulatePhysics() {
         if self.camera != nil {
             self.centerCamera(self.camera!)
         }
+        self.camera!.physicsBody!.velocity.dx = -150
+        self.player?.physicsBody?.velocity.dx = 150
     }
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
-        self.camera?.position.x -= 2.0
-        self.player?.position.x += 2.0
+
         distance += 2
-        println(distance)
         if (distance > 700){
             distance = 0
             createLevelPart()
         }
-//        self.player?.physicsBody?.applyImpulse(CGVector(dx: 1.0, dy: 0.0))
 
-        
+
     }
     
 }

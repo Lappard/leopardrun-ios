@@ -9,7 +9,18 @@
 import Foundation
 import SpriteKit
 
+enum BodyType : UInt32 {
+    
+    case player = 1
+    case ground = 2
+    case box = 4
+    case anotherBody1 = 8
+    case anotherBody2 = 16
+    
+}
+
 class Entity : SKSpriteNode {
+    
     
     init(texture: SKTexture!) {
         //super.init(texture: texture) You can't do this because you are not calling a designated initializer.
