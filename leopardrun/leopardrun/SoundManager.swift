@@ -9,7 +9,18 @@
 import Foundation
 
 class SoundManager {
-    
+
+    class var sharedInstance: SoundManager {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: SoundManager? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = SoundManager()
+        }
+        return Static.instance!
+    }
+
     init()
     {
         

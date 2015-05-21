@@ -10,6 +10,18 @@ import Foundation
 
 class LevelManager {
     
+    class var sharedInstance: LevelManager {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: LevelManager? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = LevelManager()
+        }
+        return Static.instance!
+    }
+
+
     init()
     {
         

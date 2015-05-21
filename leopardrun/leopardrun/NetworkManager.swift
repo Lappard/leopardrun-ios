@@ -14,6 +14,18 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     let server = "jonathanwiemers.de" // don't include http://
     let session:NSURLSession?
     
+    class var sharedInstance: NetworkManager {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: NetworkManager? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = NetworkManager()
+        }
+        return Static.instance!
+    }
+
+    
     override init()
     {
         let sessionConfig:NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
