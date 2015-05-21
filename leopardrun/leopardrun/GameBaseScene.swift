@@ -1,5 +1,5 @@
 //
-//  GameManager.swift
+//  GameBaseScene.swift
 //  leopardrun
 //
 //  Created by Felix-André Böttger on 10.05.15.
@@ -9,14 +9,8 @@
 import Foundation
 import SpriteKit
 
-class GameManager : SKScene {
+class GameBaseScene : SKScene {
     
-    private var ressourceManager : RessourceManager = RessourceManager()
-    private var soundManager : SoundManager = SoundManager()
-    private var levelManager : LevelManager = LevelManager()
-    private var networkManager : NetworkManager = NetworkManager()
-    private var scoreManager : ScoreManager = ScoreManager()
-
     var gameObjects = [Entity]()
     
     func appendGameObject(e : Entity) -> Void {
@@ -33,7 +27,7 @@ class GameManager : SKScene {
     override init() {
         super.init()
         
-        self.physicsWorld.gravity = CGVectorMake(0.0, -4.9)
+        self.physicsWorld.gravity = CGVectorMake(0.0, -9.81)
     }
     
     override init(size: CGSize) {

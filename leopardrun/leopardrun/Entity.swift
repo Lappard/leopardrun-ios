@@ -20,16 +20,15 @@ class Entity : SKSpriteNode {
         super.init(texture: texture, color: color, size: size)
     }
     
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     func update() {
         fatalError("update method have to override")
     }
 }
+
 
 class SpriteEntity : Entity {
     
@@ -38,11 +37,10 @@ class SpriteEntity : Entity {
     init(atlasName : String, count : UInt) {
         
         let textureAtlas = SKTextureAtlas(named: atlasName + ".atlas")
-        println(textureAtlas)
 
         for index in 1...count {
             let t = textureAtlas.textureNamed(atlasName + "\(index)")
-            println(t)
+            println(atlasName + "\(index)")
             textures.append(t)
         }
         
