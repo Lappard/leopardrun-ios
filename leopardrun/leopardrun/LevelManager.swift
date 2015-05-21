@@ -9,12 +9,17 @@
 import SpriteKit
 import UIKit
 
+
+/**
+*  Manage the Level and creates/interpret the level structure
+*/
 class LevelManager {
     
     private var hasInit : Bool = false
     
     private var nextPos = CGPoint(x: 0, y: 120)
     
+    /// Singleton Object
     class var sharedInstance: LevelManager {
         struct Static {
             static var onceToken: dispatch_once_t = 0
@@ -27,6 +32,11 @@ class LevelManager {
         return Static.instance!
     }
 
+    /**
+    private init function (singleton)
+    
+    :returns: Obstacle Object
+    */
     internal init()
     {
         if hasInit {
@@ -36,6 +46,11 @@ class LevelManager {
         hasInit = true
     }
     
+    /**
+    create the next part of the level
+    
+    :returns: Array of obstacles which should be rendered
+    */
     func getLevelPart() -> [Obstacle] {
         
         var obstacles = [Obstacle]()
@@ -43,13 +58,12 @@ class LevelManager {
         var top : Bool = false
         
         // create obstacles
-        for(var i = 1; i < 6 ; i++) {
+        for i in 0...12 {
             var x = 200 * i
             var y = top ? 500 : 200
+            obstacles.append(Obstacle.block(CGPoint(x: Int(nextPos.x) + x, y: y)))
             
             top = !top
-            
-            obstacles.append(Obstacle.block(CGPoint(x: Int(nextPos.x) + x, y: y)))
         }
         
         // create ground
@@ -62,12 +76,8 @@ class LevelManager {
 
             // shift current pos for next interation
             nextPos.x += ground.size.width
-            
         }
-        
-        
 
-        
         return obstacles
     }
     
