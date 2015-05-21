@@ -9,26 +9,14 @@
 import SpriteKit
 import UIKit
 
-class GameScene: GameBaseScene {
+class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
     
-    
     var player : Player?
-    var ground : Obstacle?
-    var ground2 : Obstacle?
-    
-    var countRunning = 0
-    var currentRunState = 1
     
     var levelManager = LevelManager()
     
-    var camera: SKNode?
-    var world: SKNode?
-    var overlay: SKNode?
-    
-    
-    var blocks:Array<Obstacle> = Array<Obstacle>()
     
     override init() {
         super.init()
@@ -36,29 +24,9 @@ class GameScene: GameBaseScene {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        
-        
-        // Camera setup
-        self.world = SKNode()
-        self.world?.name = "world"
-        addChild(self.world!)
-        self.camera = SKNode()
-        self.camera?.position = self.world!.position
-        self.camera?.name = "camera"
-        self.world?.addChild(self.camera!)
-        
-        // UI setup
-        self.overlay = SKNode()
-        self.overlay?.zPosition = 10
-        self.overlay?.name = "overlay"
-        addChild(self.overlay!)
-        
+        self.physicsWorld.contactDelegate = self
         self.player = Player()
-        
         self.world?.addChild(self.player!)
-        
-        
         createLevelPart()
     }
     
@@ -66,8 +34,8 @@ class GameScene: GameBaseScene {
         super.init(size: size)
     }
     
-    func swipedUp(sender:UITapGestureRecognizer) {
-        player!.physicsBody?.applyForce( CGVector(dx: 0, dy: 3000.0))
+    func tapped(sender:UITapGestureRecognizer) {
+        self.player!.jump()
     }
     
     
@@ -78,32 +46,40 @@ class GameScene: GameBaseScene {
     
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
-        
+          
         for o in obstacles {
             self.world?.addChild(o)
         }
     }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        if contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.ground.rawValue
+            || contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.ground.rawValue {
+                self.player!.isOnGround(true)
+        }
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+    }
+
     
 
     override func didSimulatePhysics() {
         if self.camera != nil {
             self.centerCamera(self.camera!)
         }
+        self.camera!.physicsBody!.velocity.dx = -150
+        self.player?.physicsBody?.velocity.dx = 150
     }
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
-        self.camera?.position.x -= 2.0
-        self.player?.position.x += 2.0
+
         distance += 2
-        println(distance)
         if (distance > 700){
             distance = 0
             createLevelPart()
         }
-//        self.player?.physicsBody?.applyImpulse(CGVector(dx: 1.0, dy: 0.0))
 
-        
+
     }
     
 }
