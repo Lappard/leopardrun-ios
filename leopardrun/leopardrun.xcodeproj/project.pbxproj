@@ -32,6 +32,8 @@
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
 		7B846DC91AFFA5580040F7A8 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC81AFFA5580040F7A8 /* Screen.swift */; };
+		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,7 @@
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		7B846DC81AFFA5580040F7A8 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
 		FCA38A97B366B847BA2F9187 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +104,7 @@
 		282DFBA11B0CAC5200BB9D54 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */,
 				282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */,
 				282DFBA21B0CAD0000BB9D54 /* Runner.atlas */,
 			);
@@ -337,6 +341,7 @@
 				282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */,
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
 				282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */,
+				7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
