@@ -13,8 +13,8 @@ class Player: SpriteEntity {
         super.init(atlasName: "Runner", count: 10)
         
         
-        self.xScale = 2
-        self.yScale = 2
+        self.xScale = 1
+        self.yScale = 1
         self.position = CGPoint(x: 200, y: 600)
         
         

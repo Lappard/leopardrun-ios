@@ -15,10 +15,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     var player : Player?
     
-    var levelManager = LevelManager()
+    var levelManager = LevelManager.sharedInstance
     
     override init() {
         super.init()
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -26,8 +27,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         self.physicsWorld.contactDelegate = self
         
         levelManager.delegate = self
-        
-        createLevelPart()
         
         self.view?.backgroundColor = UIColor.blackColor()
         
@@ -52,7 +51,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     func centerCamera(node: SKNode) {
         self.world!.position = CGPoint(x:node.position.x, y:node.position.y )
     }
-    
     
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
@@ -81,14 +79,14 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     override func update(currentTime: CFTimeInterval) {
         super.update()
 
-        distance += 2
-        if (distance > 700){
-            distance = 0
-            createLevelPart()
-        }
+        
     }
     
     func ReceivedData() -> Void {
         self.overlay = nil
+        createLevelPart()
+        
+        self.player = Player()
+        self.addChild(self.player!)
     }
 }
