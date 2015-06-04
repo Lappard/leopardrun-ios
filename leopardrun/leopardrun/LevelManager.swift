@@ -95,8 +95,6 @@ class LevelManager : NetworkListener {
                     break;
                 }
             }
-            
-            
         }
         
         levelPartIndex++
@@ -108,9 +106,6 @@ class LevelManager : NetworkListener {
     // Mark: Delegate methods
     
     func getLevelData(data : JSON) -> Void {
-        println()
-        println()
-        println()
         
         levelPartData = data["process"]["level"]["levelparts"].array!
         

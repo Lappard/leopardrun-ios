@@ -16,12 +16,13 @@ class GameBaseScene : SKScene {
     var world: SKNode?
     var overlay: SKNode? {
         didSet {
-            self.addChild(overlay!)
+            if overlay != nil {
+                self.addChild(overlay!)
+            }
         }
         willSet(val) {
             if val == nil {
-                overlay!.removeFromParent()
-                overlay = val
+                overlay?.removeFromParent()
             }
         }
     }
@@ -29,10 +30,6 @@ class GameBaseScene : SKScene {
     func appendGameObject(e : SKSpriteNode) -> Void {
         self.gameObjects.append(e)
         self.addChild(e)
-    }
-    
-    func removeGameObject(e : SKSpriteNode) {
-        self.gameObjects.removeObject(e)
     }
     
     func update() -> Void {
@@ -85,22 +82,5 @@ class GameBaseScene : SKScene {
         let swipeUp:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tapped:"))
         view.addGestureRecognizer(swipeUp)
         
-    }
-}
-
-extension Array {
-    mutating func removeObject<U: Equatable>(object: U) {
-        var index: Int?
-        for (idx, objectToCompare) in enumerate(self) {
-            if let to = objectToCompare as? U {
-                if object == to {
-                    index = idx
-                }
-            }
-        }
-        
-        if((index) != nil) {
-            self.removeAtIndex(index!)
-        }
     }
 }
