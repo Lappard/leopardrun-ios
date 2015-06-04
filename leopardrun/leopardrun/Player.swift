@@ -10,7 +10,7 @@ class Player: SpriteEntity {
     
     init() {
         
-        super.init(atlasName: "Runner", count: 6)
+        super.init(atlasName: "Runner", count: 10)
         
         
         self.xScale = 2
