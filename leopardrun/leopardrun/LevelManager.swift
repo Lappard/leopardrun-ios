@@ -88,8 +88,8 @@ class LevelManager : NetworkListener {
                     nextPos.x += ground.size.width
                     break;
                 case "b":
-                    println(CGPoint(x: nextPos.x + x, y: y + 120))
-                    obstacles.append(Obstacle.block(CGPoint(x: nextPos.x + x, y: y * 100 + 120)))
+                    println(CGPoint(x: nextPos.x + x, y: y * 100 + 120))
+                    obstacles.append(Obstacle.block(CGPoint(x: nextPos.x + x, y: y + 300)))
                     break;
                 default:
                     break;
@@ -97,8 +97,9 @@ class LevelManager : NetworkListener {
             }
         }
         
-        levelPartIndex++
-        
+        if levelPartData?.count > levelPartIndex {
+            levelPartIndex++
+        }
         
         return obstacles
     }
@@ -108,7 +109,7 @@ class LevelManager : NetworkListener {
     func getLevelData(data : JSON) -> Void {
         
         levelPartData = data["process"]["level"]["levelparts"].array!
-        
+        println("count: " + levelPartData!.count.description)
         delegate?.ReceivedData()
     }
 

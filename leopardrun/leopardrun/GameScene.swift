@@ -79,15 +79,14 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     override func update(currentTime: CFTimeInterval) {
         super.update()
 
-        distance += 2
-        if (distance > 700){
-            distance = 0
-            createLevelPart()
-        }
+        
     }
     
     func ReceivedData() -> Void {
         self.overlay = nil
         createLevelPart()
+        
+        self.player = Player()
+        self.addChild(self.player!)
     }
 }
