@@ -10,11 +10,10 @@ class Player: SpriteEntity {
     
     init() {
         
-        super.init(atlasName: "Runner", count: 10)
+        super.init(atlasName: "Leopard", count: 10)
         
-        
-        self.xScale = 1
-        self.yScale = 1
+        self.xScale = 0.3
+        self.yScale = 0.3
         self.position = CGPoint(x: 200, y: 600)
         
         
@@ -43,7 +42,7 @@ class Player: SpriteEntity {
     
     func jump() -> Void {
         if self.isOnGround {
-            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 50.0))
+            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
             isOnGround(false)
         }
     }
