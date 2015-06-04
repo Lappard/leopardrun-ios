@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D7CFCD453FF3FB604F4A6EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5FD02CA65F58CAB953683 /* libPods.a */; };
 		282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA21B0CAD0000BB9D54 /* Runner.atlas */; };
 		282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */; };
 		289927F41B0B5E400061FBA3 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289927F31B0B5E400061FBA3 /* MenuScene.swift */; };
 		289927F61B0B62030061FBA3 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 289927F51B0B62030061FBA3 /* MenuScene.sks */; };
+		28D3BFEE1B1F31D2000F21E5 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3BFED1B1F31D2000F21E5 /* SwiftyJSON.swift */; };
 		28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC021B1AF238C200B8E9DE /* AppDelegate.swift */; };
 		28DC021E1AF238C200B8E9DE /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28DC021D1AF238C200B8E9DE /* GameScene.sks */; };
 		28DC02201AF238C200B8E9DE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC021F1AF238C200B8E9DE /* GameScene.swift */; };
@@ -19,7 +21,6 @@
 		28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02261AF238C200B8E9DE /* Images.xcassets */; };
 		28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02281AF238C200B8E9DE /* LaunchScreen.xib */; };
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
-		799434A71617B5AB0A63C8FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7112026572AFA980CB5E6C8 /* libPods.a */; };
 		7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D01AFF956A007748F3 /* RessourceManager.swift */; };
 		7B74C5D31AFF9587007748F3 /* GameBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */; };
 		7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D41AFF958F007748F3 /* SoundManager.swift */; };
@@ -31,6 +32,7 @@
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
 		7B846DC91AFFA5580040F7A8 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC81AFFA5580040F7A8 /* Screen.swift */; };
+		A0E2016250F38CED70997823 /* Pods_leopardrun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF7497BFB94B0133AE906 /* Pods_leopardrun.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +46,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03C5FD02CA65F58CAB953683 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		061CF7497BFB94B0133AE906 /* Pods_leopardrun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_leopardrun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		282DFBA21B0CAD0000BB9D54 /* Runner.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Runner.atlas; sourceTree = "<group>"; };
 		282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
 		283C74DA1AF23EC3005CD9B4 /* leopardrun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "leopardrun-Bridging-Header.h"; sourceTree = "<group>"; };
 		289927F31B0B5E400061FBA3 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		289927F51B0B62030061FBA3 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		28D3BFED1B1F31D2000F21E5 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		28DC02161AF238C200B8E9DE /* leopardrun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leopardrun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DC021A1AF238C200B8E9DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DC021B1AF238C200B8E9DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +78,6 @@
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		7B846DC81AFFA5580040F7A8 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
-		B7112026572AFA980CB5E6C8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA38A97B366B847BA2F9187 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				799434A71617B5AB0A63C8FF /* libPods.a in Frameworks */,
+				A0E2016250F38CED70997823 /* Pods_leopardrun.framework in Frameworks */,
+				1D7CFCD453FF3FB604F4A6EB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +128,14 @@
 			name = game;
 			sourceTree = "<group>";
 		};
+		28D3BFEC1B1F31C6000F21E5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				28D3BFED1B1F31D2000F21E5 /* SwiftyJSON.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		28DC020D1AF238C100B8E9DE = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +159,7 @@
 		28DC02181AF238C200B8E9DE /* leopardrun */ = {
 			isa = PBXGroup;
 			children = (
+				28D3BFEC1B1F31C6000F21E5 /* Helper */,
 				282DFBA11B0CAC5200BB9D54 /* Sprites */,
 				7B74C5CE1AFF9522007748F3 /* Screens */,
 				7B74C5CD1AFF9516007748F3 /* Manager */,
@@ -188,7 +202,8 @@
 		33B1A219F298945EC7095F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B7112026572AFA980CB5E6C8 /* libPods.a */,
+				061CF7497BFB94B0133AE906 /* Pods_leopardrun.framework */,
+				03C5FD02CA65F58CAB953683 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -387,6 +402,7 @@
 				7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */,
 				28DC02201AF238C200B8E9DE /* GameScene.swift in Sources */,
 				7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */,
+				28D3BFEE1B1F31D2000F21E5 /* SwiftyJSON.swift in Sources */,
 				28DC02221AF238C200B8E9DE /* GameViewController.swift in Sources */,
 				28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */,
 				7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */,

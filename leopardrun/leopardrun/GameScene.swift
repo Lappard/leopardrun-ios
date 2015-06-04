@@ -9,14 +9,13 @@
 import SpriteKit
 import UIKit
 
-class GameScene: GameBaseScene, SKPhysicsContactDelegate {
+class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     var distance = 0;
     
     var player : Player?
     
     var levelManager = LevelManager()
-    
     
     override init() {
         super.init()
@@ -25,9 +24,20 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.physicsWorld.contactDelegate = self
-        self.player = Player()
-        self.world?.addChild(self.player!)
+        
+        levelManager.delegate = self
+        
         createLevelPart()
+        
+        self.view?.backgroundColor = UIColor.blackColor()
+        
+        let label = SKLabelNode(fontNamed: "Chalkduster")
+        label.text = "Loading..."
+        label.fontSize = 40
+        label.fontColor = SKColor.whiteColor()
+        label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
+        
+        self.overlay = label
     }
     
     override init(size: CGSize) {
@@ -35,7 +45,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
     func tapped(sender:UITapGestureRecognizer) {
-        self.player!.jump()
+        self.player?.jump()
     }
     
     
@@ -60,8 +70,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
     }
 
-    
-
     override func didSimulatePhysics() {
         if self.camera != nil {
             self.centerCamera(self.camera!)
@@ -78,8 +86,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             distance = 0
             createLevelPart()
         }
-
-
     }
     
+    func ReceivedData() -> Void {
+        self.overlay = nil
+    }
 }

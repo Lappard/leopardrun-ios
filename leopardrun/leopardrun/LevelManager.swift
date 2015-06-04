@@ -9,15 +9,24 @@
 import SpriteKit
 import UIKit
 
+protocol LevelManagerDelegate {
+    func ReceivedData() -> Void
+}
 
 /**
 *  Manage the Level and creates/interpret the level structure
 */
-class LevelManager {
+class LevelManager : NetworkListener {
     
     private var hasInit : Bool = false
     
     private var nextPos = CGPoint(x: 0, y: 120)
+    
+    private var levelPartData : [JSON]?
+    
+    private var levelPartIndex : Int = 0
+    
+    var delegate : LevelManagerDelegate?
     
     /// Singleton Object
     class var sharedInstance: LevelManager {
@@ -31,7 +40,7 @@ class LevelManager {
         }
         return Static.instance!
     }
-
+    
     /**
     private init function (singleton)
     
@@ -44,6 +53,9 @@ class LevelManager {
         }
         
         hasInit = true
+        
+        NetworkManager.sharedInstance.delegate = self
+        
     }
     
     /**
@@ -57,29 +69,53 @@ class LevelManager {
         
         var top : Bool = false
         
-        // create obstacles
-        for i in 0...12 {
-            var x = 200 * i
-            var y = top ? 500 : 200
-            obstacles.append(Obstacle.block(CGPoint(x: Int(nextPos.x) + x, y: y)))
+        if let levelPart = levelPartData {
+            var part = levelPart[levelPartIndex]
             
-            top = !top
+            for object in part.array! {
+                let x : CGFloat = CGFloat(object["x"].number!),
+                    y : CGFloat = CGFloat(object["y"].number!)
+                
+                switch(object["type"].string!) {
+                case "g":
+                    var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100 + 120))
+                    var ground2 = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100 + 120))
+                    
+                    obstacles.append(ground)
+                    obstacles.append(ground2)
+                    
+                    // shift current pos for next interation
+                    nextPos.x += ground.size.width
+                    break;
+                case "b":
+                    println(CGPoint(x: nextPos.x + x, y: y + 120))
+                    obstacles.append(Obstacle.block(CGPoint(x: nextPos.x + x, y: y * 100 + 120)))
+                    break;
+                default:
+                    break;
+                }
+            }
+            
+            
         }
         
-        // create ground
-        for index in 0...1 {
-            var ground = Obstacle.ground(CGPoint(x: nextPos.x , y: 120))
-            var ground2 = Obstacle.ground(CGPoint(x: nextPos.x , y: 120))
-            
-            obstacles.append(ground)
-            obstacles.append(ground2)
-
-            // shift current pos for next interation
-            nextPos.x += ground.size.width
-        }
-
+        levelPartIndex++
+        
+        
         return obstacles
     }
     
+    // Mark: Delegate methods
+    
+    func getLevelData(data : JSON) -> Void {
+        println()
+        println()
+        println()
+        
+        levelPartData = data["process"]["level"]["levelparts"].array!
+        
+        delegate?.ReceivedData()
+    }
+
     
 }

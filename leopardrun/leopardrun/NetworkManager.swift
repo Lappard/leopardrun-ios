@@ -8,11 +8,19 @@
 
 import Foundation
 
+protocol NetworkListener {
+    func getLevelData(data : JSON) -> Void
+}
+
 class NetworkManager : NSObject, SRWebSocketDelegate {
     
     var socketio:SRWebSocket? = nil
     let server = "jonathanwiemers.de" // don't include http://
     let session:NSURLSession?
+    
+    var delegate : NetworkListener?
+    
+    var guid : String = ""
     
     class var sharedInstance: NetworkManager {
         struct Static {
@@ -26,7 +34,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     }
 
     
-    override init()
+    internal override init()
     {
         let sessionConfig:NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         sessionConfig.allowsCellularAccess = true
@@ -52,12 +60,22 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     
     @objc func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
         // All incoming messages ( socket.on() ) are received in this function. Parsed with JSON
-        println("MESSAGE: \(message)")
         
-        var jsonError:NSError?
-        let messageArray = (message as! NSString).componentsSeparatedByString(":::")
-        let data:NSData = messageArray[messageArray.endIndex - 1].dataUsingEncoding(NSUTF8StringEncoding)!
-        var json:AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+        let data = message.dataUsingEncoding(NSUTF8StringEncoding)
+
+        var json = JSON(data: data!)
+        
+        // get guid from server
+        if let id = json["guid"].string {
+            guid = id
+            socketio!.send("{\"method\":\"createLevel\"}")
+        }
+        
+        // get level stuff form server
+        if let process : [String : JSON] = json["process"].dictionary {
+            
+            delegate?.getLevelData(json)
+        }
     }
     
     /*override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
