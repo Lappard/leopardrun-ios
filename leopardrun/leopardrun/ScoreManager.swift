@@ -12,7 +12,7 @@ class ScoreManager {
     
     var scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
     
-    internal var shouldCounting = true
+    internal var shouldCounting = false
     
     var scores : [Int] = [Int]() {
         didSet {
