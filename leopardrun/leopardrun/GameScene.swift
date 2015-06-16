@@ -78,12 +78,14 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         if self.camera != nil {
             self.centerCamera(self.camera!)
         }
-        self.camera!.physicsBody!.velocity.dx = -150
-        self.player?.physicsBody?.velocity.dx = 100
+        self.camera!.physicsBody!.velocity.dx = -280
+        self.player?.physicsBody?.velocity.dx = 0
+    
     }
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
+
         if player?.currentState != .Dead {
             ScoreManager.sharedInstance.incScore()
         } else {

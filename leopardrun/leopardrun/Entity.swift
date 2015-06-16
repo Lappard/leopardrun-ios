@@ -44,12 +44,17 @@ class Entity : SKSpriteNode {
 class SpriteEntity : Entity {
     
     var textures : [SKTexture] = [SKTexture]()
+    var imageCount : UInt = 0
+    var atlasName = "";
     
     init(atlasName : String, count : UInt) {
         
+        self.atlasName = atlasName
+        
         let textureAtlas = SKTextureAtlas(named: atlasName + ".atlas")
-
-        for index in 1...count {
+        imageCount = count
+        
+        for index in 1...imageCount {
             let t = textureAtlas.textureNamed(atlasName + "\(index)")
             textures.append(t)
         }
@@ -65,8 +70,37 @@ class SpriteEntity : Entity {
     
     func startAnimating() -> Void {
         self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.1, resize: false, restore: true)), withKey:"walking")
+    }
+    
+    func updateAnimation(state: PlayerState) -> Void {
         
+        //Jump-State
+        if(state == PlayerState.Jump){
+            textures.removeAll(keepCapacity: true)
+            let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
+            
+            //Nur das Springsprite
+            let t = textureAtlas.textureNamed(self.atlasName + "\(6)")
+            textures.append(t)
+            
+        }
         
+        //Run-State
+        if(state == PlayerState.Run){
+            textures.removeAll(keepCapacity: true)
+            let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
+           
+            //Komplettes Spriteatlas
+            for index in 1...10 {
+                let t = textureAtlas.textureNamed(atlasName + "\(index)")
+                println(atlasName + "\(index)")
+                textures.append(t)
+            }
+            
+        }
+        
+        //Stare neue Animation!
+        startAnimating()
     }
 
     required init?(coder aDecoder: NSCoder) {

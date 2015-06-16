@@ -2,6 +2,7 @@ import UIKit
 import SpriteKit
 
 public enum PlayerState: Int {
+
     case Stand = 0
     case Run = 1
     case Jump = 2
@@ -11,10 +12,10 @@ public enum PlayerState: Int {
 
 class Player: SpriteEntity {
     
-    
-    
     var countRunning = 0
-    var currentState = PlayerState.Run
+    var currentState: PlayerState = PlayerState.Run
+    var oldState: PlayerState = PlayerState.Stand
+
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = true
     
@@ -25,7 +26,6 @@ class Player: SpriteEntity {
         self.xScale = 0.3
         self.yScale = 0.3
         self.position = CGPoint(x: 200, y: 600)
-        
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
@@ -40,21 +40,16 @@ class Player: SpriteEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
-
     
     override func update() {
         println("pos " + self.position.y.description)
 
-        switch(currentState){
         
-            case PlayerState.Jump:
-                
-                println("jump")
-            
-            default:
-                break
-            
+        if(oldState != self.currentState){
+            self.updateAnimation(currentState)
+            oldState = currentState
         }
+       
         println("pos " + self.position.y.description)
         if self.position.y < 110 {
             currentState = .Dead
