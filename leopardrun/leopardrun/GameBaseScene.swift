@@ -11,9 +11,10 @@ import SpriteKit
 
 class GameBaseScene : SKScene {
     
-    var gameObjects = [SKSpriteNode]()
+    var gameObjects = [SKNode]()
     var camera: SKNode?
     var world: SKNode?
+    
     var overlay: SKNode? {
         didSet {
             if overlay != nil {
@@ -27,7 +28,19 @@ class GameBaseScene : SKScene {
         }
     }
     
-    func appendGameObject(e : SKSpriteNode) -> Void {
+    
+    var hud : [SKNode : CGPoint] = [SKNode : CGPoint]() {
+        didSet {
+            if  let pos : CGPoint = self.hud.values.array.last,
+                let node = self.hud.keys.array.last {
+                    node.position = pos
+                    self.appendGameObject(node)
+            }
+            
+        }
+    }
+    
+    func appendGameObject(e : SKNode) -> Void {
         self.gameObjects.append(e)
         self.addChild(e)
     }

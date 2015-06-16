@@ -17,6 +17,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     var levelManager = LevelManager.sharedInstance
     
+    var scoreManager = ScoreManager.sharedInstance
+    
     override init() {
         super.init()
         
@@ -35,6 +37,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         label.fontSize = 40
         label.fontColor = SKColor.whiteColor()
         label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
+        
+        self.hud[scoreManager.scoreLabel] = CGPoint(x: 100, y: 100)
         
         self.overlay = label
     }
@@ -73,13 +77,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
             self.centerCamera(self.camera!)
         }
         self.camera!.physicsBody!.velocity.dx = -150
-        self.player?.physicsBody?.velocity.dx = 150
+        self.player?.physicsBody?.velocity.dx = 100
     }
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
-
-        
     }
     
     func ReceivedData() -> Void {

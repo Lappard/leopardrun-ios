@@ -6,10 +6,14 @@
 //  Copyright (c) 2015 Ilyas Hallakoglu. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 class ScoreManager {
-     
+    
+    var scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+    
+    internal var score = 0
+    
     class var sharedInstance: ScoreManager {
         struct Static {
             static var onceToken: dispatch_once_t = 0
@@ -23,6 +27,19 @@ class ScoreManager {
 
     init()
     {
-        
+        reset()
+    }
+    
+    func reset() -> Void {
+        scoreLabel.text = "Score 0"
+    }
+    
+    func incScore() {
+        score++
+        scoreLabel.text = "Score " + score.description
+    }
+    
+    func addScore(value : Int) {
+        scoreLabel.text = "Score " + value.description
     }
 }

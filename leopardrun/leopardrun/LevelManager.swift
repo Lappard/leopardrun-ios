@@ -78,19 +78,19 @@ class LevelManager : NetworkListener {
                 
                 switch(object["type"].string!) {
                 case "g":
-                    var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100 +
+                    var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100))
                     
                     obstacles.append(ground)
                     
                     // shift current pos for next interation
                     nextPos.x += ground.size.width
-                    break;
+                    break
                 case "b":
                     println(CGPoint(x: nextPos.x + x, y: y * 100 + 120))
                     obstacles.append(Obstacle.block(CGPoint(x: nextPos.x + x, y: y + 300)))
                     break;
                 default:
-                    break;
+                    break
                 }
             }
         }
