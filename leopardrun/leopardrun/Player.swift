@@ -1,7 +1,8 @@
 import UIKit
 import SpriteKit
 
-enum PlayerState: Int {
+public enum PlayerState: Int {
+
     case Stand = 0
     case Run = 1
     case Jump = 2
@@ -14,6 +15,7 @@ class Player: SpriteEntity {
     var countRunning = 0
     var currentState: PlayerState = PlayerState.Run
     var oldState: PlayerState = PlayerState.Stand
+
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = true
     
@@ -40,13 +42,19 @@ class Player: SpriteEntity {
     
     
     override func update() {
+        println("pos " + self.position.y.description)
+
         
         if(oldState != self.currentState){
             self.updateAnimation(currentState)
             oldState = currentState
         }
        
-        
+        println("pos " + self.position.y.description)
+        if self.position.y < 110 {
+            currentState = .Dead
+            NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
+        }
     }
     
     func isOnGround(onGround: Bool ) -> Void {
@@ -54,8 +62,6 @@ class Player: SpriteEntity {
         
         if(onGround == true){
             currentState = PlayerState.Run
-            print("State: ")
-            println(currentState.rawValue)
         }
         
     }

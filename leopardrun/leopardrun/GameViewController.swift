@@ -16,12 +16,12 @@ extension SKNode {
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
-            archiver.finishDecoding()
-            return scene
-        } else {
-            return nil
+            if let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as? SKScene {
+                archiver.finishDecoding()
+                return scene
+            }
         }
+        return nil
     }
 }
 

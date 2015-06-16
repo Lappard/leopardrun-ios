@@ -17,6 +17,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     var levelManager = LevelManager.sharedInstance
     
+    var scoreManager = ScoreManager.sharedInstance
+    
     override init() {
         super.init()
         
@@ -36,6 +38,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         label.fontColor = SKColor.whiteColor()
         label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
         
+        self.hud[scoreManager.scoreLabel] = CGPoint(x: 100, y: 100)
+        
         self.overlay = label
     }
     
@@ -49,12 +53,15 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     
     func centerCamera(node: SKNode) {
-        self.world!.position = CGPoint(x:node.position.x, y:node.position.y )
+        if player?.currentState != .Dead {
+            self.world!.position = CGPoint(x:node.position.x, y:node.position.y )
+        }
+        
     }
     
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
-          
+        
         for o in obstacles {
             self.world?.addChild(o)
         }
@@ -74,15 +81,19 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         }
         self.camera!.physicsBody!.velocity.dx = -280
         self.player?.physicsBody?.velocity.dx = 0
+    
     }
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
-        
-        if((player) != nil){
-            player!.update()
+
+        if player?.currentState != .Dead {
+            ScoreManager.sharedInstance.incScore()
+        } else {
+            if let scene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene {
+                showScene(scene, self.view!)
+            }
         }
-        
     }
     
     func ReceivedData() -> Void {
@@ -90,6 +101,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         createLevelPart()
         
         self.player = Player()
-        self.addChild(self.player!)
+        
+        self.appendGameObject(self.player!)
+        
     }
 }

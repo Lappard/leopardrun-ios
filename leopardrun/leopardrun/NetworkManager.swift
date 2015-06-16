@@ -21,7 +21,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     var delegate : NetworkListener?
     
     var guid : String = ""
-    
+
     class var sharedInstance: NetworkManager {
         struct Static {
             static var onceToken: dispatch_once_t = 0
@@ -32,7 +32,6 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         }
         return Static.instance!
     }
-
     
     internal override init()
     {
@@ -48,7 +47,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         super.init()
         
         self.socketConnect("")
-
+        
     }
     
     func socketConnect(token:NSString) {
@@ -77,38 +76,5 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
             delegate?.getLevelData(json)
         }
     }
-    
-    /*override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-    for touch in (touches as! Set<UITouch>) {
-    let location = touch.locationInNode(self)
-    sprite.position = location
-    }
-    
-    var dict = [
-    "position": [
-    "x" : sprite.position.x,
-    "y" : sprite.position.y
-    ]
-    ]
-    
-    /*
-    * What you would see in a traditional
-    * Socket.IO app.js file.
-    *
-    * socket.emit("test", {
-    *   Button: "Pressed"
-    * });
-    *
-    *
-    */
-    
-    var jsonSendError:NSError?
-    var jsonSend = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions(0), error: &jsonSendError)
-    var jsonString = NSString(data: jsonSend!, encoding: NSUTF8StringEncoding)
-    
-    // println("JSON SENT \(jsonString)")
-    
-    let str : NSString = jsonString!
-    socketio!.send(str)
-    }*/
+
 }

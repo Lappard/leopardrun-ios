@@ -84,10 +84,8 @@ class LevelManager : NetworkListener {
                     
                     // shift current pos for next interation
                     nextPos.x += ground.size.width
-                    
+                    break
                 case "b":
-                    
-                    println(CGPoint(x: nextPos.x + x, y: y * 100 + 120))
                     obstacles.append(Obstacle.block(CGPoint(x: nextPos.x + x, y: y + 300)))
 
                 default:
@@ -108,7 +106,6 @@ class LevelManager : NetworkListener {
     func getLevelData(data : JSON) -> Void {
         
         levelPartData = data["process"]["level"]["levelparts"].array!
-        println("count: " + levelPartData!.count.description)
         delegate?.ReceivedData()
     }
 

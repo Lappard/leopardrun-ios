@@ -56,7 +56,6 @@ class SpriteEntity : Entity {
         
         for index in 1...imageCount {
             let t = textureAtlas.textureNamed(atlasName + "\(index)")
-            println(atlasName + "\(index)")
             textures.append(t)
         }
         
