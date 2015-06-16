@@ -93,7 +93,6 @@ class SpriteEntity : Entity {
             //Komplettes Spriteatlas
             for index in 1...10 {
                 let t = textureAtlas.textureNamed(atlasName + "\(index)")
-                println(atlasName + "\(index)")
                 textures.append(t)
             }
             

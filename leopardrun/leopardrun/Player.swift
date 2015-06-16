@@ -42,15 +42,11 @@ class Player: SpriteEntity {
     
     
     override func update() {
-        println("pos " + self.position.y.description)
-
-        
         if(oldState != self.currentState){
             self.updateAnimation(currentState)
             oldState = currentState
         }
        
-        println("pos " + self.position.y.description)
         if self.position.y < 120 {
             currentState = .Dead
             NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
@@ -58,7 +54,7 @@ class Player: SpriteEntity {
     }
     
     func isOnGround(onGround: Bool ) -> Void {
-        self.isOnGround = onGround;
+        self.isOnGround = onGround
         
         if(onGround == true){
             currentState = PlayerState.Run
