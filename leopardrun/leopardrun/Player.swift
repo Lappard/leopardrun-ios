@@ -1,18 +1,20 @@
 import UIKit
 import SpriteKit
 
+public enum PlayerState: Int {
+    case Stand = 0
+    case Run = 1
+    case Jump = 2
+    case Duck = 3
+    case Dead = 4
+}
+
 class Player: SpriteEntity {
     
-    enum MoveState: Int {
-        case Stand = 0
-        case Run = 1
-        case Jump = 2
-        case Duck = 3
-        case Dead = 4
-    }
+    
     
     var countRunning = 0
-    var currentRunState = MoveState.Run
+    var currentState = PlayerState.Run
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = true
     
@@ -41,10 +43,11 @@ class Player: SpriteEntity {
 
     
     override func update() {
+        println("pos " + self.position.y.description)
+
+        switch(currentState){
         
-        switch(currentRunState){
-        
-            case MoveState.Jump:
+            case PlayerState.Jump:
                 
                 println("jump")
             
@@ -52,16 +55,18 @@ class Player: SpriteEntity {
                 break
             
         }
-        
+        println("pos " + self.position.y.description)
+        if self.position.y < 110 {
+            currentState = .Dead
+            NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
+        }
     }
     
     func isOnGround(onGround: Bool ) -> Void {
         self.isOnGround = onGround;
         
         if(onGround == true){
-            currentRunState = MoveState.Run
-            print("State: ")
-            println(currentRunState.rawValue)
+            currentState = PlayerState.Run
         }
         
     }
@@ -69,9 +74,9 @@ class Player: SpriteEntity {
     func jump() -> Void {
         if self.isOnGround {
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
-            currentRunState = MoveState.Jump
+            currentState = PlayerState.Jump
             print("State: JUMP => ")
-            println(currentRunState.rawValue)
+            println(currentState.rawValue)
             isOnGround(false)
         }
     }

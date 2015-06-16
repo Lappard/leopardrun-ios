@@ -53,12 +53,15 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     
     func centerCamera(node: SKNode) {
-        self.world!.position = CGPoint(x:node.position.x, y:node.position.y )
+        if player?.currentState != .Dead {
+            self.world!.position = CGPoint(x:node.position.x, y:node.position.y )
+        }
+        
     }
     
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
-          
+        
         for o in obstacles {
             self.world?.addChild(o)
         }
@@ -82,6 +85,13 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
+        if player?.currentState != .Dead {
+            ScoreManager.sharedInstance.incScore()
+        } else {
+            if let scene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene {
+                showScene(scene, self.view!)
+            }
+        }
     }
     
     func ReceivedData() -> Void {
@@ -89,6 +99,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         createLevelPart()
         
         self.player = Player()
-        self.addChild(self.player!)
+        
+        self.appendGameObject(self.player!)
+        
     }
 }
