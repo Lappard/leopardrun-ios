@@ -1,18 +1,19 @@
 import UIKit
 import SpriteKit
 
+enum PlayerState: Int {
+    case Stand = 0
+    case Run = 1
+    case Jump = 2
+    case Duck = 3
+    case Dead = 4
+}
+
 class Player: SpriteEntity {
     
-    enum MoveState: Int {
-        case Stand = 0
-        case Run = 1
-        case Jump = 2
-        case Duck = 3
-        case Dead = 4
-    }
-    
     var countRunning = 0
-    var currentRunState = MoveState.Run
+    var currentState: PlayerState = PlayerState.Run
+    var oldState: PlayerState = PlayerState.Stand
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = true
     
@@ -23,7 +24,6 @@ class Player: SpriteEntity {
         self.xScale = 0.3
         self.yScale = 0.3
         self.position = CGPoint(x: 200, y: 600)
-        
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
@@ -38,20 +38,14 @@ class Player: SpriteEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
-
     
     override func update() {
         
-        switch(currentRunState){
-        
-            case MoveState.Jump:
-                
-                println("jump")
-            
-            default:
-                break
-            
+        if(oldState != self.currentState){
+            self.updateAnimation(currentState)
+            oldState = currentState
         }
+       
         
     }
     
@@ -59,9 +53,9 @@ class Player: SpriteEntity {
         self.isOnGround = onGround;
         
         if(onGround == true){
-            currentRunState = MoveState.Run
+            currentState = PlayerState.Run
             print("State: ")
-            println(currentRunState.rawValue)
+            println(currentState.rawValue)
         }
         
     }
@@ -69,9 +63,9 @@ class Player: SpriteEntity {
     func jump() -> Void {
         if self.isOnGround {
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
-            currentRunState = MoveState.Jump
+            currentState = PlayerState.Jump
             print("State: JUMP => ")
-            println(currentRunState.rawValue)
+            println(currentState.rawValue)
             isOnGround(false)
         }
     }
