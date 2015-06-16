@@ -38,6 +38,7 @@ class LevelManager : NetworkListener {
         dispatch_once(&Static.onceToken) {
             Static.instance = LevelManager()
         }
+        
         return Static.instance!
     }
     

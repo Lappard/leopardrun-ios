@@ -21,7 +21,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     override init() {
         super.init()
-        
     }
 
     required init?(coder aDecoder: NSCoder) {
