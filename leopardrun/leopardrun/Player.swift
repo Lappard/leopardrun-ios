@@ -3,10 +3,18 @@ import SpriteKit
 
 class Player: SpriteEntity {
     
+    enum MoveState: Int {
+        case Stand = 0
+        case Run = 1
+        case Jump = 2
+        case Duck = 3
+        case Dead = 4
+    }
+    
     var countRunning = 0
-    var currentRunState = 1
+    var currentRunState = MoveState.Run
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
-    var isOnGround = false
+    var isOnGround = true
     
     init() {
         
@@ -33,18 +41,41 @@ class Player: SpriteEntity {
 
     
     override func update() {
-    
+        
+        switch(currentRunState){
+        
+            case MoveState.Jump:
+                
+                println("jump")
+            
+            default:
+                break
+            
+        }
+        
     }
     
     func isOnGround(onGround: Bool ) -> Void {
         self.isOnGround = onGround;
+        
+        if(onGround == true){
+            currentRunState = MoveState.Run
+            print("State: ")
+            println(currentRunState.rawValue)
+        }
+        
     }
     
     func jump() -> Void {
         if self.isOnGround {
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
+            currentRunState = MoveState.Jump
+            print("State: JUMP => ")
+            println(currentRunState.rawValue)
             isOnGround(false)
         }
     }
+    
+    
     
 }
