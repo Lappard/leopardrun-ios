@@ -101,8 +101,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         createLevelPart()
         
         self.player = Player()
-        
         self.appendGameObject(self.player!)
+        self.scoreManager.shouldCounting = true
         
     }
 }

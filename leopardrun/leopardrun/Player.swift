@@ -51,7 +51,7 @@ class Player: SpriteEntity {
         }
        
         println("pos " + self.position.y.description)
-        if self.position.y < 110 {
+        if self.position.y < 120 {
             currentState = .Dead
             NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
         }
