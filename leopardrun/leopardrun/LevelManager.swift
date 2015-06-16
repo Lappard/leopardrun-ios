@@ -86,9 +86,10 @@ class LevelManager : NetworkListener {
                     nextPos.x += ground.size.width
                     break
                 case "b":
+                    
                     println(CGPoint(x: nextPos.x + x, y: y * 100 + 120))
                     obstacles.append(Obstacle.block(CGPoint(x: nextPos.x + x, y: y + 300)))
-                    break;
+
                 default:
                     break
                 }
