@@ -23,6 +23,12 @@
 		28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02261AF238C200B8E9DE /* Images.xcassets */; };
 		28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02281AF238C200B8E9DE /* LaunchScreen.xib */; };
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
+		7B43FD1E1B32BBD70037D9AA /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD1D1B32BBD70037D9AA /* Sounds */; };
+		7B43FD201B32BC220037D9AA /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD1F1B32BC220037D9AA /* theme.mp3 */; };
+		7B43FD221B32C1400037D9AA /* theme.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD211B32C1400037D9AA /* theme.ogg */; };
+		7B43FD241B32C3E70037D9AA /* theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD231B32C3E70037D9AA /* theme.wav */; };
+		7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD251B32CE5A0037D9AA /* jump.wav */; };
+		7B43FD281B32D0650037D9AA /* dead.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD271B32D0640037D9AA /* dead.wav */; };
 		7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D01AFF956A007748F3 /* RessourceManager.swift */; };
 		7B74C5D31AFF9587007748F3 /* GameBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */; };
 		7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D41AFF958F007748F3 /* SoundManager.swift */; };
@@ -70,6 +76,12 @@
 		28DC02341AF238C200B8E9DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DC02351AF238C200B8E9DE /* leopardrunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leopardrunTests.swift; sourceTree = "<group>"; };
 		6CEDD501F473934333A4463F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7B43FD1D1B32BBD70037D9AA /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		7B43FD1F1B32BC220037D9AA /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = theme.mp3; path = Sounds/theme.mp3; sourceTree = "<group>"; };
+		7B43FD211B32C1400037D9AA /* theme.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = theme.ogg; path = Sounds/theme.ogg; sourceTree = "<group>"; };
+		7B43FD231B32C3E70037D9AA /* theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = theme.wav; path = Sounds/theme.wav; sourceTree = "<group>"; };
+		7B43FD251B32CE5A0037D9AA /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = Sounds/jump.wav; sourceTree = "<group>"; };
+		7B43FD271B32D0640037D9AA /* dead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dead.wav; path = Sounds/dead.wav; sourceTree = "<group>"; };
 		7B74C5D01AFF956A007748F3 /* RessourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourceManager.swift; sourceTree = "<group>"; };
 		7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBaseScene.swift; sourceTree = "<group>"; };
 		7B74C5D41AFF958F007748F3 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -172,6 +184,7 @@
 		28DC02181AF238C200B8E9DE /* leopardrun */ = {
 			isa = PBXGroup;
 			children = (
+				7B43FD1D1B32BBD70037D9AA /* Sounds */,
 				28D3BFEC1B1F31C6000F21E5 /* Helper */,
 				282DFBA11B0CAC5200BB9D54 /* Sprites */,
 				7B74C5CE1AFF9522007748F3 /* Screens */,
@@ -190,6 +203,11 @@
 		28DC02191AF238C200B8E9DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B43FD271B32D0640037D9AA /* dead.wav */,
+				7B43FD251B32CE5A0037D9AA /* jump.wav */,
+				7B43FD231B32C3E70037D9AA /* theme.wav */,
+				7B43FD211B32C1400037D9AA /* theme.ogg */,
+				7B43FD1F1B32BC220037D9AA /* theme.mp3 */,
 				28DC021A1AF238C200B8E9DE /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -319,6 +337,7 @@
 					};
 					28DC022E1AF238C200B8E9DE = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = DW39USPMG2;
 						TestTargetID = 28DC02151AF238C200B8E9DE;
 					};
 				};
@@ -347,15 +366,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B43FD281B32D0650037D9AA /* dead.wav in Resources */,
+				7B43FD1E1B32BBD70037D9AA /* Sounds in Resources */,
 				28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */,
 				28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */,
+				7B43FD201B32BC220037D9AA /* theme.mp3 in Resources */,
 				28DC021E1AF238C200B8E9DE /* GameScene.sks in Resources */,
 				282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */,
 				28B665691B303D260094C888 /* GameOverScene.sks in Resources */,
+				7B43FD241B32C3E70037D9AA /* theme.wav in Resources */,
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
 				282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */,
+				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
 				28B6656C1B303D600094C888 /* MenuScene.sks in Resources */,
 				7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */,
+				7B43FD221B32C1400037D9AA /* theme.ogg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,7 +506,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -525,7 +551,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -576,6 +603,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -587,6 +616,7 @@
 				INFOPLIST_FILE = leopardrunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/leopardrun.app/leopardrun";
 			};
 			name = Debug;
@@ -595,6 +625,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -602,6 +634,7 @@
 				INFOPLIST_FILE = leopardrunTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/leopardrun.app/leopardrun";
 			};
 			name = Release;

@@ -64,6 +64,8 @@ class Player: SpriteEntity {
     
     func jump() -> Void {
         if self.isOnGround {
+            
+            SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
             currentState = PlayerState.Jump
             print("State: JUMP => ")

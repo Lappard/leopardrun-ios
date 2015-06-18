@@ -79,7 +79,8 @@ class LevelManager : NetworkListener {
                 
                 switch(object["type"].string!) {
                 case "g":
-                    var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100))
+                
+                    var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100 + 50))
                     
                     obstacles.append(ground)
                     

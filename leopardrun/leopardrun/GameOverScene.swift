@@ -41,8 +41,6 @@ class GameOverScene : SKScene {
         
     }
     
-    
-    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         
         if let scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
