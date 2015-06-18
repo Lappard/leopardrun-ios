@@ -39,10 +39,13 @@ class Player: SpriteEntity {
         self.physicsBody!.contactTestBitMask = BodyType.player.rawValue
     }
     
+    func reset() -> Void {
+        self.position = CGPoint(x: 200, y: 600)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     override func update() {
         println(self.position)
@@ -68,6 +71,8 @@ class Player: SpriteEntity {
     
     func jump() -> Void {
         if self.isOnGround {
+            
+            SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
             currentState = PlayerState.Jump
             print("State: JUMP => ")

@@ -47,19 +47,24 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     }
     
     func tapped(sender:UITapGestureRecognizer) {
-        self.player?.jump()
+        if let p = self.player {
+            p.jump()
+        }
     }
     
     
     func centerCamera(node: SKNode) {
         if player?.currentState != .Dead {
             self.world!.position = CGPoint(x:node.position.x * -1, y:100)
+            //player?.currentState = .Dead
         }
-        println(self.world?.position)
+
     }
     
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
+        
+        println("o count" + obstacles.count.description)
         
         for o in obstacles {
             self.world?.addChild(o)
@@ -69,7 +74,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         if contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.ground.rawValue
             || contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.ground.rawValue {
-                self.player!.isOnGround(true)
+                self.player?.isOnGround(true)
+                
         }
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
     }
@@ -85,23 +91,41 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         super.update()
-
+        
         if player?.currentState != .Dead {
             ScoreManager.sharedInstance.incScore()
         } else {
-            if let scene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene {
+            if let scene : GameOverScene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene {
                 showScene(scene, self.view!)
+                
+                SoundManager.sharedInstance.playSound(Sounds.Dead.rawValue)
+                SoundManager.sharedInstance.stopMusic()
+                
             }
+        }
+    }
+    
+    func Reset() -> Void {
+        NetworkManager.sharedInstance.getLevelDataFromServer()
+        ScoreManager.sharedInstance.reset()
+        
+        if let player = self.player {
+            player.reset()
+            
+        } else {
+            self.player = Player()
+            self.appendGameObject(self.player!)
         }
     }
     
     func ReceivedData() -> Void {
         self.overlay = nil
         createLevelPart()
-        
-        self.player = Player()
-        self.appendGameObject(self.player!)
+
         self.scoreManager.shouldCounting = true
+        
+        SoundManager.sharedInstance.playMusic("theme")
+        
         
     }
 }

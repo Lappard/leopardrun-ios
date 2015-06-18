@@ -46,8 +46,11 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
 
         super.init()
         
+        getLevelDataFromServer()
+    }
+    
+    func getLevelDataFromServer() -> Void {
         self.socketConnect("")
-        
     }
     
     func socketConnect(token:NSString) {
