@@ -106,7 +106,7 @@ class LevelManager : NetworkListener {
                 case "g":
 
                 
-                    var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100 + 50))
+                    //var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100 + 50))
                     
                     let ground = Obstacle.ground(CGPoint(x: 0, y: yPos))
                     ground.position.x = nextX(x, obs: ground)
