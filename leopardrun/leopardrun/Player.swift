@@ -42,12 +42,13 @@ class Player: SpriteEntity {
     
     
     override func update() {
+        println(self.position)
         if(oldState != self.currentState){
             self.updateAnimation(currentState)
             oldState = currentState
         }
        
-        if self.position.y < 120 {
+        if self.position.y < 120 || self.position.x < 0{
             currentState = .Dead
             NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
         }

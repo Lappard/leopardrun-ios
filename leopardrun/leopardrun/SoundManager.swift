@@ -34,7 +34,7 @@ class SoundManager {
     }
 
     init()
-    {s
+    {
         
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
         AVAudioSession.sharedInstance().setActive(true, error: nil)
