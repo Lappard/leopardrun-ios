@@ -74,6 +74,7 @@ class GameBaseScene : SKScene {
         self.camera?.position = self.world!.position
         self.camera!.physicsBody = SKPhysicsBody()
         self.camera?.physicsBody?.affectedByGravity = false
+        self.setScale(0.01)
         
         self.camera?.name = "camera"
         self.world?.addChild(self.camera!)

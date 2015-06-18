@@ -45,12 +45,13 @@ class Player: SpriteEntity {
     }
     
     override func update() {
+        println(self.position)
         if(oldState != self.currentState){
             self.updateAnimation(currentState)
             oldState = currentState
         }
        
-        if self.position.y < 120 {
+        if self.position.y < 120 || self.position.x < 0{
             currentState = .Dead
             NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
         }
@@ -67,6 +68,8 @@ class Player: SpriteEntity {
     
     func jump() -> Void {
         if self.isOnGround {
+            
+            SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
             currentState = PlayerState.Jump
             print("State: JUMP => ")

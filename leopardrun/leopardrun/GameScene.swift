@@ -104,6 +104,10 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         } else {
             if let scene : GameOverScene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene {
                 showScene(scene, self.view!)
+                
+                SoundManager.sharedInstance.playSound(Sounds.Dead.rawValue)
+                SoundManager.sharedInstance.stopMusic()
+                
             }
         }
     }
@@ -126,6 +130,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
         createLevelPart()
 
         self.scoreManager.shouldCounting = true
+        
+        SoundManager.sharedInstance.playMusic("theme")
+        
         
     }
 }
