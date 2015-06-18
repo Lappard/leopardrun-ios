@@ -27,11 +27,14 @@ class Player: SpriteEntity {
         self.yScale = 0.3
         self.position = CGPoint(x: 200, y: 600)
         
+        
         if let physics = physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = true
         }
+        self.physicsBody!.mass = 1
+        self.physicsBody!.density = 1
         // for collision
         self.physicsBody!.contactTestBitMask = BodyType.player.rawValue
     }
@@ -48,10 +51,10 @@ class Player: SpriteEntity {
             oldState = currentState
         }
        
-        if self.position.y < 120 || self.position.x < 0{
-            currentState = .Dead
-            NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
-        }
+//        if self.position.y < 120 || self.position.x < 0{
+//            currentState = .Dead
+//            NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
+//        }
     }
     
     func isOnGround(onGround: Bool ) -> Void {

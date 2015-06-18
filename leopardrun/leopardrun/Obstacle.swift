@@ -38,6 +38,7 @@ class Obstacle: Entity {
         
         ground.xScale = 0.3
         ground.yScale = 0.3
+        
         ground.position = location
         
         ground.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Ground.png"), size: ground.size)

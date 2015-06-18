@@ -53,9 +53,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     
     func centerCamera(node: SKNode) {
         if player?.currentState != .Dead {
-            self.world!.position = CGPoint(x:node.position.x, y:node.position.y )
+            self.world!.position = CGPoint(x:node.position.x * -1, y:100)
         }
-        
+        println(self.world?.position)
     }
     
     func createLevelPart() -> Void {
@@ -75,11 +75,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate, LevelManagerDelegate {
     }
 
     override func didSimulatePhysics() {
-        if self.camera != nil {
+        if self.camera != nil && player != nil{
             self.centerCamera(self.camera!)
         }
-        self.camera!.physicsBody!.velocity.dx = -280
-        self.player?.physicsBody?.velocity.dx = 0
+        self.camera!.physicsBody!.velocity.dx = 100
+        self.player?.physicsBody?.velocity.dx = 100
     
     }
     

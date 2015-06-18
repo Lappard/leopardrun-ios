@@ -41,8 +41,8 @@ class GameBaseScene : SKScene {
     }
     
     func appendGameObject(e : SKNode) -> Void {
-        self.gameObjects.append(e)
-        self.addChild(e)
+        self.world?.addChild(e)
+
     }
     
     func update() -> Void {
@@ -74,7 +74,6 @@ class GameBaseScene : SKScene {
         self.camera?.position = self.world!.position
         self.camera!.physicsBody = SKPhysicsBody()
         self.camera?.physicsBody?.affectedByGravity = false
-        self.setScale(0.01)
         
         self.camera?.name = "camera"
         self.world?.addChild(self.camera!)
