@@ -36,10 +36,13 @@ class Player: SpriteEntity {
         self.physicsBody!.contactTestBitMask = BodyType.player.rawValue
     }
     
+    func reset() -> Void {
+        self.position = CGPoint(x: 200, y: 600)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     override func update() {
         if(oldState != self.currentState){
