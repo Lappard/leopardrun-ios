@@ -68,11 +68,11 @@ class LevelManager : NetworkListener {
         case (gridPos == 0):
             return 100
         case (gridPos == 1):
-            return 300
+            return 200
         case (gridPos == 2):
-            return 400
+            return 300
         case (gridPos == 3):
-            return 500
+            return 400
         default:
             return 0;
         }
@@ -82,7 +82,7 @@ class LevelManager : NetworkListener {
     func nextX(gridPos : CGFloat, obs: Obstacle) -> CGFloat {
         // dont use magic number (153.600006103516)
         let nextPos : CGFloat = gridPos * 153.600006103516
-        println(gridPos.description + " " + nextPos.description + "body width: " + obs.size.width.description)
+        //println(gridPos.description + " " + nextPos.description + "body width: " + obs.size.width.description)
         return nextPos
     }
     
