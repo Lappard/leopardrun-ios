@@ -46,7 +46,6 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
 
         super.init()
         
-        getLevelDataFromServer()
     }
     
     func getLevelDataFromServer() -> Void {
@@ -75,7 +74,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         
         // get level stuff form server
         if let process : [String : JSON] = json["process"].dictionary {
-            
+            println("daten erhalten" + json.description)
             delegate?.getLevelData(json)
         }
     }

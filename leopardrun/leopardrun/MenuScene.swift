@@ -56,13 +56,13 @@ class MenuScene: SKScene {
             
             if touchedNode.name == "multi" {
                 if let scene = GameMultiScene.unarchiveFromFile("GameMultiScene") as? GameMultiScene {
-                    showScene(scene, self.view!)
+                    return showScene(scene, self.view!)
                 }
             }
             if touchedNode.name == "single" {
                 if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
                     scene.Reset()
-                    showScene(scene, self.view!)
+                    return showScene(scene, self.view!)
                 }
             }
             
