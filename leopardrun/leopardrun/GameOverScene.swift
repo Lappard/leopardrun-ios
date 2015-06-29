@@ -2,11 +2,18 @@ import SpriteKit
 
 class GameOverScene : SKScene {
     
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override init(size: CGSize) {
         
+        super.init(size: size)
+        
+    }
+    
+    required init!(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        println("BreiteGameOver: " + self.size.width.description)
+    }
+    
+    override func didMoveToView(view: SKView) {
         // 1
         backgroundColor = SKColor.whiteColor()
         
@@ -19,7 +26,7 @@ class GameOverScene : SKScene {
         label.fontSize = 40
         label.fontColor = SKColor.blackColor()
         label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
-        addChild(label)
+        self.addChild(label)
         
         var scoreMessage = "Your Score is " + ScoreManager.sharedInstance.score.description
         
@@ -27,16 +34,22 @@ class GameOverScene : SKScene {
         scoreLabel.text = scoreMessage
         scoreLabel.fontSize = 40
         scoreLabel.fontColor = SKColor.blackColor()
-        scoreLabel.position = CGPoint(x: size.width/2, y: size.height/2 + 200)
+        scoreLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 50)
         
-        addChild(scoreLabel)
-        
+        self.addChild(scoreLabel)
+
     }
+
+
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if let scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
-            showScene(scene, self.view!)
-        }
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Left, duration: 1.0)
+        var scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        scene!.scaleMode = .ResizeFill
+        scene!.size = skView.bounds.size
+        skView.presentScene(scene, transition: transition)
     }
     
 }

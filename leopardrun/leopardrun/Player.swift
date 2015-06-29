@@ -25,7 +25,7 @@ class Player: SpriteEntity {
         
         self.xScale = 0.3
         self.yScale = 0.3
-        self.position = CGPoint(x: 400, y: 900)
+        self.position = CGPoint(x: 300, y: 700)
         
         
         if let physics = physicsBody {
@@ -48,7 +48,6 @@ class Player: SpriteEntity {
     }
     
     override func update() {
-        println(self.position)
         if(oldState != self.currentState){
             self.updateAnimation(currentState)
             oldState = currentState
@@ -76,7 +75,6 @@ class Player: SpriteEntity {
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
             currentState = PlayerState.Jump
             print("State: JUMP => ")
-            println(currentState.rawValue)
             isOnGround(false)
         }
     }

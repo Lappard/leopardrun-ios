@@ -43,6 +43,7 @@
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
 		AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */; };
 		AB1524A91B413AC7002C50E2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A51B413AB4002C50E2 /* libPods.a */; };
+		AB1524AB1B41985C002C50E2 /* GameBaseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
 		AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameBaseScene.sks; sourceTree = "<group>"; };
 		FCA38A97B366B847BA2F9187 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +293,7 @@
 				289927F01B0B5AAF0061FBA3 /* menu */,
 				28DC02211AF238C200B8E9DE /* GameViewController.swift */,
 				7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */,
+				AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				28B6656C1B303D600094C888 /* MenuScene.sks in Resources */,
 				7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */,
 				7B43FD221B32C1400037D9AA /* theme.ogg in Resources */,
+				AB1524AB1B41985C002C50E2 /* GameBaseScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

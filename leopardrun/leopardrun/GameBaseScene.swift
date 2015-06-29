@@ -26,14 +26,14 @@ class GameBaseScene : SKScene {
             if  let pos : CGPoint = self.hud.values.array.last,
                 let node = self.hud.keys.array.last {
                     node.position = pos
-                    self.addChild(node)
+                self.addChild(node)
             }
         }
     }
     
     func appendGameObject(e : SKNode) -> Void {
         self.world?.addChild(e)
-        
+
     }
     
     func update() -> Void {
@@ -51,11 +51,9 @@ class GameBaseScene : SKScene {
     override init(size: CGSize) {
         super.init(size: size)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        
         self.physicsWorld.gravity = CGVectorMake(0.0, -9.81)
         // Camera setup
         self.world = SKNode()
@@ -74,22 +72,42 @@ class GameBaseScene : SKScene {
         self.overlay?.zPosition = 10
         self.overlay?.name = "overlay"
         addChild(self.overlay!)
+
     }
     
     override func didMoveToView(view: SKView) {
-        let swipeUp:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tapped:"))
-        view.addGestureRecognizer(swipeUp)
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tapped:"))
+        view.addGestureRecognizer(tap)
         createLevelPart()
         SoundManager.sharedInstance.playMusic("theme")
         ScoreManager.sharedInstance.shouldCounting = true
         
+        
     }
     
+
     
+        
     func createLevelPart() -> Void {
         var obstacles = LevelManager.sharedInstance.getLevelPart()
         for o in obstacles {
             self.appendGameObject(o)
         }
-    }    
+    }
+    
+    
+    override func willMoveFromView(view: SKView) {
+        if view.gestureRecognizers != nil {
+            for gesture in view.gestureRecognizers! {
+                if let recognizer = gesture as? UITapGestureRecognizer {
+                    view.removeGestureRecognizer(recognizer)
+                }
+            }
+        }
+    }
+    
+    
+
+    
+    
 }

@@ -6,8 +6,14 @@ class MenuScene: SKScene, LevelManagerDelegate{
     let startLabel = SKLabelNode(fontNamed: "Chalkduster")
     var nextScene : SKScene?
     // 6
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        println("BreiteMenu: " + self.size.width.description)
+    }
+    
+    override func didMoveToView(view: SKView) {
         
         // 1
         backgroundColor = SKColor.whiteColor()
@@ -22,7 +28,7 @@ class MenuScene: SKScene, LevelManagerDelegate{
         label.fontColor = SKColor.blackColor()
         label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
         addChild(label)
-
+        
         startLabel.text = "Single Player"
         startLabel.fontSize = 40
         startLabel.name = "single"
@@ -41,6 +47,7 @@ class MenuScene: SKScene, LevelManagerDelegate{
         
         
         LevelManager.sharedInstance.delegate = self
+
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -75,8 +82,23 @@ class MenuScene: SKScene, LevelManagerDelegate{
 //        createLevelPart()
 //        
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
-        self.scene!.view!.presentScene(nextScene, transition: transition)
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        scene!.scaleMode = .ResizeFill
+        scene!.size = skView.bounds.size
+        skView.presentScene(nextScene, transition: transition)
+
         
+    }
+
+    override func willMoveFromView(view: SKView) {
+        if view.gestureRecognizers != nil {
+            for gesture in view.gestureRecognizers! {
+                if let recognizer = gesture as? UISwipeGestureRecognizer {
+                    view.removeGestureRecognizer(recognizer)
+                }
+            }
+        }
     }
 
     

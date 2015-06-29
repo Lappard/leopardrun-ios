@@ -34,22 +34,27 @@ func showScene(scene : SKScene, view : SKView?) -> Void {
 }
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
-
+        
         if let scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
-            showScene(scene, self.view as? SKView)
+            let skView = self.view! as! SKView
+            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 1.0)
+            skView.ignoresSiblingOrder = true
+            scene.scaleMode = .ResizeFill
+            scene.size = skView.bounds.size
+            skView.presentScene(scene,transition: transition)
         }
     }
-
+    
     override func shouldAutorotate() -> Bool {
         return true
     }
-
+    
     override func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
@@ -57,12 +62,12 @@ class GameViewController: UIViewController {
             return Int(UIInterfaceOrientationMask.All.rawValue)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
