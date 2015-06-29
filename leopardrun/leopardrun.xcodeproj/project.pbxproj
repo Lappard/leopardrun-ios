@@ -39,6 +39,7 @@
 		7B74C5DF1AFF95D7007748F3 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5DE1AFF95D7007748F3 /* Obstacle.swift */; };
 		7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E01AFF95DF007748F3 /* Item.swift */; };
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
+		7B8349861B41A34D007C5FA2 /* Firewall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B8349851B41A34D007C5FA2 /* Firewall.atlas */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
 		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
@@ -111,6 +112,7 @@
 		7B74C5DE1AFF95D7007748F3 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		7B74C5E01AFF95DF007748F3 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		7B8349851B41A34D007C5FA2 /* Firewall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Firewall.atlas; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		7BE5952C1B419CA80055F646 /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		282DFBA11B0CAC5200BB9D54 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				7B8349851B41A34D007C5FA2 /* Firewall.atlas */,
 				7BE5952C1B419CA80055F646 /* Ghost.atlas */,
 				7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */,
 				282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */,
@@ -441,6 +444,7 @@
 				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
 				28B6656C1B303D600094C888 /* MenuScene.sks in Resources */,
 				7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */,
+				7B8349861B41A34D007C5FA2 /* Firewall.atlas in Resources */,
 				7B43FD221B32C1400037D9AA /* theme.ogg in Resources */,
 				AB1524AB1B41985C002C50E2 /* GameBaseScene.sks in Resources */,
 			);
