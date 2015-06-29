@@ -19,7 +19,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         reset()
-        println("BreiteMenu: " + self.size.width.description)
     }
     
     override init(size: CGSize) {

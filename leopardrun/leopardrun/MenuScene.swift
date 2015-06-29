@@ -10,7 +10,6 @@ class MenuScene: SKScene, LevelManagerDelegate{
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        println("BreiteMenu: " + self.size.width.description)
     }
     
     override func didMoveToView(view: SKView) {
