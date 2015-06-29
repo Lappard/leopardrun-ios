@@ -34,6 +34,7 @@ class ScoreManager {
     
     func reset() -> Void {
         scoreLabel.text = "Score 0"
+        score = 0;
     }
     
     func incScore() -> Void {
