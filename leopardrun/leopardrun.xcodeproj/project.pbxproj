@@ -40,6 +40,7 @@
 		7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E01AFF95DF007748F3 /* Item.swift */; };
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
+		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
 		AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */; };
 		AB1524A91B413AC7002C50E2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A51B413AB4002C50E2 /* libPods.a */; };
@@ -111,6 +112,7 @@
 		7B74C5E01AFF95DF007748F3 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		7BE5952C1B419CA80055F646 /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
 		AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameBaseScene.sks; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		282DFBA11B0CAC5200BB9D54 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				7BE5952C1B419CA80055F646 /* Ghost.atlas */,
 				7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */,
 				282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */,
 				282DFBA21B0CAD0000BB9D54 /* Runner.atlas */,
@@ -433,6 +436,7 @@
 				28B665691B303D260094C888 /* GameOverScene.sks in Resources */,
 				7B43FD241B32C3E70037D9AA /* theme.wav in Resources */,
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
+				7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */,
 				282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */,
 				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
 				28B6656C1B303D600094C888 /* MenuScene.sks in Resources */,
