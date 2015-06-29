@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  leopardrun
-//
-//  Created by Ilyas Hallak on 30.04.15.
-//  Copyright (c) 2015 Ilyas Hallakoglu. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

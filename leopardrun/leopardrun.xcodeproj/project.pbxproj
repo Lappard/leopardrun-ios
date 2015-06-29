@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D7CFCD453FF3FB604F4A6EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5FD02CA65F58CAB953683 /* libPods.a */; };
 		282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA21B0CAD0000BB9D54 /* Runner.atlas */; };
 		282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */; };
 		289D4F9E1B32D2CE009E8BAB /* GameMultiScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 289D4F9C1B32D2CE009E8BAB /* GameMultiScene.sks */; };
@@ -41,8 +40,9 @@
 		7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E01AFF95DF007748F3 /* Item.swift */; };
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
-		7B846DC91AFFA5580040F7A8 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC81AFFA5580040F7A8 /* Screen.swift */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
+		AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */; };
+		AB1524A91B413AC7002C50E2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A51B413AB4002C50E2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +52,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 28DC02151AF238C200B8E9DE;
 			remoteInfo = leopardrun;
+		};
+		AB1524A41B413AB4002C50E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6B3FC699518413324E22F68;
+			remoteInfo = Pods;
+		};
+		AB1524A61B413AB4002C50E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 259AB844946BA136A5BFCB8C;
+			remoteInfo = "Pods-SocketRocket";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -96,8 +110,8 @@
 		7B74C5E01AFF95DF007748F3 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		7B846DC81AFFA5580040F7A8 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
+		AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		FCA38A97B366B847BA2F9187 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7CFCD453FF3FB604F4A6EB /* libPods.a in Frameworks */,
+				AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */,
+				AB1524A91B413AC7002C50E2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +254,7 @@
 		33B1A219F298945EC7095F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */,
 				03C5FD02CA65F58CAB953683 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -251,7 +267,6 @@
 				7B74C5E01AFF95DF007748F3 /* Item.swift */,
 				7B74C5E21AFF95F1007748F3 /* Player.swift */,
 				7B846DC61AFFA54A0040F7A8 /* Entity.swift */,
-				7B846DC81AFFA5580040F7A8 /* Screen.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -278,6 +293,15 @@
 				7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */,
 			);
 			name = Screens;
+			sourceTree = "<group>";
+		};
+		AB1524A01B413AB4002C50E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB1524A51B413AB4002C50E2 /* libPods.a */,
+				AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		DA8DB8963D0BA09F96E92885 /* Pods */ = {
@@ -359,6 +383,12 @@
 			mainGroup = 28DC020D1AF238C100B8E9DE;
 			productRefGroup = 28DC02171AF238C200B8E9DE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AB1524A01B413AB4002C50E2 /* Products */;
+					ProjectRef = AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				28DC02151AF238C200B8E9DE /* leopardrun */,
@@ -366,6 +396,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AB1524A51B413AB4002C50E2 /* libPods.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPods.a;
+			remoteRef = AB1524A41B413AB4002C50E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-SocketRocket.a";
+			remoteRef = AB1524A61B413AB4002C50E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		28DC02141AF238C200B8E9DE /* Resources */ = {
@@ -445,7 +492,6 @@
 				7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */,
 				7B74C5D91AFF95B3007748F3 /* LevelManager.swift in Sources */,
 				7B74C5DD1AFF95CA007748F3 /* ScoreManager.swift in Sources */,
-				7B846DC91AFFA5580040F7A8 /* Screen.swift in Sources */,
 				7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */,
 				7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */,
 				28DC02201AF238C200B8E9DE /* GameScene.swift in Sources */,

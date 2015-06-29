@@ -1,18 +1,10 @@
-//
-//  MenuScene.swift
-//  leopardrun
-//
-//  Created by Ilyas Hallak on 19.05.15.
-//  Copyright (c) 2015 Grandmaster Dumass!. All rights reserved.
-//
-
 import Foundation
 import SpriteKit
 
-class MenuScene: SKScene {
+class MenuScene: SKScene, LevelManagerDelegate{
     
     let startLabel = SKLabelNode(fontNamed: "Chalkduster")
-    
+    var nextScene : SKScene?
     // 6
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,6 +37,10 @@ class MenuScene: SKScene {
         multiLabel.fontColor = SKColor.blackColor()
         multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
         addChild(multiLabel)
+        
+        
+        
+        LevelManager.sharedInstance.delegate = self
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -55,15 +51,12 @@ class MenuScene: SKScene {
             
             
             if touchedNode.name == "multi" {
-                if let scene = GameMultiScene.unarchiveFromFile("GameMultiScene") as? GameMultiScene {
-                    return showScene(scene, self.view!)
-                }
+            
             }
             if touchedNode.name == "single" {
-                if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-                    scene.Reset()
-                    return showScene(scene, self.view!)
-                }
+                nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
+                nextScene!.scaleMode = SKSceneScaleMode.AspectFill
+                
             }
             
         }
@@ -74,6 +67,18 @@ class MenuScene: SKScene {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 
     }
+    
+    
+    func ReceivedData() -> Void {
+//        self.overlay?.position = CGPoint(x: -10000, y: -10000)
+//        self.player!.position = CGPoint(x: 400, y: 600)
+//        createLevelPart()
+//        
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+        self.scene!.view!.presentScene(nextScene, transition: transition)
+        
+    }
+
     
     
 }

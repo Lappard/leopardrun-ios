@@ -25,7 +25,7 @@ class Player: SpriteEntity {
         
         self.xScale = 0.3
         self.yScale = 0.3
-        self.position = CGPoint(x: 200, y: 600)
+        self.position = CGPoint(x: 400, y: 900)
         
         
         if let physics = physicsBody {
