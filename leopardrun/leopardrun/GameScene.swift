@@ -11,8 +11,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var scoreManager = ScoreManager.sharedInstance
     
-    var wall = SKSpriteNode(color: UIColor.blackColor(), size: CGSize(width: 3, height: 1000))
-    
+    //var wall = SKSpriteNode(color: UIColor.blackColor(), size: CGSize(width: 3, height: 1000))
+    var wall = Wall()
     
     var gameOver = false;
     
@@ -35,7 +35,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.hud[scoreManager.scoreLabel] = CGPoint(x: 100, y: 100)
         
 
-        wall.position = CGPoint(x: 000, y: 100)
+        wall.position = CGPoint(x: 000, y: 000)
         wall.physicsBody = SKPhysicsBody()
         wall.physicsBody?.affectedByGravity = false
         self.appendGameObject(wall)

@@ -42,6 +42,7 @@
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B8349861B41A34D007C5FA2 /* Firewall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B8349851B41A34D007C5FA2 /* Firewall.atlas */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
+		7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3CE7E1B42B73800B1700B /* Wall.swift */; };
 		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
 		AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */; };
@@ -116,6 +117,7 @@
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B8349851B41A34D007C5FA2 /* Firewall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Firewall.atlas; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		7BE3CE7E1B42B73800B1700B /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		7BE5952C1B419CA80055F646 /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
 		AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				7B74C5E01AFF95DF007748F3 /* Item.swift */,
 				7B74C5E21AFF95F1007748F3 /* Player.swift */,
 				7B846DC61AFFA54A0040F7A8 /* Entity.swift */,
+				7BE3CE7E1B42B73800B1700B /* Wall.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B6656D1B303D600094C888 /* MenuScene.swift in Sources */,
+				7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */,
 				7B74C5DB1AFF95C1007748F3 /* NetworkManager.swift in Sources */,
 				7B74C5DF1AFF95D7007748F3 /* Obstacle.swift in Sources */,
 				28B665671B303D0F0094C888 /* GameOverScene.swift in Sources */,

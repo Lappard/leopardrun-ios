@@ -1,16 +1,16 @@
 import UIKit
 import SpriteKit
 
-class Item: SpriteEntity {
+class Wall: SpriteEntity {
     
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     
     init() {
         
-        super.init(atlasName: "Coin", count: 6)
+        super.init(atlasName: "Firewall", count: 7)
         
         self.xScale = 1.0
-        self.yScale = 1.0
+        self.yScale = 1.5
         
     }
     
