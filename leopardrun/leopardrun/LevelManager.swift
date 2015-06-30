@@ -20,6 +20,9 @@ class LevelManager : NetworkListener {
     
     private var nextXpos: CGFloat = 0
     
+    var obstacles = [Obstacle]()
+    var coins = [Item]()
+    
     var delegate : LevelManagerDelegate?
     
     /// Singleton Object
@@ -141,8 +144,9 @@ class LevelManager : NetworkListener {
     
     :returns: Array of obstacles which should be rendered
     */
-    func getLevelPart() -> [Obstacle] {
-        var obstacles = [Obstacle]()
+    func getLevelPart() -> ([Obstacle],[Item]) {
+        obstacles = [Obstacle]()
+        coins = [Item]()
         var top : Bool = false
         if let levelPart = levelPartData {
             var part = levelPart[levelPartIndex]
@@ -154,7 +158,7 @@ class LevelManager : NetworkListener {
                 
                 switch(object["type"].string!) {
                 case "g":
-                    let ground = Obstacle.ground(CGPoint(x: 0, y: yPos))
+                    let ground = Obstacle.ground(CGPoint(x: 0, y: 0))
                     ground.position.x = nextX(x, obs: ground)
                     obstacles.append(ground)
                     break
@@ -162,15 +166,26 @@ class LevelManager : NetworkListener {
                     let box = Obstacle.block(CGPoint(x: 0, y: yPos))
                     box.position.x = nextX(x, obs: box)
                     obstacles.append(box)
+                /*case "c":
+                    let box = Item()
+                    box.position = CGPoint(x: 0, y: yPos)
+                    box.position.x = 1000.0
+                    coins.append(box)*/
                 default:
                     break
                 }
             }
         }
+        
+        let item = Item()
+        item.position = CGPoint(x: 0, y: 250)
+        item.position.x = 500.0
+        coins.append(item)
+        
         if levelPartData?.count > levelPartIndex {
             levelPartIndex++
         }
-        return obstacles
+        return (obstacles, coins)
     }
     
     func getLevelData(data : JSON) -> Void {

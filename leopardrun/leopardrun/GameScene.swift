@@ -11,8 +11,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var scoreManager = ScoreManager.sharedInstance
     
-    var wall = SKSpriteNode(color: UIColor.blackColor(), size: CGSize(width: 3, height: 1000))
-    
+    //var wall = SKSpriteNode(color: UIColor.blackColor(), size: CGSize(width: 3, height: 1000))
+    var wall = Wall()
+    var wall2 = Wall()
     
     var gameOver = false;
     
@@ -34,11 +35,16 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         self.hud[scoreManager.scoreLabel] = CGPoint(x: 100, y: 100)
         
-
-        wall.position = CGPoint(x: 000, y: 100)
+        
+        wall.position = CGPoint(x: 000, y: 140)
         wall.physicsBody = SKPhysicsBody()
         wall.physicsBody?.affectedByGravity = false
         self.appendGameObject(wall)
+        
+        wall2.position = CGPoint(x: 000, y: 430)
+        wall2.physicsBody = SKPhysicsBody()
+        wall2.physicsBody?.affectedByGravity = false
+        self.appendGameObject(wall2)
     }
  
     func centerCamera(node: SKNode) {
@@ -59,10 +65,19 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         if contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.ground.rawValue
             || contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.ground.rawValue {
-                self.player?.isOnGround(true)
                 
+                self.player?.isOnGround(true)
+                self.player?.currentState = PlayerState.Run
+                
+        } else {
+            self.player?.isOnGround(false)
         }
+        
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        print("State: ")
+        println(self.player?.currentState.rawValue)
+        
     }
     
     override func didSimulatePhysics() {
@@ -73,15 +88,20 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.camera!.physicsBody!.velocity.dx = 100
         self.player?.physicsBody?.velocity.dx = 100
         self.wall.physicsBody?.velocity.dx = 100
+        self.wall2.physicsBody?.velocity.dx = 100
         
         
     }
     
     override func update(currentTime: CFTimeInterval) {
+        
         if(!gameOver){
             super.update()
-            ScoreManager.sharedInstance.incScore()
+            ScoreManager.sharedInstance.incScore(1)
         }
+        
+        isObstacleBehindWall()
+        
         if (player?.currentState == .Dead || !isPlayerBeforeWall()) && !gameOver {
             
             SoundManager.sharedInstance.stopMusic()
@@ -98,8 +118,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             
         }
     }
-    
-    
     
     func reset() -> Void {
         NetworkManager.sharedInstance.getLevelDataFromServer()
@@ -122,4 +140,32 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
         return result;
     }
+    
+    func isObstacleBehindWall() -> Void {
+        let count = levelManager.obstacles.count;
+        
+        let rotate = SKAction.rotateToAngle(CGFloat(3.14), duration: NSTimeInterval(1))
+        
+        for index in 0...count-1 {
+            let currentObstacle:Obstacle = levelManager.obstacles[index]
+            
+            if(wall.position.x > currentObstacle.position.x){
+                for fallIndex in 0...50 {
+                    currentObstacle.position.y = currentObstacle.position.y-0.1;
+                    
+                    let rotate = SKAction.rotateToAngle(CGFloat(3.14), duration: NSTimeInterval(1))
+                    
+                    if (currentObstacle.type == "ground"){
+                        currentObstacle.texture = SKTexture(imageNamed: "GroundFired.png")
+                    }else {
+                        currentObstacle.texture = SKTexture(imageNamed: "BlockFired.png")
+                    }
+                    
+                    currentObstacle.runAction(rotate)
+                    
+                }
+            }
+        }
+    }
+    
 }

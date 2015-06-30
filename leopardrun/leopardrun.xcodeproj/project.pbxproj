@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		28060EA81B41AE6B00C6196A /* LobbyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28060EA71B41AE6B00C6196A /* LobbyScene.swift */; };
-		28060EAA1B41AE8200C6196A /* LobbyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28060EA91B41AE8200C6196A /* LobbyScene.sks */; };
 		282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA21B0CAD0000BB9D54 /* Runner.atlas */; };
 		282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */; };
 		289D4F9E1B32D2CE009E8BAB /* GameMultiScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 289D4F9C1B32D2CE009E8BAB /* GameMultiScene.sks */; };
@@ -26,7 +24,7 @@
 		28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02261AF238C200B8E9DE /* Images.xcassets */; };
 		28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02281AF238C200B8E9DE /* LaunchScreen.xib */; };
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
-		584E97A5495E5CC614CAAE6F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5FD02CA65F58CAB953683 /* libPods.a */; };
+		7B02FB041B42AFD000D52DAE /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B02FB031B42AFD000D52DAE /* Coin.atlas */; };
 		7B43FD1E1B32BBD70037D9AA /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD1D1B32BBD70037D9AA /* Sounds */; };
 		7B43FD201B32BC220037D9AA /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD1F1B32BC220037D9AA /* theme.mp3 */; };
 		7B43FD221B32C1400037D9AA /* theme.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD211B32C1400037D9AA /* theme.ogg */; };
@@ -44,6 +42,7 @@
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B8349861B41A34D007C5FA2 /* Firewall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B8349851B41A34D007C5FA2 /* Firewall.atlas */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
+		7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3CE7E1B42B73800B1700B /* Wall.swift */; };
 		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
 		AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */; };
@@ -77,8 +76,6 @@
 
 /* Begin PBXFileReference section */
 		03C5FD02CA65F58CAB953683 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		28060EA71B41AE6B00C6196A /* LobbyScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyScene.swift; sourceTree = "<group>"; };
-		28060EA91B41AE8200C6196A /* LobbyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LobbyScene.sks; sourceTree = "<group>"; };
 		282DFBA21B0CAD0000BB9D54 /* Runner.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Runner.atlas; sourceTree = "<group>"; };
 		282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
 		283C74DA1AF23EC3005CD9B4 /* leopardrun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "leopardrun-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -102,6 +99,7 @@
 		28DC02341AF238C200B8E9DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DC02351AF238C200B8E9DE /* leopardrunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leopardrunTests.swift; sourceTree = "<group>"; };
 		6CEDD501F473934333A4463F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7B02FB031B42AFD000D52DAE /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
 		7B43FD1D1B32BBD70037D9AA /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		7B43FD1F1B32BC220037D9AA /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = theme.mp3; path = Sounds/theme.mp3; sourceTree = "<group>"; };
 		7B43FD211B32C1400037D9AA /* theme.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = theme.ogg; path = Sounds/theme.ogg; sourceTree = "<group>"; };
@@ -119,6 +117,7 @@
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B8349851B41A34D007C5FA2 /* Firewall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Firewall.atlas; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		7BE3CE7E1B42B73800B1700B /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		7BE5952C1B419CA80055F646 /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
 		AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
@@ -133,7 +132,6 @@
 			files = (
 				AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */,
 				AB1524A91B413AC7002C50E2 /* libPods.a in Frameworks */,
-				584E97A5495E5CC614CAAE6F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,18 +145,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		28060EA41B41AE5600C6196A /* lobby */ = {
-			isa = PBXGroup;
-			children = (
-				28060EA71B41AE6B00C6196A /* LobbyScene.swift */,
-				28060EA91B41AE8200C6196A /* LobbyScene.sks */,
-			);
-			name = lobby;
-			sourceTree = "<group>";
-		};
 		282DFBA11B0CAC5200BB9D54 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				7B02FB031B42AFD000D52DAE /* Coin.atlas */,
 				7B8349851B41A34D007C5FA2 /* Firewall.atlas */,
 				7BE5952C1B419CA80055F646 /* Ghost.atlas */,
 				7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */,
@@ -290,6 +280,7 @@
 				7B74C5E01AFF95DF007748F3 /* Item.swift */,
 				7B74C5E21AFF95F1007748F3 /* Player.swift */,
 				7B846DC61AFFA54A0040F7A8 /* Entity.swift */,
+				7BE3CE7E1B42B73800B1700B /* Wall.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -309,7 +300,6 @@
 		7B74C5CE1AFF9522007748F3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				28060EA41B41AE5600C6196A /* lobby */,
 				28B665651B303CD50094C888 /* gameover */,
 				289927F71B0B62BF0061FBA3 /* game */,
 				289927F01B0B5AAF0061FBA3 /* menu */,
@@ -455,7 +445,6 @@
 				28B665691B303D260094C888 /* GameOverScene.sks in Resources */,
 				7B43FD241B32C3E70037D9AA /* theme.wav in Resources */,
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
-				28060EAA1B41AE8200C6196A /* LobbyScene.sks in Resources */,
 				7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */,
 				282DFBA31B0CAD0000BB9D54 /* Runner.atlas in Resources */,
 				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
@@ -463,6 +452,7 @@
 				7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */,
 				7B8349861B41A34D007C5FA2 /* Firewall.atlas in Resources */,
 				7B43FD221B32C1400037D9AA /* theme.ogg in Resources */,
+				7B02FB041B42AFD000D52DAE /* Coin.atlas in Resources */,
 				AB1524AB1B41985C002C50E2 /* GameBaseScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,13 +505,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B6656D1B303D600094C888 /* MenuScene.swift in Sources */,
+				7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */,
 				7B74C5DB1AFF95C1007748F3 /* NetworkManager.swift in Sources */,
 				7B74C5DF1AFF95D7007748F3 /* Obstacle.swift in Sources */,
 				28B665671B303D0F0094C888 /* GameOverScene.swift in Sources */,
 				7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */,
 				7B74C5D91AFF95B3007748F3 /* LevelManager.swift in Sources */,
 				7B74C5DD1AFF95CA007748F3 /* ScoreManager.swift in Sources */,
-				28060EA81B41AE6B00C6196A /* LobbyScene.swift in Sources */,
 				7B74C5E11AFF95DF007748F3 /* Item.swift in Sources */,
 				7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */,
 				28DC02201AF238C200B8E9DE /* GameScene.swift in Sources */,
@@ -662,7 +652,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = leopardrun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -677,7 +666,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = leopardrun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

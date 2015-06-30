@@ -15,6 +15,8 @@ class Obstacle: Entity {
     class func block(location: CGPoint) -> Obstacle {
         let obstacle = Obstacle(imageNamed:"Block.png")
         
+        obstacle.type="block"
+        
         obstacle.xScale = 2
         obstacle.yScale = 2
         obstacle.position = location
@@ -35,6 +37,8 @@ class Obstacle: Entity {
     
     class func ground(location: CGPoint) -> Obstacle {
         let ground = Obstacle(imageNamed:"Ground.png")
+        
+        ground.type="ground"
         
         ground.xScale = 0.3
         ground.yScale = 0.3
