@@ -3,3 +3,9 @@
 //
 
 #import "SocketRocket/SRWebSocket.h"
+
+#import <gpg/GooglePlayGames.h>
+
+
+
+#import <GooglePlus/GooglePlus.h>

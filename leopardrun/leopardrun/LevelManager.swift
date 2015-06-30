@@ -55,7 +55,13 @@ class LevelManager : NetworkListener {
     
     
     
+    /**
+    desc
     
+    :param: gridPos
+    
+    :returns:
+    */
     func nextY(gridPos : CGFloat) -> CGFloat {
         switch(true){
         case (gridPos == 0):
@@ -71,7 +77,14 @@ class LevelManager : NetworkListener {
         }
     }
     
+    /**
+    desc
     
+    :param: gridPos
+    :param: obs
+    
+    :returns:
+    */
     func nextX(gridPos : CGFloat, obs: Obstacle) -> CGFloat {
         // dont use magic number (153.600006103516)
         let nextPos : CGFloat = gridPos * 153.600006103516

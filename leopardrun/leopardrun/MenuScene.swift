@@ -57,7 +57,9 @@ class MenuScene: SKScene, LevelManagerDelegate{
             
             
             if touchedNode.name == "multi" {
-            
+                nextScene = LobbyScene.unarchiveFromFile("LobbyScene") as? LobbyScene
+                nextScene!.scaleMode = SKSceneScaleMode.AspectFill
+                self.view?.presentScene(nextScene)
             }
             if touchedNode.name == "single" {
                 nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
