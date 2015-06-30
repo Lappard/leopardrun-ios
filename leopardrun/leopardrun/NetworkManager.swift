@@ -51,6 +51,16 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         
     }
     
+    func getLastChallenges(completed: ([Challenge]) -> Void) -> Void {
+        var ch = [Challenge]()
+        
+        ch.append(Challenge(name: "schnellste maus von mexiko"))
+        ch.append(Challenge(name: "refactor this"))
+        ch.append(Challenge(name: "lorem huso"))
+        
+        completed(ch)
+    }
+    
     @objc func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
         // All incoming messages ( socket.on() ) are received in this function. Parsed with JSON
         

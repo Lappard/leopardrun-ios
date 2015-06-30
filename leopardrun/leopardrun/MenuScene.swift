@@ -1,7 +1,7 @@
 import Foundation
 import SpriteKit
 
-class MenuScene: SKScene, LevelManagerDelegate{
+class MenuScene: SKScene, LevelManagerDelegate {
     
     let startLabel = SKLabelNode(fontNamed: "Chalkduster")
     var nextScene : SKScene?
@@ -45,7 +45,6 @@ class MenuScene: SKScene, LevelManagerDelegate{
         
         
         
-        LevelManager.sharedInstance.delegate = self
 
     }
     
@@ -59,12 +58,17 @@ class MenuScene: SKScene, LevelManagerDelegate{
             if touchedNode.name == "multi" {
                 nextScene = LobbyScene.unarchiveFromFile("LobbyScene") as? LobbyScene
                 nextScene!.scaleMode = SKSceneScaleMode.AspectFill
-                self.view?.presentScene(nextScene)
+                
+                LevelManager.sharedInstance.delegate = self
+
             }
             if touchedNode.name == "single" {
                 nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
                 nextScene!.scaleMode = SKSceneScaleMode.AspectFill
                 
+                
+                LevelManager.sharedInstance.delegate = self
+
             }
             
         }

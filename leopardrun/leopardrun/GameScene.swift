@@ -75,8 +75,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
-        print("State: ")
-        println(self.player?.currentState.rawValue)
+        
         
     }
     
