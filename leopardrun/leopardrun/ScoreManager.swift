@@ -37,9 +37,9 @@ class ScoreManager {
         score = 0;
     }
     
-    func incScore() -> Void {
+    func incScore(value : Int) -> Void {
         if shouldCounting {
-            score++
+            score+=value
             scoreLabel.text = "Score " + score.description
         }
     }
@@ -56,8 +56,6 @@ class ScoreManager {
     func saveCurrrentScore() {
         
         scores.append(score)
-        
-        
         
         scores.sort {
             return $0 > $1

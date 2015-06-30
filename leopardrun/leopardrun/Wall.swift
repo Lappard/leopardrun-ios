@@ -7,10 +7,10 @@ class Wall: SpriteEntity {
     
     init() {
         
-        super.init(atlasName: "Firewall", count: 7)
+        super.init(atlasName: "Firewall", count: 15)
         
-        self.xScale = 1.0
-        self.yScale = 1.5
+        self.xScale = 1.5
+        self.yScale = 1.0
         
     }
     

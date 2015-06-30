@@ -13,13 +13,17 @@ enum BodyType : UInt32 {
 
 class Entity : SKSpriteNode {
     
+    var type:String
     
     init(texture: SKTexture!) {
         //super.init(texture: texture) You can't do this because you are not calling a designated initializer.
+        self.type = ""
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        
     }
     
     override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+        self.type = ""
         super.init(texture: texture, color: color, size: size)
     }
     

@@ -17,7 +17,7 @@ class Player: SpriteEntity {
     var oldState: PlayerState = PlayerState.Stand
 
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
-    var isOnGround = true
+    var isOnGround = false
     
     init() {
         
@@ -26,7 +26,6 @@ class Player: SpriteEntity {
         self.xScale = 0.3
         self.yScale = 0.3
         self.position = CGPoint(x: 300, y: 700)
-        
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
@@ -48,6 +47,7 @@ class Player: SpriteEntity {
     }
     
     override func update() {
+        
         if(oldState != self.currentState){
             self.updateAnimation(currentState)
             oldState = currentState
@@ -62,10 +62,14 @@ class Player: SpriteEntity {
     func isOnGround(onGround: Bool ) -> Void {
         self.isOnGround = onGround
         
-        if(onGround == true){
+        if(onGround == true && oldState != self.currentState){
             currentState = PlayerState.Run
         }
         
+    }
+    
+    func refreshState(state: PlayerState) -> Void {
+        self.currentState = state
     }
     
     func jump() -> Void {
@@ -73,12 +77,10 @@ class Player: SpriteEntity {
             
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
-            currentState = PlayerState.Jump
-            print("State: JUMP => ")
+            self.currentState = PlayerState.Jump
             isOnGround(false)
+            
         }
     }
-    
-    
     
 }
