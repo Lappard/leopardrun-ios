@@ -26,6 +26,7 @@ class GameBaseScene : SKScene {
             if  let pos : CGPoint = self.hud.values.array.last,
                 let node = self.hud.keys.array.last {
                     node.position = pos
+                    node.zPosition = 1337
                 self.addChild(node)
             }
         }

@@ -58,6 +58,10 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         wall2.physicsBody?.affectedByGravity = false
         wall2.zPosition = 2
         self.appendGameObject(wall2)
+        
+        
+        
+        scoreManager.start()
     }
     
     func centerCamera(node: SKNode) {
@@ -117,7 +121,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         if(!gameOver){
             super.update()
-            ScoreManager.sharedInstance.incScore(1)
+            scoreManager.update()
         }
         
         isObstacleBehindWall()

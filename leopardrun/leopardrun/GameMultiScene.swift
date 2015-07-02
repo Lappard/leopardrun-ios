@@ -92,7 +92,7 @@ class GameMultiScene: GameBaseScene, SKPhysicsContactDelegate {
         
         if(!gameOver){
             super.update()
-            ScoreManager.sharedInstance.incScore(1)
+            ScoreManager.sharedInstance.update()
         }
         
         isObstacleBehindWall()
