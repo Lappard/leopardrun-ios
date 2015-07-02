@@ -31,7 +31,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.backgroundImage.physicsBody?.affectedByGravity = false
         self.backgroundImage.size = self.size
         
-        self.backgroundImage2.position = CGPoint(x: self.backgroundImage.size.width, y: self.size.height / 2)
+        self.backgroundImage2.position = CGPoint(x: self.backgroundImage.size.width + (self.backgroundImage.size.width / 2), y: self.size.height / 2)
         self.backgroundImage2.zPosition = 0
         self.backgroundImage2.physicsBody = SKPhysicsBody()
         self.backgroundImage2.physicsBody?.affectedByGravity = false
@@ -102,9 +102,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.wall2.physicsBody?.velocity.dx = 150
         
         reorderBackground(self.backgroundImage)
-        println("bg1 pos: " + (self.backgroundImage.position.x + self.backgroundImage.size.width).description)
         reorderBackground(self.backgroundImage2)
-        println("bg1 pos: " + (self.backgroundImage2.position.x + self.backgroundImage2.size.width).description)
         self.backgroundImage.physicsBody?.velocity.dx = -60
         self.backgroundImage2.physicsBody?.velocity.dx = -60
     }
