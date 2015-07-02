@@ -87,10 +87,8 @@ class GameBaseScene : SKScene {
         
     func createLevelPart() -> Void {
         var part = LevelManager.sharedInstance.getLevelPart()
-        
         var obstacles = part.0;
         var coins = part.1;
-        
         for o in obstacles {
             self.appendGameObject(o)
         }

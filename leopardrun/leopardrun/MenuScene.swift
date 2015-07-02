@@ -53,27 +53,17 @@ class MenuScene: SKScene, LevelManagerDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
-            
-            
             if touchedNode.name == "multi" {
                 nextScene = LobbyScene.unarchiveFromFile("LobbyScene") as? LobbyScene
                 nextScene!.scaleMode = SKSceneScaleMode.AspectFill
-                
                 LevelManager.sharedInstance.delegate = self
-
             }
             if touchedNode.name == "single" {
                 nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
                 nextScene!.scaleMode = SKSceneScaleMode.AspectFill
-                
-                
                 LevelManager.sharedInstance.delegate = self
-
             }
-            
         }
-        
-
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -82,18 +72,12 @@ class MenuScene: SKScene, LevelManagerDelegate {
     
     
     func ReceivedData() -> Void {
-//        self.overlay?.position = CGPoint(x: -10000, y: -10000)
-//        self.player!.position = CGPoint(x: 400, y: 600)
-//        createLevelPart()
-//        
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
         scene!.scaleMode = .ResizeFill
         scene!.size = skView.bounds.size
         skView.presentScene(nextScene, transition: transition)
-
-        
     }
 
     override func willMoveFromView(view: SKView) {

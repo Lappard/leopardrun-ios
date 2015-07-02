@@ -4,20 +4,14 @@ import UIKit
 class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
-    
     var player : Player?
-    
     var levelManager = LevelManager.sharedInstance
-    
     var scoreManager = ScoreManager.sharedInstance
-    
-    //var wall = SKSpriteNode(color: UIColor.blackColor(), size: CGSize(width: 3, height: 1000))
     var wall = Wall()
     var wall2 = Wall()
-    
     var gameOver = false;
-    
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
+    var backgroundImage2 = SKSpriteNode(imageNamed: "Background")
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,9 +25,20 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
-        self.backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+        self.backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.backgroundImage.zPosition = 0
+        self.backgroundImage.physicsBody = SKPhysicsBody()
+        self.backgroundImage.physicsBody?.affectedByGravity = false
+        self.backgroundImage.size = self.size
+        
+        self.backgroundImage2.position = CGPoint(x: self.backgroundImage.size.width, y: self.size.height / 2)
+        self.backgroundImage2.zPosition = 0
+        self.backgroundImage2.physicsBody = SKPhysicsBody()
+        self.backgroundImage2.physicsBody?.affectedByGravity = false
+        self.backgroundImage2.size = self.size
+        
         self.addChild(backgroundImage)
+        self.addChild(backgroundImage2)
         self.physicsWorld.contactDelegate = self
         self.view?.backgroundColor = UIColor.blackColor()
         
@@ -54,11 +59,10 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         wall2.zPosition = 2
         self.appendGameObject(wall2)
     }
- 
+    
     func centerCamera(node: SKNode) {
         if player?.currentState != .Dead {
             self.world!.position = CGPoint(x:(node.position.x * -1) + self.size.width / 2, y:100)
-
         }
         
     }
@@ -68,7 +72,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             p.jump()
         }
     }
-
+    
     
     func didBeginContact(contact: SKPhysicsContact) {
         if contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.ground.rawValue
@@ -92,12 +96,23 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if self.camera != nil && player != nil{
             self.centerCamera(self.player!)
         }
-        self.camera!.physicsBody!.velocity.dx = 100
-        self.player?.physicsBody?.velocity.dx = 100
-        self.wall.physicsBody?.velocity.dx = 100
-        self.wall2.physicsBody?.velocity.dx = 100
+//        self.camera!.physicsBody!.velocity.dx = 100
+        self.player?.physicsBody?.velocity.dx = 150
+        self.wall.physicsBody?.velocity.dx = 150
+        self.wall2.physicsBody?.velocity.dx = 150
         
-        
+        reorderBackground(self.backgroundImage)
+        println("bg1 pos: " + (self.backgroundImage.position.x + self.backgroundImage.size.width).description)
+        reorderBackground(self.backgroundImage2)
+        println("bg1 pos: " + (self.backgroundImage2.position.x + self.backgroundImage2.size.width).description)
+        self.backgroundImage.physicsBody?.velocity.dx = -60
+        self.backgroundImage2.physicsBody?.velocity.dx = -60
+    }
+    
+    func reorderBackground(spritenode: SKSpriteNode){
+        if (spritenode.position.x + spritenode.size.width) < 0+(self.size.width / 2) {
+            spritenode.position.x = self.size.width + self.size.width / 2
+        }
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -122,7 +137,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             scene!.size = skView.bounds.size
             skView.presentScene(scene,transition: transition)
             gameOver = true
-            
         }
     }
     
