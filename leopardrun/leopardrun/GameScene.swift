@@ -17,6 +17,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var gameOver = false;
     
+    var backgroundImage = SKSpriteNode(imageNamed: "Background")
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         reset()
@@ -28,6 +31,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
+        self.backgroundImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+        self.backgroundImage.zPosition = 0
+        self.addChild(backgroundImage)
         self.physicsWorld.contactDelegate = self
         self.view?.backgroundColor = UIColor.blackColor()
         
@@ -39,11 +45,13 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         wall.position = CGPoint(x: 000, y: 140)
         wall.physicsBody = SKPhysicsBody()
         wall.physicsBody?.affectedByGravity = false
+        wall.zPosition = 2
         self.appendGameObject(wall)
         
         wall2.position = CGPoint(x: 000, y: 430)
         wall2.physicsBody = SKPhysicsBody()
         wall2.physicsBody?.affectedByGravity = false
+        wall2.zPosition = 2
         self.appendGameObject(wall2)
     }
  

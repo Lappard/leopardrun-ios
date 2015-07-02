@@ -32,8 +32,8 @@ class GameBaseScene : SKScene {
     }
     
     func appendGameObject(e : SKNode) -> Void {
+        e.zPosition = 2
         self.world?.addChild(e)
-
     }
     
     func update() -> Void {
