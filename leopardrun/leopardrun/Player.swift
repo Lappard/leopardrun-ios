@@ -22,16 +22,18 @@ class Player: SpriteEntity {
     init() {
         
         super.init(atlasName: "Leopard", count: 10)
-        
         self.xScale = 0.3
         self.yScale = 0.3
+
+        self.generateBodyByWidthHeigth(self.size.width)
+        println(self.size.width)
         self.position = CGPoint(x: 300, y: 700)
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = true
-            physics.mass = 1
+            physics.mass = 0.1
             physics.density = 1
             physics.contactTestBitMask = BodyType.player.rawValue
         }
@@ -74,7 +76,7 @@ class Player: SpriteEntity {
     func jump() -> Void {
         if self.isOnGround {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
-            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 1500))
+            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
             isOnGround(false)
         }
     }

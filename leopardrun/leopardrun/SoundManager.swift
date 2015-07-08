@@ -43,8 +43,6 @@ class SoundManager {
     func playSound(sound : String){
 //        var error:NSError?
 //        soundPlayer = AVAudioPlayer(contentsOfURL: sounds[sound], error:&error)
-//        //debug
-//        soundPlayer.volume = 0
 //        soundPlayer.prepareToPlay()
 //        soundPlayer.play()
     }
@@ -54,15 +52,13 @@ class SoundManager {
 //        
 //        
 //        musicPlayer = AVAudioPlayer(contentsOfURL: musics[music], error:&error)
-//        //debug
-//        musicPlayer.volume = 0
+
 //        musicPlayer.prepareToPlay()
 //        musicPlayer.play()
 //        
     }
     
     func stopMusic(){
-//        
 //        musicPlayer.stop()
     }
     

@@ -56,6 +56,7 @@ class GameBaseScene : SKScene {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.physicsWorld.gravity = CGVectorMake(0.0, -9.81)
+
         // Camera setup
         self.world = SKNode()
         self.world?.name = "world"

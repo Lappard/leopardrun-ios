@@ -38,7 +38,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.backgroundImage2.size = self.size
 
         
-//
         self.addChild(backgroundImage)
         self.addChild(backgroundImage2)
         self.physicsWorld.contactDelegate = self

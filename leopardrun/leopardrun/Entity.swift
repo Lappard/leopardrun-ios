@@ -2,7 +2,6 @@ import Foundation
 import SpriteKit
 
 enum BodyType : UInt32 {
-    
     case player         = 2
     case ground         = 4
     case box            = 6
@@ -15,7 +14,6 @@ class Entity : SKSpriteNode {
     var type:String
     
     init(texture: SKTexture!) {
-        //super.init(texture: texture) You can't do this because you are not calling a designated initializer.
         self.type = ""
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
@@ -46,6 +44,10 @@ class SpriteEntity : Entity {
     var imageCount : UInt = 0
     var atlasName = "";
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     init(atlasName : String, count : UInt) {
 
         self.atlasName = atlasName
@@ -58,22 +60,42 @@ class SpriteEntity : Entity {
             textures.append(t)
         }
         super.init(texture: textures.first)
-        self.texture = textures.first
-        self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-textures.first!.size().width / 2, -textures.first!.size().height / 2, textures.first!.size().width, textures.first!.size().height), 10, 10, nil))
+        
+        generateBodyByTexture(textures.first!)
         startAnimating()
     }
     
     init(texturename : String){
-        var stdTexture = SKTexture(imageNamed: texturename);
-        super.init(texture: stdTexture)
-        self.texture = stdTexture
-        self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-stdTexture!.size().width / 2, -stdTexture!.size().height / 2, stdTexture!.size().width, stdTexture!.size().height), 10, 10, nil))
+        var tex = SKTexture(imageNamed: texturename);
+        super.init(texture: tex)
+        generateBodyByTexture(tex)
+        
+    }
+    
+    /**
+        generate PhysicsBody as rect witch is better for collisions then genrating it by texture
+    */
+    func generateBodyByTexture(tex: SKTexture){
+        self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-tex.size().width / 2, -tex.size().height / 2, tex.size().width, tex.size().height), 10, 10, nil))
+        self.texture = tex
+    }
+    
+    /**
+    --> testing <--
+    generate PhysicsBody as rect witch is better for collisions then genrating it by texture
+    */
+    func generateBodyByWidthHeigth(widthHeight: CGFloat){
+        self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-widthHeight / 2, -widthHeight / 2, widthHeight, widthHeight), 10, 10, nil))
     }
     
     func startAnimating() -> Void {
         self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.1, resize: false, restore: true)), withKey:"walking")
     }
     
+    
+    /**
+        this should not be in the sprite entity..
+    */
     func updateAnimation(state: PlayerState) -> Void {
         
         //Jump-State
@@ -104,7 +126,5 @@ class SpriteEntity : Entity {
         startAnimating()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
 }
