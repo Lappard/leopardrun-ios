@@ -31,9 +31,10 @@ class Player: SpriteEntity {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = true
+            physics.collisionBitMask = BodyType.ground.rawValue | BodyType.box.rawValue
         }
         self.physicsBody!.mass = 1
-        self.physicsBody!.density = 1
+        self.physicsBody!.density = 0
         // for collision
         self.physicsBody!.contactTestBitMask = BodyType.player.rawValue
     }
@@ -76,7 +77,7 @@ class Player: SpriteEntity {
         if self.isOnGround {
             
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
-            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 350.0))
+            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 1000))
             self.currentState = PlayerState.Jump
             isOnGround(false)
             

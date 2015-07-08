@@ -10,9 +10,10 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     var wall = Wall()
     var wall2 = Wall()
     var gameOver = false;
+    
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     var backgroundImage2 = SKSpriteNode(imageNamed: "Background")
-    
+
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,19 +25,20 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
+        view.showsPhysics = true
+        view.showsFPS = true
+        view.showsNodeCount = true
         super.didMoveToView(view)
         self.backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.backgroundImage.zPosition = 0
-        self.backgroundImage.physicsBody = SKPhysicsBody()
-        self.backgroundImage.physicsBody?.affectedByGravity = false
         self.backgroundImage.size = self.size
         
         self.backgroundImage2.position = CGPoint(x: self.backgroundImage.size.width + (self.backgroundImage.size.width / 2), y: self.size.height / 2)
         self.backgroundImage2.zPosition = 0
-        self.backgroundImage2.physicsBody = SKPhysicsBody()
-        self.backgroundImage2.physicsBody?.affectedByGravity = false
         self.backgroundImage2.size = self.size
+
         
+
         self.addChild(backgroundImage)
         self.addChild(backgroundImage2)
         self.physicsWorld.contactDelegate = self
@@ -59,8 +61,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         wall2.zPosition = 2
         self.appendGameObject(wall2)
         
-        
-        
         scoreManager.start()
     }
     
@@ -68,7 +68,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if player?.currentState != .Dead {
             self.world!.position = CGPoint(x:(node.position.x * -1) + self.size.width / 2, y:100)
         }
-        
     }
     
     func tapped(sender:UITapGestureRecognizer) {
@@ -81,18 +80,12 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         if contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.ground.rawValue
             || contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.ground.rawValue {
-                
                 self.player?.isOnGround(true)
                 self.player?.currentState = PlayerState.Run
                 
         } else {
             self.player?.isOnGround(false)
         }
-        
-        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-        
-        
-        
     }
     
     override func didSimulatePhysics() {
@@ -107,8 +100,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         reorderBackground(self.backgroundImage)
         reorderBackground(self.backgroundImage2)
-        self.backgroundImage.physicsBody?.velocity.dx = -60
-        self.backgroundImage2.physicsBody?.velocity.dx = -60
+        self.backgroundImage.position.x -= 2
+        self.backgroundImage2.position.x -= 2
     }
     
     func reorderBackground(spritenode: SKSpriteNode){
@@ -164,6 +157,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         return result;
     }
     
+    
+    
+    
     func isObstacleBehindWall() -> Void {
         let count = levelManager.obstacles.count;
         
@@ -175,16 +171,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             if(wall.position.x > currentObstacle.position.x){
                 for fallIndex in 0...50 {
                     currentObstacle.position.y = currentObstacle.position.y-0.1;
-                    
-                    let rotate = SKAction.rotateToAngle(CGFloat(3.14), duration: NSTimeInterval(1))
-                    
-                    if (currentObstacle.type == "ground"){
-                        currentObstacle.texture = SKTexture(imageNamed: "GroundFired.png")
-                    }else {
-                        currentObstacle.texture = SKTexture(imageNamed: "BlockFired.png")
-                    }
-                    
-                    currentObstacle.runAction(rotate)
+                    currentObstacle.burn();
                     
                 }
             }

@@ -44,7 +44,7 @@ class SpriteEntity : Entity {
     var atlasName = "";
     
     init(atlasName : String, count : UInt) {
-        
+
         self.atlasName = atlasName
         
         let textureAtlas = SKTextureAtlas(named: atlasName + ".atlas")
@@ -58,9 +58,12 @@ class SpriteEntity : Entity {
         super.init(texture: textures.first)
         
         self.texture = textures.first
-        
-         self.physicsBody = SKPhysicsBody(texture: textures.first, size: CGSize(width: textures.first!.size().width, height: textures.first!.size().height))
-        
+//        SKPhysicsBody(texture: textures.first, size: CGSize(width: textures.first!.size().width, height: textures.first!.size().height))
+//        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: textures.first!.size().width, height: textures.first!.size().height))
+//        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: 0, y: 0, width: textures.first!.size().width, height: textures.first!.size().height))
+        self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-textures.first!.size().width / 2, -textures.first!.size().height / 2, textures.first!.size().width, textures.first!.size().height), 10, 10, nil))
+    
+//        self.physicsBody.
         startAnimating()
     }
     

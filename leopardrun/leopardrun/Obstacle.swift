@@ -2,7 +2,8 @@ import UIKit
 import SpriteKit
 
 class Obstacle: Entity {
-    
+    var textureBurned: SKTexture?
+    var burned = false
     init(imageNamed : String) {
         super.init(texture: SKTexture(imageNamed: imageNamed))
         
@@ -16,7 +17,7 @@ class Obstacle: Entity {
         let obstacle = Obstacle(imageNamed:"Block.png")
         
         obstacle.type="block"
-        
+        obstacle.textureBurned = SKTexture(imageNamed:"BlockFired.png")
         obstacle.xScale = 2
         obstacle.yScale = 2
         obstacle.position = location
@@ -29,6 +30,7 @@ class Obstacle: Entity {
             physics.linearDamping = 0.0
             physics.angularDamping = 0.0
             physics.friction = 0.0
+            
         }
         // for collision
         obstacle.physicsBody!.contactTestBitMask = BodyType.box.rawValue
@@ -37,7 +39,7 @@ class Obstacle: Entity {
     
     class func ground(location: CGPoint) -> Obstacle {
         let ground = Obstacle(imageNamed:"Ground.png")
-        
+        ground.textureBurned = SKTexture(imageNamed: "GroundFired.png")
         ground.type="ground"
         
         ground.xScale = 0.3
@@ -58,5 +60,18 @@ class Obstacle: Entity {
         // for collision
         ground.physicsBody!.contactTestBitMask = BodyType.ground.rawValue
         return ground
+    }
+    
+    
+    /**
+        burn if not allready burned
+    */
+    func burn(){
+        if(!burned){
+            let rotate = SKAction.rotateToAngle(CGFloat(3.14), duration: NSTimeInterval(1))
+            self.runAction(rotate)
+            self.texture = self.textureBurned
+            self.burned = true;
+        }
     }
 }
