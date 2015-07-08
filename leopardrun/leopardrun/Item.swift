@@ -20,11 +20,10 @@ class Item: SpriteEntity {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = true
+            physics.contactTestBitMask = BodyType.item.rawValue
         }
         self.physicsBody!.mass = 1
         self.physicsBody!.density = 1
-        // for collision
-        self.physicsBody!.contactTestBitMask = BodyType.player.rawValue
         
     }
     

@@ -3,12 +3,14 @@ import SpriteKit
 class ScoreManager {
     
     var scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-    
+    internal let scorePerSecound:Double = 50
     internal var shouldCounting = false
     
     var scores : [Int] = [Int]()
     
-    internal var score = 0
+    
+    internal var startTime : Double = 0
+    internal var score : Int = 0
     
     class var sharedInstance: ScoreManager {
         struct Static {
@@ -33,19 +35,28 @@ class ScoreManager {
     }
     
     func reset() -> Void {
-        scoreLabel.text = "Score 0"
+        scoreLabel.text = "Score 0";
         score = 0;
+        self.startTime = 0;
+
+    }
+
+    /* starttime - current time * time per secound */
+    func update() -> Void{
+        var current : Double = NSDate.timeIntervalSinceReferenceDate()
+        var timePast : Double = Double(current) - Double(self.startTime)
+        var scoreF : Double = timePast * self.scorePerSecound
+        self.score = Int(scoreF)
+        scoreLabel.text = "Score " + score.description
     }
     
-    func incScore(value : Int) -> Void {
-        if shouldCounting {
-            score+=value
-            scoreLabel.text = "Score " + score.description
-        }
+    func currentTimeMillis() -> Double{
+        var nowDouble = NSDate().timeIntervalSince1970
+        return Double(nowDouble*1000)
     }
     
-    func addScore(value : Int) {
-        scoreLabel.text = "Score " + value.description
+    func start() -> Void {
+        startTime = NSDate.timeIntervalSinceReferenceDate()
     }
     
     @objc func playerIsDead(notification : NSNotification) {

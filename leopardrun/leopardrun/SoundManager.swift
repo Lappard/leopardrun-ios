@@ -41,27 +41,25 @@ class SoundManager {
     }
     
     func playSound(sound : String){
-        
-        var error:NSError?
-        
-        soundPlayer = AVAudioPlayer(contentsOfURL: sounds[sound], error:&error)
-        soundPlayer.prepareToPlay()
-        soundPlayer.play()
-        
+//        var error:NSError?
+//        soundPlayer = AVAudioPlayer(contentsOfURL: sounds[sound], error:&error)
+//        soundPlayer.prepareToPlay()
+//        soundPlayer.play()
     }
     func playMusic(music : String){
-        
-        var error:NSError?
-        
-        musicPlayer = AVAudioPlayer(contentsOfURL: musics[music], error:&error)
-        musicPlayer.prepareToPlay()
-        musicPlayer.play()
-        
+//        
+//        var error:NSError?
+//        
+//        
+//        musicPlayer = AVAudioPlayer(contentsOfURL: musics[music], error:&error)
+
+//        musicPlayer.prepareToPlay()
+//        musicPlayer.play()
+//        
     }
     
     func stopMusic(){
-        
-        musicPlayer.stop()
+//        musicPlayer.stop()
     }
     
 }

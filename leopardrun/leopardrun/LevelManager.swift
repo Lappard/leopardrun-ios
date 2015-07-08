@@ -94,49 +94,6 @@ class LevelManager : NetworkListener {
         //println(gridPos.description + " " + nextPos.description + "body width: " + obs.size.width.description)
         return nextPos
     }
-    
-    /**
-    create the next part of the level
-    
-    :returns: Array of obstacles which should be rendered
-    */
-    func getLevelPartOffline() -> [Obstacle] {
-        
-        var obstacles = [Obstacle]()
-        
-        var top : Bool = false
-        
-        if let levelPart = levelPartData {
-            var part = levelPart[levelPartIndex]
-            
-            for object in part.array! {
-                let x : CGFloat = CGFloat(object["x"].number!),
-                y : CGFloat = CGFloat(object["y"].number!)
-                
-                switch(object["type"].string!) {
-                case "g":
-                    var ground = Obstacle.ground(CGPoint(x: nextPos.x + x , y: y * 100 + 50))
-                    
-                    obstacles.append(ground)
-                    
-                    // shift current pos for next interation
-                    nextPos.x += ground.size.width
-                    break
-                case "b":
-                    obstacles.append(Obstacle.block(CGPoint(x: nextPos.x + x, y: y + 300)))
-                    
-                default:
-                    break
-                }
-            }
-        }
-        
-        if levelPartData?.count > levelPartIndex {
-            levelPartIndex++
-        }
-        
-        return obstacles
-    }
 
     
     /**

@@ -26,18 +26,19 @@ class GameBaseScene : SKScene {
             if  let pos : CGPoint = self.hud.values.array.last,
                 let node = self.hud.keys.array.last {
                     node.position = pos
+                    node.zPosition = 1337
                 self.addChild(node)
             }
         }
     }
     
     func appendGameObject(e : SKNode) -> Void {
+        e.zPosition = 2
         self.world?.addChild(e)
-
     }
     
     func update() -> Void {
-        for object : AnyObject in gameObjects {
+        for object : AnyObject in self.world!.children {
             if let obj = object as? Entity {
                 obj.update()
             }
@@ -55,6 +56,7 @@ class GameBaseScene : SKScene {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.physicsWorld.gravity = CGVectorMake(0.0, -9.81)
+
         // Camera setup
         self.world = SKNode()
         self.world?.name = "world"
@@ -87,10 +89,8 @@ class GameBaseScene : SKScene {
         
     func createLevelPart() -> Void {
         var part = LevelManager.sharedInstance.getLevelPart()
-        
         var obstacles = part.0;
         var coins = part.1;
-        
         for o in obstacles {
             self.appendGameObject(o)
         }

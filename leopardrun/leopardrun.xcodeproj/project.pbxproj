@@ -34,7 +34,6 @@
 		7B43FD241B32C3E70037D9AA /* theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD231B32C3E70037D9AA /* theme.wav */; };
 		7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD251B32CE5A0037D9AA /* jump.wav */; };
 		7B43FD281B32D0650037D9AA /* dead.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD271B32D0640037D9AA /* dead.wav */; };
-		7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D01AFF956A007748F3 /* RessourceManager.swift */; };
 		7B74C5D31AFF9587007748F3 /* GameBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */; };
 		7B74C5D51AFF958F007748F3 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D41AFF958F007748F3 /* SoundManager.swift */; };
 		7B74C5D91AFF95B3007748F3 /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5D81AFF95B3007748F3 /* LevelManager.swift */; };
@@ -112,7 +111,6 @@
 		7B43FD231B32C3E70037D9AA /* theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = theme.wav; path = Sounds/theme.wav; sourceTree = "<group>"; };
 		7B43FD251B32CE5A0037D9AA /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = Sounds/jump.wav; sourceTree = "<group>"; };
 		7B43FD271B32D0640037D9AA /* dead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dead.wav; path = Sounds/dead.wav; sourceTree = "<group>"; };
-		7B74C5D01AFF956A007748F3 /* RessourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourceManager.swift; sourceTree = "<group>"; };
 		7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBaseScene.swift; sourceTree = "<group>"; };
 		7B74C5D41AFF958F007748F3 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		7B74C5D81AFF95B3007748F3 /* LevelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 		7B74C5CD1AFF9516007748F3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				7B74C5D01AFF956A007748F3 /* RessourceManager.swift */,
 				7B74C5D41AFF958F007748F3 /* SoundManager.swift */,
 				7B74C5D81AFF95B3007748F3 /* LevelManager.swift */,
 				7B74C5DA1AFF95C1007748F3 /* NetworkManager.swift */,
@@ -547,7 +544,6 @@
 				28D3BFEE1B1F31D2000F21E5 /* SwiftyJSON.swift in Sources */,
 				28DC02221AF238C200B8E9DE /* GameViewController.swift in Sources */,
 				28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */,
-				7B74C5D11AFF956A007748F3 /* RessourceManager.swift in Sources */,
 				289D4F9F1B32D2CE009E8BAB /* GameMultiScene.swift in Sources */,
 				7B74C5D31AFF9587007748F3 /* GameBaseScene.swift in Sources */,
 			);
