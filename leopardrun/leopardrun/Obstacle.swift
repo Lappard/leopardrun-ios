@@ -30,10 +30,8 @@ class Obstacle: Entity {
             physics.linearDamping = 0.0
             physics.angularDamping = 0.0
             physics.friction = 0.0
-            
+            physics.contactTestBitMask = BodyType.box.rawValue
         }
-        // for collision
-        obstacle.physicsBody!.contactTestBitMask = BodyType.box.rawValue
         return obstacle
     }
     
@@ -56,9 +54,8 @@ class Obstacle: Entity {
             physics.linearDamping = 0.0
             physics.angularDamping = 0.0
             physics.friction = 0.0
+            physics.contactTestBitMask = BodyType.ground.rawValue
         }
-        // for collision
-        ground.physicsBody!.contactTestBitMask = BodyType.ground.rawValue
         return ground
     }
     

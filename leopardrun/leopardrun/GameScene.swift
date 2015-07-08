@@ -38,7 +38,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.backgroundImage2.size = self.size
 
         
-
+//
         self.addChild(backgroundImage)
         self.addChild(backgroundImage2)
         self.physicsWorld.contactDelegate = self
@@ -78,13 +78,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     
     func didBeginContact(contact: SKPhysicsContact) {
-        if contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.ground.rawValue
-            || contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.ground.rawValue {
-                self.player?.isOnGround(true)
-                self.player?.currentState = PlayerState.Run
-                
-        } else {
-            self.player?.isOnGround(false)
+        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyA.contactTestBitMask == BodyType.player.rawValue) {
+            self.player?.isOnGround(true)
         }
     }
     

@@ -31,13 +31,15 @@ class Player: SpriteEntity {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = true
-            physics.collisionBitMask = BodyType.ground.rawValue | BodyType.box.rawValue
+            physics.mass = 1
+            physics.density = 1
+            physics.contactTestBitMask = BodyType.player.rawValue
         }
-        self.physicsBody!.mass = 1
-        self.physicsBody!.density = 0
-        // for collision
-        self.physicsBody!.contactTestBitMask = BodyType.player.rawValue
+        
+        self.isOnGround(false)
     }
+    
+    
     
     func reset() -> Void {
         self.position = CGPoint(x: 200, y: 600)
@@ -53,7 +55,6 @@ class Player: SpriteEntity {
             self.updateAnimation(currentState)
             oldState = currentState
         }
-       
 //        if self.position.y < 120 || self.position.x < 0{
 //            currentState = .Dead
 //            NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
@@ -62,11 +63,15 @@ class Player: SpriteEntity {
     
     func isOnGround(onGround: Bool ) -> Void {
         self.isOnGround = onGround
-        
-        if(onGround == true && oldState != self.currentState){
-            currentState = PlayerState.Run
+        if(onGround == true){
+           
+                currentState = PlayerState.Run
+            
+        }else{
+            
+                currentState = PlayerState.Jump
+            
         }
-        
     }
     
     func refreshState(state: PlayerState) -> Void {
@@ -75,12 +80,9 @@ class Player: SpriteEntity {
     
     func jump() -> Void {
         if self.isOnGround {
-            
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
-            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 1000))
-            self.currentState = PlayerState.Jump
+            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 1500))
             isOnGround(false)
-            
         }
     }
     

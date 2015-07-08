@@ -3,12 +3,11 @@ import SpriteKit
 
 enum BodyType : UInt32 {
     
-    case player = 1
-    case ground = 2
-    case box = 4
-    case anotherBody1 = 8
-    case anotherBody2 = 16
-    
+    case player         = 2
+    case ground         = 4
+    case box            = 6
+    case item           = 8
+    case anotherBody2   = 16
 }
 
 class Entity : SKSpriteNode {
@@ -32,7 +31,11 @@ class Entity : SKSpriteNode {
     }
     
     func update() {
-        fatalError("update method have to override")
+//        fatalError("update method have to override")
+    }
+
+    func onCollision(){
+        
     }
 }
 
@@ -56,14 +59,9 @@ class SpriteEntity : Entity {
         }
         
         super.init(texture: textures.first)
-        
         self.texture = textures.first
-//        SKPhysicsBody(texture: textures.first, size: CGSize(width: textures.first!.size().width, height: textures.first!.size().height))
-//        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: textures.first!.size().width, height: textures.first!.size().height))
-//        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: 0, y: 0, width: textures.first!.size().width, height: textures.first!.size().height))
         self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-textures.first!.size().width / 2, -textures.first!.size().height / 2, textures.first!.size().width, textures.first!.size().height), 10, 10, nil))
     
-//        self.physicsBody.
         startAnimating()
     }
     

@@ -38,7 +38,7 @@ class GameBaseScene : SKScene {
     }
     
     func update() -> Void {
-        for object : AnyObject in gameObjects {
+        for object : AnyObject in self.world!.children {
             if let obj = object as? Entity {
                 obj.update()
             }
