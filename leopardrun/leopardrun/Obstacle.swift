@@ -1,11 +1,11 @@
 import UIKit
 import SpriteKit
 
-class Obstacle: Entity {
+class Obstacle: SpriteEntity {
     var textureBurned: SKTexture?
     var burned = false
     init(imageNamed : String) {
-        super.init(texture: SKTexture(imageNamed: imageNamed))
+        super.init(texturename: imageNamed)
         
     }
     
@@ -22,7 +22,6 @@ class Obstacle: Entity {
         obstacle.yScale = 2
         obstacle.position = location
         
-        obstacle.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Block.png"), size: obstacle.size)
         if let physics = obstacle.physicsBody {
             physics.allowsRotation = false
             physics.dynamic = false;
@@ -45,7 +44,6 @@ class Obstacle: Entity {
         
         ground.position = location
         
-        ground.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "Ground.png"), size: ground.size)
         if let physics = ground.physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false

@@ -61,13 +61,9 @@ class Player: SpriteEntity {
     func isOnGround(onGround: Bool ) -> Void {
         self.isOnGround = onGround
         if(onGround == true){
-           
-                currentState = PlayerState.Run
-            
+            currentState = PlayerState.Run
         }else{
-            
-                currentState = PlayerState.Jump
-            
+            currentState = PlayerState.Jump
         }
     }
     

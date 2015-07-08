@@ -57,12 +57,17 @@ class SpriteEntity : Entity {
             let t = textureAtlas.textureNamed(atlasName + "\(index)")
             textures.append(t)
         }
-        
         super.init(texture: textures.first)
         self.texture = textures.first
         self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-textures.first!.size().width / 2, -textures.first!.size().height / 2, textures.first!.size().width, textures.first!.size().height), 10, 10, nil))
-    
         startAnimating()
+    }
+    
+    init(texturename : String){
+        var stdTexture = SKTexture(imageNamed: texturename);
+        super.init(texture: stdTexture)
+        self.texture = stdTexture
+        self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-stdTexture!.size().width / 2, -stdTexture!.size().height / 2, stdTexture!.size().width, stdTexture!.size().height), 10, 10, nil))
     }
     
     func startAnimating() -> Void {
