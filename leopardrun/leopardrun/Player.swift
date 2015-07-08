@@ -55,10 +55,7 @@ class Player: SpriteEntity {
             self.updateAnimation(currentState)
             oldState = currentState
         }
-//        if self.position.y < 120 || self.position.x < 0{
-//            currentState = .Dead
-//            NSNotificationCenter.defaultCenter().postNotificationName("player.dead", object: self)
-//        }
+
     }
     
     func isOnGround(onGround: Bool ) -> Void {
