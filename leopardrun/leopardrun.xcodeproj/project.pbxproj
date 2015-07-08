@@ -175,6 +175,16 @@
 			name = Multi;
 			sourceTree = "<group>";
 		};
+		2876F0411B4ACB26004807B9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				28DC02211AF238C200B8E9DE /* GameViewController.swift */,
+				7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */,
+				AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		289927F01B0B5AAF0061FBA3 /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,13 +326,11 @@
 		7B74C5CE1AFF9522007748F3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2876F0411B4ACB26004807B9 /* Base */,
 				284891961B4324E800A08DD9 /* Multi */,
 				28B665651B303CD50094C888 /* gameover */,
 				289927F71B0B62BF0061FBA3 /* Single */,
 				289927F01B0B5AAF0061FBA3 /* menu */,
-				28DC02211AF238C200B8E9DE /* GameViewController.swift */,
-				7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */,
-				AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */,
 			);
 			name = Screens;
 			sourceTree = "<group>";

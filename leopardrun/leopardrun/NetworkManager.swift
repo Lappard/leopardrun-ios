@@ -4,6 +4,11 @@ protocol NetworkListener {
     func getLevelData(data : JSON) -> Void
 }
 
+public enum NewtworkMethod : String {
+    case SaveGames = "getSaveGames",
+         LevelData = "getLevelData"
+}
+
 class NetworkManager : NSObject, SRWebSocketDelegate {
     
     var socketio:SRWebSocket? = nil
@@ -12,8 +17,12 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     
     var delegate : NetworkListener?
     
+    var currentMethod : NewtworkMethod = NewtworkMethod.LevelData
+    
     var guid : String = ""
 
+    private var completedBlock : ([AnyObject] -> Void)?
+    
     class var sharedInstance: NetworkManager {
         struct Static {
             static var onceToken: dispatch_once_t = 0
@@ -51,15 +60,26 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         
     }
     
-    func getLastChallenges(completed: ([Challenge]) -> Void) -> Void {
+    func getLastChallenges(completed: ([AnyObject]) -> Void) -> Void {
+        
         var ch = [Challenge]()
         
         ch.append(Challenge(name: "schnellste maus von mexiko"))
         ch.append(Challenge(name: "refactor this"))
         ch.append(Challenge(name: "lorem huso"))
         
-        completed(ch)
+        self.completedBlock = completed
+        
+        //socketio!.send("{\"method\":\"getSaveGames\"}")
     }
+    
+    func get(method : NewtworkMethod, completed: [AnyObject] -> Void) -> Void {
+        self.currentMethod = method
+        self.completedBlock = completed
+    }
+    
+    // {"method":"getSaveGames"}
+    
     
     @objc func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
         // All incoming messages ( socket.on() ) are received in this function. Parsed with JSON
@@ -71,13 +91,30 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         // get guid from server
         if let id = json["guid"].string {
             guid = id
-            socketio!.send("{\"method\":\"createLevel\"}")
+            
+            switch(self.currentMethod) {
+                case .SaveGames:
+                    socketio!.send("{\"method\":\"getSaveGames\"}")
+                break
+            default:
+                socketio!.send("{\"method\":\"getLevelData\"}")
+            }
         }
+        
+        println(json)
         
         // get level stuff form server
         if let process : [String : JSON] = json["process"].dictionary {
             println("daten erhalten" + json.description)
             delegate?.getLevelData(json)
+        }
+        
+        // GameName
+        
+        if let process : [JSON] = json.array {
+            
+            println("savegames daten erhalten" + process.description)
+            
         }
     }
 

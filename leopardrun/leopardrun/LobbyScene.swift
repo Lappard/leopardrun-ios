@@ -36,11 +36,14 @@ class LobbyScene: SKScene {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.whiteColor()
-
-        NetworkManager.sharedInstance.getLastChallenges({
-            (challenges : [Challenge]) in
+        
+        NetworkManager.sharedInstance.get(NewtworkMethod.SaveGames, completed: {
+            (ch : [AnyObject]) in
+            if let challenges = ch as? [Challenge] {
                 self.challenges = challenges
+            }
         })
+        
         
         NetworkManager.sharedInstance.getLevelDataFromServer()
         ScoreManager.sharedInstance.reset()
@@ -64,13 +67,14 @@ class LobbyScene: SKScene {
                         
                         // get challenge
                         if let c = self.challenges?[index] {
-                            if let nextScene = GameMultiScene.unarchiveFromFile("GameMultiScene") as? GameMultiScene {
-                                nextScene.scaleMode = SKSceneScaleMode.AspectFill
-                                nextScene.reset()
-                                self.nextScene = nextScene
-                                
-                                self.view?.presentScene(nextScene)
-                                
+                            
+                            if let scene = GameMultiScene.unarchiveFromFile("GameMultiScene") as? GameMultiScene {
+                                let skView = self.view! as SKView
+                                let transition = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 1.0)
+                                //skView.ignoresSiblingOrder = true
+                                scene.scaleMode = .ResizeFill
+                                scene.size = skView.bounds.size
+                                skView.presentScene(scene,transition: transition)
                             }
                         }
                         
