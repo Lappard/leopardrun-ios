@@ -42,10 +42,6 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         multiLabel.fontColor = SKColor.blackColor()
         multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
         addChild(multiLabel)
-        
-        
-        
-
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
