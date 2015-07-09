@@ -42,6 +42,8 @@ class Obstacle: SpriteEntity {
         ground.xScale = 0.3
         ground.yScale = 0.3
         
+//        ground.size = CGSize(width: 200, height: 200)
+        
         ground.position = location
         
         if let physics = ground.physicsBody {

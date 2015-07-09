@@ -20,6 +20,8 @@ class LevelManager : NetworkListener {
     
     private var nextXpos: CGFloat = 0
     
+    private var ground = Obstacle.ground(CGPoint(x: 0, y: 0))
+    
     var obstacles = [Obstacle]()
     var coins = [Item]()
     
@@ -89,8 +91,7 @@ class LevelManager : NetworkListener {
     :returns:
     */
     func nextX(gridPos : CGFloat, obs: Obstacle) -> CGFloat {
-        // dont use magic number (153.600006103516)
-        let nextPos : CGFloat = gridPos * 153.600006103516
+        let nextPos : CGFloat = gridPos * ground.size.width
         //println(gridPos.description + " " + nextPos.description + "body width: " + obs.size.width.description)
         return nextPos
     }

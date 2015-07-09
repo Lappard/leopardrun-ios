@@ -10,7 +10,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     var wall = Wall()
     var wall2 = Wall()
     var gameOver = false;
-    
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     var backgroundImage2 = SKSpriteNode(imageNamed: "Background")
 
@@ -46,7 +45,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         let label = SKLabelNode(fontNamed: "Chalkduster")
         
         self.hud[scoreManager.scoreLabel] = CGPoint(x: 100, y: 100)
-        
         
         wall.position = CGPoint(x: 000, y: 140)
         wall.physicsBody = SKPhysicsBody()
@@ -142,7 +140,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
     }
     
-    
     func isPlayerBeforeWall() -> Bool {
         var result = false;
         if(player?.position.x > self.wall.position.x){
@@ -150,9 +147,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
         return result;
     }
-    
-    
-    
     
     func isObstacleBehindWall() -> Void {
         let count = levelManager.obstacles.count;
