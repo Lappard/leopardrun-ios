@@ -4,7 +4,7 @@ protocol NetworkListener {
     func getLevelData(data : JSON) -> Void
 }
 
-public enum NewtworkMethod : String {
+public enum NetworkMethod : String {
     case SaveGames = "getSaveGames",
          LevelData = "getLevelData"
 }
@@ -17,7 +17,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     
     var delegate : NetworkListener?
     
-    var currentMethod : NewtworkMethod = NewtworkMethod.LevelData
+    var currentMethod : NetworkMethod = NetworkMethod.LevelData
     
     var guid : String = ""
 
@@ -73,7 +73,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         //socketio!.send("{\"method\":\"getSaveGames\"}")
     }
     
-    func get(method : NewtworkMethod, completed: [AnyObject] -> Void) -> Void {
+    func get(method : NetworkMethod, completed: [AnyObject] -> Void) -> Void {
         self.currentMethod = method
         self.completedBlock = completed
     }
@@ -88,6 +88,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
 
         var json = JSON(data: data!)
         
+        
         // get guid from server
         if let id = json["guid"].string {
             guid = id
@@ -97,13 +98,13 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
                     socketio!.send("{\"method\":\"getSaveGames\"}")
                 break
             default:
-                socketio!.send("{\"method\":\"getLevelData\"}")
+                socketio!.send("{\"method\":\"createLevel\"}")
             }
         }
         
         println(json)
         
-        // get level stuff form server
+        // get level stuff from server
         if let process : [String : JSON] = json["process"].dictionary {
             println("daten erhalten" + json.description)
             delegate?.getLevelData(json)
@@ -111,9 +112,56 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         
         // GameName
         
-        if let process : [JSON] = json.array {
+        if let method : String = json["method"].string {
             
-            println("savegames daten erhalten" + process.description)
+            switch(method) {
+                case NetworkMethod.SaveGames.rawValue:
+                    println("savegames daten erhalten" + method)
+                    var list = [Challenge]()
+                
+                    
+                    if let process = json["process"].dictionary {
+                        
+                        if let games = process["games"]?.array {
+                            
+                            var list = [Challenge]()
+                            
+                            for game in games {
+                                
+
+                                //             completedBlock!(list)
+                                var c = Challenge(name: game["gameName"].string!)
+                                c.owner = game["owner"].string!
+                                c.playerScore = game["playerScore"].floatValue
+                                c.date = game["date"].intValue
+                                
+                                if let level = game["level"].dictionary {
+                                    if let levelparts = level["dasd"]?.array {
+                                        c.levelData = levelparts
+                                    }
+                                    
+                                    
+                                }
+                                
+                                list.append(c)
+                            }
+                            
+                            completedBlock!(list)
+                            
+                        }
+                        
+                        
+                    }
+                    
+                
+                        
+            
+            
+                    break
+            default:
+                var x = 1
+            }
+            
             
         }
     }

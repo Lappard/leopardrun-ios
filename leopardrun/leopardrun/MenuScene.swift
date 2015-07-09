@@ -1,7 +1,7 @@
 import Foundation
 import SpriteKit
 
-class MenuScene: SKScene, LevelManagerDelegate {
+class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     
     let startLabel = SKLabelNode(fontNamed: "Chalkduster")
     var nextScene : SKScene?
@@ -56,11 +56,13 @@ class MenuScene: SKScene, LevelManagerDelegate {
             
             
             if touchedNode.name == "multi" {
-                nextScene = LobbyScene.unarchiveFromFile("LobbyScene") as? LobbyScene
-                nextScene!.scaleMode = SKSceneScaleMode.AspectFill
+                if let lobbyScene = LobbyScene.unarchiveFromFile("LobbyScene") as? LobbyScene {
+                    lobbyScene.dataLoadedDelegate = self
+                    lobbyScene.scaleMode = SKSceneScaleMode.AspectFill
+                    
+                    nextScene = lobbyScene
+                }
                 
-                LevelManager.sharedInstance.delegate = self
-
             }
             if touchedNode.name == "single" {
                 nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
@@ -80,12 +82,17 @@ class MenuScene: SKScene, LevelManagerDelegate {
 
     }
     
+    func DataLoaded() {
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        scene!.scaleMode = .ResizeFill
+        scene!.size = skView.bounds.size
+        skView.presentScene(nextScene, transition: transition)
+    }
+    
     
     func ReceivedData() -> Void {
-//        self.overlay?.position = CGPoint(x: -10000, y: -10000)
-//        self.player!.position = CGPoint(x: 400, y: 600)
-//        createLevelPart()
-//        
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true

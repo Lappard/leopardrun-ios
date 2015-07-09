@@ -94,7 +94,6 @@ class LevelManager : NetworkListener {
         //println(gridPos.description + " " + nextPos.description + "body width: " + obs.size.width.description)
         return nextPos
     }
-
     
     /**
     create the next part of the level

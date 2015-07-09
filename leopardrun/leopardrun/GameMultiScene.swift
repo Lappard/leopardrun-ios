@@ -127,7 +127,6 @@ class GameMultiScene: GameBaseScene, SKPhysicsContactDelegate {
         }
     }
     
-    
     func isPlayerBeforeWall() -> Bool {
         var result = false;
         if(player?.position.x > self.wall.position.x){

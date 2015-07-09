@@ -1,9 +1,15 @@
 import SpriteKit
 
+protocol LobbyDataLoaded {
+    func DataLoaded()
+}
+
 class LobbyScene: SKScene {
     
     private var nextY : CGFloat = 100.0
     private var nextScene : GameMultiScene?
+    
+    var dataLoadedDelegate : LobbyDataLoaded?
     
     /// generate labels after array is assigned
     private var challenges : [Challenge]? {
@@ -11,7 +17,7 @@ class LobbyScene: SKScene {
             var index : Int = 0
             for c in self.challenges! {
                 let label = SKLabelNode(fontNamed: "Chalkduster")
-                label.text = c.name
+                label.text = c.gameName!
                 
                 // tag workaround
                 label.name = index.description
@@ -20,11 +26,17 @@ class LobbyScene: SKScene {
                 label.fontColor = SKColor.blackColor()
                 label.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + self.nextY)
                 
-                self.nextY += 100.0
+                self.nextY += 40.0
                 index++
                 
                 self.addChild(label)
+                
+                if index == 5 {
+                    break
+                }
             }
+            
+            dataLoadedDelegate?.DataLoaded()
         }
     }
     
@@ -37,7 +49,8 @@ class LobbyScene: SKScene {
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.whiteColor()
         
-        NetworkManager.sharedInstance.get(NewtworkMethod.SaveGames, completed: {
+        
+        NetworkManager.sharedInstance.get(NetworkMethod.SaveGames, completed: {
             (ch : [AnyObject]) in
             if let challenges = ch as? [Challenge] {
                 self.challenges = challenges
@@ -71,20 +84,14 @@ class LobbyScene: SKScene {
                             if let scene = GameMultiScene.unarchiveFromFile("GameMultiScene") as? GameMultiScene {
                                 let skView = self.view! as SKView
                                 let transition = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 1.0)
-                                //skView.ignoresSiblingOrder = true
                                 scene.scaleMode = .ResizeFill
                                 scene.size = skView.bounds.size
                                 skView.presentScene(scene,transition: transition)
                             }
                         }
-                        
                     }
                 }
             }
-            
         }
-        
-        
     }
-    
 }
