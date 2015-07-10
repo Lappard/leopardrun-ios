@@ -16,7 +16,6 @@ class Entity : SKSpriteNode {
     init(texture: SKTexture!) {
         self.type = ""
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
-        
     }
     
     override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
@@ -35,6 +34,9 @@ class Entity : SKSpriteNode {
     func onCollision(){
         
     }
+    
+    
+    
 }
 
 

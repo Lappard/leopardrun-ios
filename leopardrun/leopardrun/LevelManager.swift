@@ -134,10 +134,12 @@ class LevelManager : NetworkListener {
             }
         }
         
-        let item = Item()
-        item.position = CGPoint(x: 0, y: 250)
-        item.position.x = 500.0
+        let item = Item(kind: "Coin",x: 500,y: 150)
         coins.append(item)
+        let item2 = Item(kind: "Coin",x: 1600,y: 150)
+        coins.append(item2)
+        let item3 = Item(kind: "Coin",x: 2900,y: 150)
+        coins.append(item3)
         
         if levelPartData?.count > levelPartIndex {
             levelPartIndex++

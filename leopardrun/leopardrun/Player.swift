@@ -11,6 +11,8 @@ public enum PlayerState: Int {
 }
 
 class Player: SpriteEntity {
+
+    var items:Array<Item> = Array<Item>();
     
     var countRunning = 0
     var currentState: PlayerState = PlayerState.Run
@@ -40,8 +42,6 @@ class Player: SpriteEntity {
         
         self.isOnGround(false)
     }
-    
-    
     
     func reset() -> Void {
         self.position = CGPoint(x: 200, y: 600)
@@ -79,6 +79,10 @@ class Player: SpriteEntity {
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
             isOnGround(false)
         }
+    }
+    
+    func addItem(var i:Item) -> Void{
+        self.items.append(i);
     }
     
 }

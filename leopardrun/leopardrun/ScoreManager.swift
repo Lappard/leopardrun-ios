@@ -7,7 +7,7 @@ class ScoreManager {
     internal var shouldCounting = false
     
     var scores : [Int] = [Int]()
-    
+    var extraPoints: Double = 0
     
     internal var startTime : Double = 0
     internal var score : Int = 0
@@ -46,8 +46,12 @@ class ScoreManager {
         var current : Double = NSDate.timeIntervalSinceReferenceDate()
         var timePast : Double = Double(current) - Double(self.startTime)
         var scoreF : Double = timePast * self.scorePerSecound
+        
+        scoreF += extraPoints
+        
         self.score = Int(scoreF)
         scoreLabel.text = "Score " + score.description
+        
     }
     
     func currentTimeMillis() -> Double{
@@ -62,6 +66,10 @@ class ScoreManager {
     @objc func playerIsDead(notification : NSNotification) {
         shouldCounting = false
         self.saveCurrrentScore()
+    }
+    
+    func addToScore(var score:Double) -> Void{
+        self.extraPoints += score
     }
     
     func saveCurrrentScore() {
