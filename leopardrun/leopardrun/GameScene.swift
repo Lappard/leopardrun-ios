@@ -5,6 +5,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
     var player : Player?
+    var sky : Sky?
     var levelManager = LevelManager.sharedInstance
     var scoreManager = ScoreManager.sharedInstance
     var wall = Wall()
@@ -81,12 +82,17 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             var playerNode:SKNode = contact.bodyA.node!;
             var itemNode:SKNode = contact.bodyB.node!;
             
-            self.player?.addItem(Item(kind: "Coin",x: 0,y: 0))
-            self.scoreManager.addToScore(500.0)
+            if(itemNode.userData!.valueForKey("type") as! String == "Coin"){
+                self.scoreManager.addToScore(500.0)
+            }
+            
+            if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
+                player?.hasFeather = true;
+                player?.itemCount = 100;
+            }
             itemNode.removeFromParent()
-            
-            
         }
+        
         if (contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.item.rawValue){
             
         }
@@ -104,6 +110,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
 //        self.camera!.physicsBody!.velocity.dx = 100
         self.player?.physicsBody?.velocity.dx = 150
+        self.sky?.physicsBody?.velocity.dx = 150
         self.wall.physicsBody?.velocity.dx = 150
         self.wall2.physicsBody?.velocity.dx = 150
         
@@ -120,6 +127,10 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
     override func update(currentTime: CFTimeInterval) {
+        
+        let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
+        
+        self.sky?.position = p
         
         if(!gameOver){
             super.update()
@@ -157,6 +168,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         } else {
             self.player = Player()
             self.appendGameObject(self.player!)
+            self.sky = Sky()
+            self.appendGameObject(self.sky!)
         }
     }
     

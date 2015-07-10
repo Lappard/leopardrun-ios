@@ -12,12 +12,13 @@ public enum PlayerState: Int {
 
 class Player: SpriteEntity {
 
-    var items:Array<Item> = Array<Item>();
-    
+    var hasFeather = false;
     var countRunning = 0
     var currentState: PlayerState = PlayerState.Run
     var oldState: PlayerState = PlayerState.Stand
 
+    var itemCount = 0;
+    
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = false
     
@@ -29,7 +30,7 @@ class Player: SpriteEntity {
 
         self.generateBodyByWidthHeigth(self.size.width)
         println(self.size.width)
-        self.position = CGPoint(x: 300, y: 700)
+        self.position = CGPoint(x: 300, y: 450)
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
@@ -57,16 +58,26 @@ class Player: SpriteEntity {
             self.updateAnimation(currentState)
             oldState = currentState
         }
+        
+        if(hasFeather && itemCount > 0){
+            itemCount -= 1;
+            println(itemCount)
+            if(itemCount == 0){
+                self.hasFeather = false;
+            }
+        }
 
     }
     
     func isOnGround(onGround: Bool ) -> Void {
-        self.isOnGround = onGround
-        if(onGround == true){
-            currentState = PlayerState.Run
-        }else{
-            currentState = PlayerState.Jump
-        }
+        
+            self.isOnGround = onGround
+            if(onGround == true){
+                currentState = PlayerState.Run
+            }else{
+                currentState = PlayerState.Jump
+            }
+        
     }
     
     func refreshState(state: PlayerState) -> Void {
@@ -74,15 +85,11 @@ class Player: SpriteEntity {
     }
     
     func jump() -> Void {
-        if self.isOnGround {
+        if self.isOnGround || self.hasFeather {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
             isOnGround(false)
         }
-    }
-    
-    func addItem(var i:Item) -> Void{
-        self.items.append(i);
     }
     
 }
