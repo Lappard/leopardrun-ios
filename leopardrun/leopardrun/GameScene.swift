@@ -45,7 +45,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         let label = SKLabelNode(fontNamed: "Chalkduster")
         
-        self.hud[scoreManager.scoreLabel] = CGPoint(x: 100, y: 100)
+        self.hud[scoreManager.scoreLabel] = CGPoint(x: 500, y: 500)
         
         
         wall.position = CGPoint(x: 000, y: 140)
@@ -77,7 +77,24 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     
     func didBeginContact(contact: SKPhysicsContact) {
-        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyA.contactTestBitMask == BodyType.player.rawValue) {
+        
+        //Items
+        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.item.rawValue){
+            var playerNode:SKNode = contact.bodyA.node!;
+            var itemNode:SKNode = contact.bodyB.node!;
+            
+            self.player?.addItem(Item(kind: "Coin",x: 0,y: 0))
+            self.scoreManager.addToScore(500.0)
+            itemNode.removeFromParent()
+            
+            
+        }
+        if (contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.item.rawValue){
+            
+        }
+        
+        //Ground
+        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue) {
             self.player?.isOnGround(true)
         }
     }
@@ -127,6 +144,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             skView.presentScene(scene,transition: transition)
             gameOver = true
         }
+        
+        //Kollision mit Items abfangen
+        
     }
     
     func reset() -> Void {

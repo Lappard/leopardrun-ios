@@ -6,15 +6,15 @@ class Item: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var kind:String
     
-    init() {
+    init(var kind:String, x:Int, y:Int) {
         
-        self.kind="coin"
+        self.kind=kind
         
-        super.init(atlasName: "Coin", count: 6)
+        super.init(atlasName: kind, count: 6)
         
         self.xScale = 1.0
         self.yScale = 1.0
-        self.position = CGPoint(x: 200, y: 50)
+        self.position = CGPoint(x: x, y: y)
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
@@ -25,6 +25,9 @@ class Item: SpriteEntity {
         self.physicsBody!.mass = 1
         self.physicsBody!.density = 1
         
+        self.userData = NSMutableDictionary()
+        self.userData!.setValue(kind, forKey: "type")
+
     }
     
     required init?(coder aDecoder: NSCoder) {
