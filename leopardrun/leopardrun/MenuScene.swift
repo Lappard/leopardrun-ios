@@ -17,30 +17,24 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         // 1
         backgroundColor = SKColor.whiteColor()
         
-        // 2
-        var message = "Leopard Run!"
+        let logo = SKSpriteNode(imageNamed: "Logo")
+        logo.position = CGPoint(x: size.width/2, y: size.height/2 + 60)
+        logo.size = CGSize(width: 150, height: 150)
+        addChild(logo)
         
-        // 3
-        let label = SKLabelNode(fontNamed: "Chalkduster")
-        label.text = message
-        label.fontSize = 40
-        label.fontColor = SKColor.blackColor()
-        label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
-        addChild(label)
-        
-        startLabel.text = "Single Player"
+        startLabel.text = "New Game"
         startLabel.fontSize = 40
         startLabel.name = "single"
         startLabel.fontColor = SKColor.blackColor()
-        startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 50)
+        startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 60)
         addChild(startLabel)
         
         var multiLabel = SKLabelNode(fontNamed: "Chalkduster")
-        multiLabel.text = "Multi Player"
+        multiLabel.text = "Challenge-Mode"
         multiLabel.name = "multi"
         multiLabel.fontSize = 40
         multiLabel.fontColor = SKColor.blackColor()
-        multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
+        multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 12so0)
         addChild(multiLabel)
     }
     

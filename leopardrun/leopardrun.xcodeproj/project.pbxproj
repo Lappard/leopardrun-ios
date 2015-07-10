@@ -46,6 +46,9 @@
 		7B98672A1B50214B00E46709 /* Feather.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B9867291B50214B00E46709 /* Feather.atlas */; };
 		7B98672E1B50263600E46709 /* LeopardFly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B98672D1B50263600E46709 /* LeopardFly.atlas */; };
 		7BB7749D1B4FFEA700FB46D2 /* Sky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7749C1B4FFEA700FB46D2 /* Sky.swift */; };
+		7BBA944E1B50551E0047B5AB /* logo_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944B1B50551E0047B5AB /* logo_58.png */; };
+		7BBA944F1B50551E0047B5AB /* logo_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944C1B50551E0047B5AB /* logo_120.png */; };
+		7BBA94501B50551E0047B5AB /* logo_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944D1B50551E0047B5AB /* logo_80.png */; };
 		7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3CE7E1B42B73800B1700B /* Wall.swift */; };
 		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
@@ -125,6 +128,9 @@
 		7B9867291B50214B00E46709 /* Feather.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Feather.atlas; sourceTree = "<group>"; };
 		7B98672D1B50263600E46709 /* LeopardFly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = LeopardFly.atlas; sourceTree = "<group>"; };
 		7BB7749C1B4FFEA700FB46D2 /* Sky.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sky.swift; sourceTree = "<group>"; };
+		7BBA944B1B50551E0047B5AB /* logo_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_58.png; sourceTree = "<group>"; };
+		7BBA944C1B50551E0047B5AB /* logo_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_120.png; sourceTree = "<group>"; };
+		7BBA944D1B50551E0047B5AB /* logo_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_80.png; sourceTree = "<group>"; };
 		7BE3CE7E1B42B73800B1700B /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		7BE5952C1B419CA80055F646 /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
@@ -265,6 +271,9 @@
 		28DC02191AF238C200B8E9DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7BBA944B1B50551E0047B5AB /* logo_58.png */,
+				7BBA944C1B50551E0047B5AB /* logo_120.png */,
+				7BBA944D1B50551E0047B5AB /* logo_80.png */,
 				7B43FD271B32D0640037D9AA /* dead.wav */,
 				7B43FD251B32CE5A0037D9AA /* jump.wav */,
 				7B43FD231B32C3E70037D9AA /* theme.wav */,
@@ -464,8 +473,10 @@
 			files = (
 				7B43FD281B32D0650037D9AA /* dead.wav in Resources */,
 				7B43FD1E1B32BBD70037D9AA /* Sounds in Resources */,
+				7BBA944F1B50551E0047B5AB /* logo_120.png in Resources */,
 				28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */,
 				28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */,
+				7BBA94501B50551E0047B5AB /* logo_80.png in Resources */,
 				2848919B1B43250300A08DD9 /* LobbyScene.sks in Resources */,
 				7B98672E1B50263600E46709 /* LeopardFly.atlas in Resources */,
 				289D4F9E1B32D2CE009E8BAB /* GameMultiScene.sks in Resources */,
@@ -475,6 +486,7 @@
 				282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */,
 				28B665691B303D260094C888 /* GameOverScene.sks in Resources */,
 				7B43FD241B32C3E70037D9AA /* theme.wav in Resources */,
+				7BBA944E1B50551E0047B5AB /* logo_58.png in Resources */,
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
 				7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */,
 				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
