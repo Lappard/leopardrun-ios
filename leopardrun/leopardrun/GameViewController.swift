@@ -45,7 +45,7 @@ class GameViewController: UIViewController {
             let skView = self.view! as! SKView
             let transition = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 1.0)
             skView.ignoresSiblingOrder = true
-            scene.scaleMode = .ResizeFill
+            scene.scaleMode = .AspectFill
             scene.size = skView.bounds.size
             skView.presentScene(scene,transition: transition)
         }

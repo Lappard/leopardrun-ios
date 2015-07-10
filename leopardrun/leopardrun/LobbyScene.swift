@@ -79,19 +79,25 @@ class LobbyScene: SKScene {
                     if self.challenges != nil {
                         
                         // get challenge
-                        if let c = self.challenges?[index] {
-                            
+                        if let c = self.challenges?[index] {                            
                             if let scene = GameMultiScene.unarchiveFromFile("GameMultiScene") as? GameMultiScene {
+                                scene.challenge = c
+                                nextScene = scene
                                 let skView = self.view! as SKView
                                 let transition = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 1.0)
-                                scene.scaleMode = .ResizeFill
-                                scene.size = skView.bounds.size
-                                skView.presentScene(scene,transition: transition)
+                                nextScene!.scaleMode = .AspectFill
+                                
+                               
+                                skView.presentScene(nextScene, transition: transition)
                             }
                         }
                     }
                 }
             }
         }
+        
+        
+
+        
     }
 }

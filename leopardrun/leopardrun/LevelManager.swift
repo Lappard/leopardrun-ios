@@ -145,6 +145,10 @@ class LevelManager : NetworkListener {
         return (obstacles, coins)
     }
     
+    func setLevelJson(json : [JSON]) {
+        levelPartData = json
+    }
+    
     func getLevelData(data : JSON) -> Void {
         
         levelPartData = data["process"]["level"]["levelparts"].array!

@@ -106,8 +106,10 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         
         // get level stuff from server
         if let process : [String : JSON] = json["process"].dictionary {
-            println("daten erhalten" + json.description)
-            delegate?.getLevelData(json)
+            if currentMethod.rawValue == NetworkMethod.LevelData.rawValue {
+                println("daten erhalten" + json.description)
+                delegate?.getLevelData(json)
+            }
         }
         
         // GameName
@@ -136,11 +138,9 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
                                 c.date = game["date"].intValue
                                 
                                 if let level = game["level"].dictionary {
-                                    if let levelparts = level["dasd"]?.array {
+                                    if let levelparts = level["levelparts"]?.array {
                                         c.levelData = levelparts
                                     }
-                                    
-                                    
                                 }
                                 
                                 list.append(c)

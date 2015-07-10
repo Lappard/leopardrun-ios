@@ -68,35 +68,32 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
                 LevelManager.sharedInstance.delegate = self
 
             }
-            
         }
-        
-
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-
+        
     }
     
     func DataLoaded() {
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
-        scene!.scaleMode = .ResizeFill
+        scene!.scaleMode = .AspectFill
         scene!.size = skView.bounds.size
-        skView.presentScene(nextScene, transition: transition)
+        if nextScene != nil {
+            skView.presentScene(nextScene, transition: transition)
+        }
+        nextScene = nil
     }
-    
     
     func ReceivedData() -> Void {
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
-        scene!.scaleMode = .ResizeFill
+        scene!.scaleMode = .AspectFill
         scene!.size = skView.bounds.size
         skView.presentScene(nextScene, transition: transition)
-        
-        
     }
 
     override func willMoveFromView(view: SKView) {
