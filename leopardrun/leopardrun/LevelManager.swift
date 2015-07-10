@@ -32,7 +32,7 @@ class LevelManager : NetworkListener {
         struct Static {
             static var onceToken: dispatch_once_t = 0
             static var instance: LevelManager? = nil
-
+            
         }
         dispatch_once(&Static.onceToken) {
             Static.instance = LevelManager()
@@ -55,7 +55,7 @@ class LevelManager : NetworkListener {
         hasInit = true
         
         NetworkManager.sharedInstance.delegate = self
-
+        
     }
     
     
@@ -110,26 +110,26 @@ class LevelManager : NetworkListener {
             
             for object in part.array! {
                 let x : CGFloat = CGFloat(object["x"].number!),
-                    y : CGFloat = CGFloat(object["y"].number!),
+                y : CGFloat = CGFloat(object["y"].number!),
                 yPos : CGFloat = nextY(y)
                 
                 switch(object["type"].string!) {
-                case "g":
-                    let ground = Obstacle.ground(CGPoint(x: 0, y: yPos))
-                    ground.position.x = nextX(x, obs: ground)
-                    obstacles.append(ground)
-                    break
-                case "b":
-                    let box = Obstacle.block(CGPoint(x: 0, y: yPos))
-                    box.position.x = nextX(x, obs: box)
-                    obstacles.append(box)
-                /*case "c":
-                    let box = Item()
-                    box.position = CGPoint(x: 0, y: yPos)
-                    box.position.x = 1000.0
-                    coins.append(box)*/
-                default:
-                    break
+                    case "g":
+                        let ground = Obstacle.ground(CGPoint(x: 0, y: yPos))
+                        ground.position.x = nextX(x, obs: ground)
+                        obstacles.append(ground)
+                        break
+                    case "b":
+                        let box = Obstacle.block(CGPoint(x: 0, y: yPos))
+                        box.position.x = nextX(x, obs: box)
+                        obstacles.append(box)
+                        /*case "c":
+                        let box = Item()
+                        box.position = CGPoint(x: 0, y: yPos)
+                        box.position.x = 1000.0
+                        coins.append(box)*/
+                    default:
+                        break
                 }
             }
         }
@@ -156,6 +156,6 @@ class LevelManager : NetworkListener {
         levelPartData = data["process"]["level"]["levelparts"].array!
         delegate?.ReceivedData()
     }
-
+    
     
 }
