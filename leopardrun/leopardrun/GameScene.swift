@@ -94,6 +94,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
         
         if (contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.item.rawValue){
+
+        if (contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.player.rawValue){
             
         }
         
@@ -166,7 +168,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             player.reset()
             
         } else {
-            self.player = Player()
+            self.player = Player(atlasName: "Leopard")
             self.appendGameObject(self.player!)
             self.sky = Sky()
             self.appendGameObject(self.sky!)

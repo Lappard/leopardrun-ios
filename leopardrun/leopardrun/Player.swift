@@ -22,15 +22,16 @@ class Player: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = false
     
-    init() {
+    init(atlasName : String) {
         
-        super.init(atlasName: "Leopard", count: 10)
+        super.init(atlasName: atlasName, count: 10)
         self.xScale = 0.3
         self.yScale = 0.3
 
         self.generateBodyByWidthHeigth(self.size.width)
         println(self.size.width)
         self.position = CGPoint(x: 300, y: 450)
+        
         
         if let physics = physicsBody {
             physics.affectedByGravity = true
@@ -85,7 +86,14 @@ class Player: SpriteEntity {
     }
     
     func jump() -> Void {
+
         if self.isOnGround || self.hasFeather {
+
+            if atlasName == "Ghost" {
+            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
+
+        }
+        if self.isOnGround {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
             isOnGround(false)

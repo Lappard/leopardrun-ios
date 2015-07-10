@@ -143,6 +143,17 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
                                     }
                                 }
                                 
+                                if let actions = game["actions"].array {
+                                    var newActions = [Int]()
+                                    for act in actions {
+                                        if let number = act.int {
+                                            newActions.append(number)
+                                        }
+                                    }
+                                    
+                                    c.actions = newActions
+                                }
+                                
                                 list.append(c)
                             }
                             
