@@ -16,7 +16,7 @@ class LobbyScene: SKScene {
         didSet {
             var index : Int = 0
             for c in self.challenges! {
-                let label = SKLabelNode(fontNamed: "Chalkduster")
+                let label = SKLabelNode(fontNamed: "Shojumaru")
                 label.text = c.gameName!
                 
                 // tag workaround
