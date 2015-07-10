@@ -6,8 +6,9 @@ public enum PlayerState: Int {
     case Stand = 0
     case Run = 1
     case Jump = 2
-    case Duck = 3
-    case Dead = 4
+    case Fly = 3;
+    case Duck = 4
+    case Dead = 5
 }
 
 class Player: SpriteEntity {
@@ -17,6 +18,8 @@ class Player: SpriteEntity {
     var currentState: PlayerState = PlayerState.Run
     var oldState: PlayerState = PlayerState.Stand
 
+    var velocity = 150;
+    
     var itemCount = 0;
     
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
@@ -64,6 +67,7 @@ class Player: SpriteEntity {
             println(itemCount)
             if(itemCount == 0){
                 self.hasFeather = false;
+                updateAnimation(PlayerState.Run)
             }
         }
 
@@ -72,10 +76,17 @@ class Player: SpriteEntity {
     func isOnGround(onGround: Bool ) -> Void {
         
             self.isOnGround = onGround
-            if(onGround == true){
+        
+            if(onGround && !hasFeather){
                 currentState = PlayerState.Run
-            }else{
+                velocity = 150;
+            }
+             else if (onGround && hasFeather){
+                currentState = PlayerState.Fly
+                velocity = 50;
+            } else {
                 currentState = PlayerState.Jump
+                velocity = 150;
             }
         
     }
@@ -88,8 +99,10 @@ class Player: SpriteEntity {
 
         if self.isOnGround || self.hasFeather {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
-            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
-            isOnGround(false)
+            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: velocity))
+            if(!self.hasFeather){
+                isOnGround(false)
+            }
         }
     }
 }

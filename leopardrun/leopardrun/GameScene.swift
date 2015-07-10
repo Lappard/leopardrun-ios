@@ -87,14 +87,16 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             }
             
             if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
-                player?.hasFeather = true;
-                player?.itemCount = 100;
+                player!.hasFeather = true;
+                player!.itemCount = 400;
+                player!.updateAnimation(PlayerState.Fly)
             }
             itemNode.removeFromParent()
         }
         
         //Ground
-        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue) {
+        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue)
+            {
             self.player!.isOnGround(true)
             }
     }
@@ -123,9 +125,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
-        
-        print("Ground? =>")
-        println(player!.isOnGround)
         
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
         
