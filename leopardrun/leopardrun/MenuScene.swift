@@ -34,7 +34,7 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         multiLabel.name = "multi"
         multiLabel.fontSize = 40
         multiLabel.fontColor = SKColor.blackColor()
-        multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 12so0)
+        multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 12)
         addChild(multiLabel)
     }
     

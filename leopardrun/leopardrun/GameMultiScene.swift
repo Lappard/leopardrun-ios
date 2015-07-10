@@ -5,8 +5,9 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     var challenge : Challenge? {
         didSet {
             if let data = self.challenge!.levelData {
-                LevelManager.sharedInstance.setLevelJson(data)
-                LevelManager.sharedInstance.delegate = nil
+                levelManager.setLevelJson(data)
+                // TODO: MAKE THIS BETTER
+                levelManager.delegate = nil
             }
         }
     }
@@ -32,14 +33,17 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        reset()
+    }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
     }
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
-        addChild(ghost)
-        
-        println("didmovetoview")
+        world?.addChild(ghost)
     }
     
     var msSum = 0
@@ -50,7 +54,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         msSum += x
 
 
-        println(msSum.description + " >= " + currentAction.description)
+//        println(msSum.description + " >= " + currentAction.description)
         if currentAction > -1 && msSum >= currentAction / 100 {
             currentActionIndex++
             ghost.jump()
