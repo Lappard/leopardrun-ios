@@ -57,10 +57,7 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
             if touchedNode.name == "single" {
                 nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
                 nextScene!.scaleMode = SKSceneScaleMode.AspectFill
-                
-                
                 LevelManager.sharedInstance.delegate = self
-
             }
         }
     }
