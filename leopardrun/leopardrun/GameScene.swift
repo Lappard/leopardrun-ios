@@ -106,7 +106,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if self.camera != nil && player != nil{
             self.centerCamera(self.player!)
         }
-//        self.camera!.physicsBody!.velocity.dx = 100
         self.player?.physicsBody?.velocity.dx = 150
         self.sky?.physicsBody?.velocity.dx = 150
         self.wall.physicsBody?.velocity.dx = 150
@@ -125,6 +124,24 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
+        
+        let count = levelManager.obstacles.count;
+        
+        var farestAway:CGFloat = 0;
+        for index in 0...count-1 {
+            let currentObstacle:Obstacle = levelManager.obstacles[index]
+            if (farestAway < (currentObstacle.position.x - player!.position.x)){
+                farestAway = currentObstacle.position.x - player!.position.x
+            }
+            
+        }
+        
+        if(farestAway < 100 && farestAway > 0){
+            createLevelPart()
+        }
+        
+        
+        
         
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
         
@@ -159,6 +176,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     func reset() -> Void {
         NetworkManager.sharedInstance.getLevelDataFromServer()
         ScoreManager.sharedInstance.reset()
+        levelManager.reset();
         
         if let player = self.player {
             player.reset()
