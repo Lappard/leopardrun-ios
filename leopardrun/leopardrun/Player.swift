@@ -99,5 +99,5 @@ class Player: SpriteEntity {
             isOnGround(false)
         }
     }
-    
+    }
 }

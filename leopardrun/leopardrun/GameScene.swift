@@ -102,10 +102,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         //Ground
         if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue) {
             self.player?.isOnGround(true)
+            }
         }
     }
     
-    override func didSimulatePhysics() {
+     override func didSimulatePhysics() {
         
         if self.camera != nil && player != nil{
             self.centerCamera(self.player!)
@@ -128,7 +129,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func update(currentTime: CFTimeInterval) {
+     override func update(currentTime: CFTimeInterval) {
         
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
         
@@ -199,6 +200,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
                 }
             }
         }
-    }
     
-}
+        }
+    }
