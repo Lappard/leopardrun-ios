@@ -13,6 +13,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     }
 
     private var currentActionIndex : Int = 0
+    private var ghost : Player = Player(atlasName: "Ghost")
     
     var currentAction : Int {
         get {
@@ -29,7 +30,8 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         }
     }
     
-    var ghost : Player = Player(atlasName: "Ghost")
+
+
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -42,7 +44,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
-        
+        ghost.zPosition = 3
         world?.addChild(ghost)
     }
     
@@ -52,7 +54,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         super.update(currentTime)
         var x : Int = Int(currentTime / 10000.0)
         msSum += x
-
+        self.ghost.physicsBody?.velocity.dx = runnerspeed
 
 //        println(msSum.description + " >= " + currentAction.description)
         if currentAction > -1 && msSum >= currentAction / 100 {
