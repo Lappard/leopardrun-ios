@@ -3,7 +3,8 @@ import SpriteKit
 
 class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     
-    let startLabel = SKLabelNode(fontNamed: "Chalkduster")
+    var font:String = "Shojumaru"
+    
     var nextScene : SKScene?
     // 6
     
@@ -22,6 +23,8 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         logo.size = CGSize(width: 150, height: 150)
         addChild(logo)
         
+        
+        var startLabel = SKLabelNode(fontNamed: font)
         startLabel.text = "New Game"
         startLabel.fontSize = 40
         startLabel.name = "single"
@@ -29,12 +32,12 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 60)
         addChild(startLabel)
         
-        var multiLabel = SKLabelNode(fontNamed: "Chalkduster")
+        var multiLabel = SKLabelNode(fontNamed: font)
         multiLabel.text = "Challenge-Mode"
         multiLabel.name = "multi"
         multiLabel.fontSize = 40
         multiLabel.fontColor = SKColor.blackColor()
-        multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 12so0)
+        multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
         addChild(multiLabel)
     }
     

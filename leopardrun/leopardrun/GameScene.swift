@@ -13,7 +13,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     var gameOver = false;
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     var backgroundImage2 = SKSpriteNode(imageNamed: "Background")
-
+    
+    //Geschwindigkeiten der Bewegungen
+    var wallspeed:CGFloat = 150
+    var skyspeed:CGFloat = 150
+    var runnerspeed:CGFloat = 150
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,9 +47,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.view?.backgroundColor = UIColor.blackColor()
         
-        let label = SKLabelNode(fontNamed: "Chalkduster")
+        let label = SKLabelNode(fontNamed: "Shojumaru")
         
-        self.hud[scoreManager.scoreLabel] = CGPoint(x: 500, y: 500)
+        self.hud[scoreManager.scoreLabel] = CGPoint(x: size.width-150, y: size.height - 150)
         
         wall.position = CGPoint(x: 000, y: 140)
         wall.physicsBody = SKPhysicsBody()
@@ -97,7 +101,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         //Ground
         if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue)
             {
-            self.player!.isOnGround(true)
+                self.player!.isOnGround(true)
             }
     }
     
@@ -106,10 +110,10 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if self.camera != nil && player != nil{
             self.centerCamera(self.player!)
         }
-        self.player?.physicsBody?.velocity.dx = 150
-        self.sky?.physicsBody?.velocity.dx = 150
-        self.wall.physicsBody?.velocity.dx = 150
-        self.wall2.physicsBody?.velocity.dx = 150
+        self.player?.physicsBody?.velocity.dx = runnerspeed
+        self.sky?.physicsBody?.velocity.dx = skyspeed
+        self.wall.physicsBody?.velocity.dx = wallspeed
+        self.wall2.physicsBody?.velocity.dx = wallspeed
         
         reorderBackground(self.backgroundImage)
         reorderBackground(self.backgroundImage2)
@@ -168,8 +172,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             skView.presentScene(scene,transition: transition)
             gameOver = true
         }
-        
-        //Kollision mit Items abfangen
         
     }
     

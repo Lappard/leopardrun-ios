@@ -49,6 +49,7 @@
 		7BBA944E1B50551E0047B5AB /* logo_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944B1B50551E0047B5AB /* logo_58.png */; };
 		7BBA944F1B50551E0047B5AB /* logo_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944C1B50551E0047B5AB /* logo_120.png */; };
 		7BBA94501B50551E0047B5AB /* logo_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944D1B50551E0047B5AB /* logo_80.png */; };
+		7BBA94541B505A0C0047B5AB /* Shojumaru-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA94531B5057C80047B5AB /* Shojumaru-Regular.ttf */; };
 		7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3CE7E1B42B73800B1700B /* Wall.swift */; };
 		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
@@ -131,6 +132,7 @@
 		7BBA944B1B50551E0047B5AB /* logo_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_58.png; sourceTree = "<group>"; };
 		7BBA944C1B50551E0047B5AB /* logo_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_120.png; sourceTree = "<group>"; };
 		7BBA944D1B50551E0047B5AB /* logo_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_80.png; sourceTree = "<group>"; };
+		7BBA94531B5057C80047B5AB /* Shojumaru-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shojumaru-Regular.ttf"; sourceTree = "<group>"; };
 		7BE3CE7E1B42B73800B1700B /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		7BE5952C1B419CA80055F646 /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		28DC02191AF238C200B8E9DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7BBA94531B5057C80047B5AB /* Shojumaru-Regular.ttf */,
 				7BBA944B1B50551E0047B5AB /* logo_58.png */,
 				7BBA944C1B50551E0047B5AB /* logo_120.png */,
 				7BBA944D1B50551E0047B5AB /* logo_80.png */,
@@ -471,6 +474,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BBA94541B505A0C0047B5AB /* Shojumaru-Regular.ttf in Resources */,
 				7B43FD281B32D0650037D9AA /* dead.wav in Resources */,
 				7B43FD1E1B32BBD70037D9AA /* Sounds in Resources */,
 				7BBA944F1B50551E0047B5AB /* logo_120.png in Resources */,

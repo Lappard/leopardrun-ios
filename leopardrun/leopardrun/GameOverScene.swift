@@ -20,7 +20,7 @@ class GameOverScene : SKScene {
         var message = "Game Over!"
         
         // 3
-        let label = SKLabelNode(fontNamed: "Chalkduster")
+        let label = SKLabelNode(fontNamed: "Shojumaru")
         label.text = message
         label.fontSize = 40
         label.fontColor = SKColor.blackColor()
@@ -29,7 +29,7 @@ class GameOverScene : SKScene {
         
         var scoreMessage = "Your Score is " + ScoreManager.sharedInstance.score.description
         
-        let scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        let scoreLabel = SKLabelNode(fontNamed: "Shojumaru")
         scoreLabel.text = scoreMessage
         scoreLabel.fontSize = 40
         scoreLabel.fontColor = SKColor.blackColor()
