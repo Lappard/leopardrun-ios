@@ -94,6 +94,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
                 player!.hasFeather = true;
                 player!.itemCount = 400;
                 player!.updateAnimation(PlayerState.Fly)
+                SoundManager.sharedInstance.stopMusic()
+                SoundManager.sharedInstance.playMusic("fly")
             }
             itemNode.removeFromParent()
         }
@@ -143,9 +145,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if(farestAway < 100 && farestAway > 0){
             createLevelPart()
         }
-        
-        
-        
         
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
         

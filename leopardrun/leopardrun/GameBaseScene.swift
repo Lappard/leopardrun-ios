@@ -81,7 +81,7 @@ class GameBaseScene : SKScene {
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tapped:"))
         view.addGestureRecognizer(tap)
         createLevelPart()
-        SoundManager.sharedInstance.playMusic("theme")
+        SoundManager.sharedInstance.playMusic("music")
         ScoreManager.sharedInstance.shouldCounting = true
         
         

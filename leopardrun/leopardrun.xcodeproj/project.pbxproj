@@ -28,8 +28,6 @@
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
 		7B02FB041B42AFD000D52DAE /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B02FB031B42AFD000D52DAE /* Coin.atlas */; };
 		7B43FD1E1B32BBD70037D9AA /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD1D1B32BBD70037D9AA /* Sounds */; };
-		7B43FD201B32BC220037D9AA /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD1F1B32BC220037D9AA /* theme.mp3 */; };
-		7B43FD221B32C1400037D9AA /* theme.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD211B32C1400037D9AA /* theme.ogg */; };
 		7B43FD241B32C3E70037D9AA /* theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD231B32C3E70037D9AA /* theme.wav */; };
 		7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD251B32CE5A0037D9AA /* jump.wav */; };
 		7B43FD281B32D0650037D9AA /* dead.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD271B32D0640037D9AA /* dead.wav */; };
@@ -43,6 +41,8 @@
 		7B74C5E31AFF95F1007748F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C5E21AFF95F1007748F3 /* Player.swift */; };
 		7B8349861B41A34D007C5FA2 /* Firewall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B8349851B41A34D007C5FA2 /* Firewall.atlas */; };
 		7B846DC71AFFA54A0040F7A8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B846DC61AFFA54A0040F7A8 /* Entity.swift */; };
+		7B8E7AFC1B507B1600EA8580 /* fly.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E7AFA1B507B1600EA8580 /* fly.wav */; };
+		7B8E7AFD1B507B1600EA8580 /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E7AFB1B507B1600EA8580 /* music.wav */; };
 		7B98672A1B50214B00E46709 /* Feather.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B9867291B50214B00E46709 /* Feather.atlas */; };
 		7B98672E1B50263600E46709 /* LeopardFly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B98672D1B50263600E46709 /* LeopardFly.atlas */; };
 		7BB7749D1B4FFEA700FB46D2 /* Sky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB7749C1B4FFEA700FB46D2 /* Sky.swift */; };
@@ -111,8 +111,6 @@
 		6CEDD501F473934333A4463F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B02FB031B42AFD000D52DAE /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
 		7B43FD1D1B32BBD70037D9AA /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
-		7B43FD1F1B32BC220037D9AA /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = theme.mp3; path = Sounds/theme.mp3; sourceTree = "<group>"; };
-		7B43FD211B32C1400037D9AA /* theme.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = theme.ogg; path = Sounds/theme.ogg; sourceTree = "<group>"; };
 		7B43FD231B32C3E70037D9AA /* theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = theme.wav; path = Sounds/theme.wav; sourceTree = "<group>"; };
 		7B43FD251B32CE5A0037D9AA /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = Sounds/jump.wav; sourceTree = "<group>"; };
 		7B43FD271B32D0640037D9AA /* dead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dead.wav; path = Sounds/dead.wav; sourceTree = "<group>"; };
@@ -126,6 +124,8 @@
 		7B74C5E21AFF95F1007748F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7B8349851B41A34D007C5FA2 /* Firewall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Firewall.atlas; sourceTree = "<group>"; };
 		7B846DC61AFFA54A0040F7A8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		7B8E7AFA1B507B1600EA8580 /* fly.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = fly.wav; path = Sounds/fly.wav; sourceTree = "<group>"; };
+		7B8E7AFB1B507B1600EA8580 /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = music.wav; path = Sounds/music.wav; sourceTree = "<group>"; };
 		7B9867291B50214B00E46709 /* Feather.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Feather.atlas; sourceTree = "<group>"; };
 		7B98672D1B50263600E46709 /* LeopardFly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = LeopardFly.atlas; sourceTree = "<group>"; };
 		7BB7749C1B4FFEA700FB46D2 /* Sky.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sky.swift; sourceTree = "<group>"; };
@@ -273,6 +273,8 @@
 		28DC02191AF238C200B8E9DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B8E7AFA1B507B1600EA8580 /* fly.wav */,
+				7B8E7AFB1B507B1600EA8580 /* music.wav */,
 				7BBA94531B5057C80047B5AB /* Shojumaru-Regular.ttf */,
 				7BBA944B1B50551E0047B5AB /* logo_58.png */,
 				7BBA944C1B50551E0047B5AB /* logo_120.png */,
@@ -280,8 +282,6 @@
 				7B43FD271B32D0640037D9AA /* dead.wav */,
 				7B43FD251B32CE5A0037D9AA /* jump.wav */,
 				7B43FD231B32C3E70037D9AA /* theme.wav */,
-				7B43FD211B32C1400037D9AA /* theme.ogg */,
-				7B43FD1F1B32BC220037D9AA /* theme.mp3 */,
 				28DC021A1AF238C200B8E9DE /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -484,9 +484,9 @@
 				2848919B1B43250300A08DD9 /* LobbyScene.sks in Resources */,
 				7B98672E1B50263600E46709 /* LeopardFly.atlas in Resources */,
 				289D4F9E1B32D2CE009E8BAB /* GameMultiScene.sks in Resources */,
-				7B43FD201B32BC220037D9AA /* theme.mp3 in Resources */,
 				7B98672A1B50214B00E46709 /* Feather.atlas in Resources */,
 				28DC021E1AF238C200B8E9DE /* GameScene.sks in Resources */,
+				7B8E7AFD1B507B1600EA8580 /* music.wav in Resources */,
 				282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */,
 				28B665691B303D260094C888 /* GameOverScene.sks in Resources */,
 				7B43FD241B32C3E70037D9AA /* theme.wav in Resources */,
@@ -494,10 +494,10 @@
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
 				7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */,
 				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
+				7B8E7AFC1B507B1600EA8580 /* fly.wav in Resources */,
 				28B6656C1B303D600094C888 /* MenuScene.sks in Resources */,
 				7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */,
 				7B8349861B41A34D007C5FA2 /* Firewall.atlas in Resources */,
-				7B43FD221B32C1400037D9AA /* theme.ogg in Resources */,
 				7B02FB041B42AFD000D52DAE /* Coin.atlas in Resources */,
 				AB1524AB1B41985C002C50E2 /* GameBaseScene.sks in Resources */,
 			);

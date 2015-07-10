@@ -65,6 +65,8 @@ class Player: SpriteEntity {
             if(itemCount == 0){
                 self.hasFeather = false;
                 updateAnimation(PlayerState.Run)
+                SoundManager.sharedInstance.stopMusic()
+                SoundManager.sharedInstance.playMusic("music")
             }
         }
 
