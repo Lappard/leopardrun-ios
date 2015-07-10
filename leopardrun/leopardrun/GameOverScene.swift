@@ -2,6 +2,8 @@ import SpriteKit
 
 class GameOverScene : SKScene {
     
+    var backgroundImage = SKSpriteNode(imageNamed: "Background")
+    
     override init(size: CGSize) {
         
         super.init(size: size)
@@ -13,8 +15,12 @@ class GameOverScene : SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        // 1
-        backgroundColor = SKColor.whiteColor()
+        
+        self.backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        self.backgroundImage.zPosition = 0
+        self.backgroundImage.size = self.size
+        
+        addChild(backgroundImage)
         
         // 2
         var message = "Game Over!"

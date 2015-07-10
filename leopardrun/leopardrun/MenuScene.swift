@@ -5,6 +5,8 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     
     var font:String = "Shojumaru"
     
+    var backgroundImage = SKSpriteNode(imageNamed: "Background")
+    
     var nextScene : SKScene?
     // 6
     
@@ -16,7 +18,13 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     override func didMoveToView(view: SKView) {
         
         // 1
-        backgroundColor = SKColor.whiteColor()
+        //backgroundColor = SKColor.whiteColor()
+        
+        self.backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        self.backgroundImage.zPosition = 0
+        self.backgroundImage.size = self.size
+        
+        addChild(backgroundImage)
         
         let logo = SKSpriteNode(imageNamed: "Logo")
         logo.position = CGPoint(x: size.width/2, y: size.height/2 + 60)

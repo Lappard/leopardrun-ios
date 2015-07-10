@@ -147,9 +147,9 @@ class LevelManager : NetworkListener {
         }
         
         
-        let item2 = Item(kind: "Coin",spriteCount: 6,x: 1600,y: 150)
+        let item2 = Item(kind: "Coin",spriteCount: 6,x: 800,y: 150)
         coins.append(item2)
-        let item3 = Item(kind: "Coin",spriteCount: 6,x: 2900,y: 150)
+        let item3 = Item(kind: "Coin",spriteCount: 6,x: 1700,y: 150)
         coins.append(item3)
         let item4 = Item(kind: "Feather",spriteCount:10,x: 1000,y: 250)
         coins.append(item4)

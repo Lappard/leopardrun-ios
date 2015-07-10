@@ -92,7 +92,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             
             if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
                 player!.hasFeather = true;
-                player!.itemCount = 400;
+                player!.itemCount = 450;
                 player!.updateAnimation(PlayerState.Fly)
                 SoundManager.sharedInstance.stopMusic()
                 SoundManager.sharedInstance.playMusic("fly")

@@ -10,6 +10,30 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="YXv-cF-VNQ">
+                    <rect key="frame" x="-10" y="0.0" width="677" height="375"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Ground" translatesAutoresizingMaskIntoConstraints="NO" id="nq0-gE-Ugm">
+                    <rect key="frame" x="-33" y="299" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="NZe-PF-mQS"/>
+                        <constraint firstAttribute="height" constant="128" id="VH1-K0-hEr"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Ground" translatesAutoresizingMaskIntoConstraints="NO" id="5hA-hj-6cO">
+                    <rect key="frame" x="207" y="299" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="Kld-BG-eX5"/>
+                        <constraint firstAttribute="height" constant="128" id="SEJ-b6-Odo"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Ground" translatesAutoresizingMaskIntoConstraints="NO" id="0AS-xD-Qaf">
+                    <rect key="frame" x="447" y="299" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="YGf-kh-r67"/>
+                        <constraint firstAttribute="width" constant="240" id="p83-UE-e6Q"/>
+                    </constraints>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hIt-Hy-BoX">
                     <rect key="frame" x="136" y="17" width="331" height="331"/>
                     <constraints>
@@ -20,8 +44,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="5hA-hj-6cO" secondAttribute="bottom" constant="-50" id="OZb-f0-5OH"/>
                 <constraint firstAttribute="centerX" secondItem="hIt-Hy-BoX" secondAttribute="centerX" id="aj9-1q-aQm"/>
                 <constraint firstAttribute="centerY" secondItem="hIt-Hy-BoX" secondAttribute="centerY" id="ior-xA-BOT"/>
+                <constraint firstAttribute="bottom" secondItem="nq0-gE-Ugm" secondAttribute="bottom" constant="-50" id="re3-kp-Wkg"/>
+                <constraint firstAttribute="bottom" secondItem="0AS-xD-Qaf" secondAttribute="bottom" constant="-50" id="ubL-GW-bxj"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -30,6 +57,8 @@
         </view>
     </objects>
     <resources>
+        <image name="Background" width="1920" height="1080"/>
+        <image name="Ground" width="512" height="512"/>
         <image name="Logo" width="546" height="546"/>
     </resources>
 </document>
