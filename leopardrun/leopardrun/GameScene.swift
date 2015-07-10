@@ -93,17 +93,10 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             itemNode.removeFromParent()
         }
         
-        if (contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.item.rawValue){
-
-        if (contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.player.rawValue){
-            
-        }
-        
         //Ground
         if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue) {
-            self.player?.isOnGround(true)
+            self.player!.isOnGround(true)
             }
-        }
     }
     
      override func didSimulatePhysics() {
@@ -130,6 +123,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
+        
+        print("Ground? =>")
+        println(player!.isOnGround)
         
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
         

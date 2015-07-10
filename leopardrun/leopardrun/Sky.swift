@@ -5,7 +5,7 @@ class Sky: SpriteEntity {
     
     init() {
         
-        super.init(atlasName: "Runner", count: 10)
+        super.init(atlasName: "Runner", count: 1)
         self.xScale = 0.3
         self.yScale = 0.3
         

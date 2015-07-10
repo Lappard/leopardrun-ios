@@ -134,8 +134,6 @@ class LevelManager : NetworkListener {
             }
         }
         
-        let item = Item(kind: "Feather",x: 500,y: 150)
-        coins.append(item)
         let item2 = Item(kind: "Coin",x: 1600,y: 150)
         coins.append(item2)
         let item3 = Item(kind: "Coin",x: 2900,y: 150)
