@@ -32,9 +32,6 @@ class Player: SpriteEntity {
         self.yScale = 0.3
 
         self.generateBodyByWidthHeigth(self.size.width)
- 
-        self.position = CGPoint(x: 300, y: 450)
-        
         if let physics = physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false
