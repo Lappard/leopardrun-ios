@@ -1,7 +1,7 @@
 import Foundation
 import SpriteKit
 
-class MenuScene: SKScene, LevelManagerDelegate {
+class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     
     let startLabel = SKLabelNode(fontNamed: "Chalkduster")
     var nextScene : SKScene?
@@ -42,10 +42,6 @@ class MenuScene: SKScene, LevelManagerDelegate {
         multiLabel.fontColor = SKColor.blackColor()
         multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
         addChild(multiLabel)
-        
-        
-        
-
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -53,21 +49,42 @@ class MenuScene: SKScene, LevelManagerDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
+            
+            
             if touchedNode.name == "multi" {
-                nextScene = LobbyScene.unarchiveFromFile("LobbyScene") as? LobbyScene
-                nextScene!.scaleMode = SKSceneScaleMode.AspectFill
-                LevelManager.sharedInstance.delegate = self
+                if let lobbyScene = LobbyScene.unarchiveFromFile("LobbyScene") as? LobbyScene {
+                    lobbyScene.dataLoadedDelegate = self
+                    lobbyScene.scaleMode = SKSceneScaleMode.AspectFill
+                    
+                    nextScene = lobbyScene
+                }
+                
             }
             if touchedNode.name == "single" {
                 nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
                 nextScene!.scaleMode = SKSceneScaleMode.AspectFill
+                
+                
                 LevelManager.sharedInstance.delegate = self
+
             }
+            
         }
+        
+
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 
+    }
+    
+    func DataLoaded() {
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        scene!.scaleMode = .ResizeFill
+        scene!.size = skView.bounds.size
+        skView.presentScene(nextScene, transition: transition)
     }
     
     
@@ -78,6 +95,8 @@ class MenuScene: SKScene, LevelManagerDelegate {
         scene!.scaleMode = .ResizeFill
         scene!.size = skView.bounds.size
         skView.presentScene(nextScene, transition: transition)
+        
+        
     }
 
     override func willMoveFromView(view: SKView) {

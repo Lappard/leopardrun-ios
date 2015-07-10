@@ -173,6 +173,16 @@
 			name = Multi;
 			sourceTree = "<group>";
 		};
+		2876F0411B4ACB26004807B9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				28DC02211AF238C200B8E9DE /* GameViewController.swift */,
+				7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */,
+				AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		289927F01B0B5AAF0061FBA3 /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,13 +323,11 @@
 		7B74C5CE1AFF9522007748F3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2876F0411B4ACB26004807B9 /* Base */,
 				284891961B4324E800A08DD9 /* Multi */,
 				28B665651B303CD50094C888 /* gameover */,
 				289927F71B0B62BF0061FBA3 /* Single */,
 				289927F01B0B5AAF0061FBA3 /* menu */,
-				28DC02211AF238C200B8E9DE /* GameViewController.swift */,
-				7B74C5D21AFF9587007748F3 /* GameBaseScene.swift */,
-				AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -668,7 +676,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = leopardrun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "leopardrun/leopardrun-Bridging-Header.h";
@@ -682,7 +692,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = leopardrun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "leopardrun/leopardrun-Bridging-Header.h";

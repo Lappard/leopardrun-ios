@@ -4,6 +4,11 @@ protocol NetworkListener {
     func getLevelData(data : JSON) -> Void
 }
 
+public enum NetworkMethod : String {
+    case SaveGames = "getSaveGames",
+         LevelData = "getLevelData"
+}
+
 class NetworkManager : NSObject, SRWebSocketDelegate {
     
     var socketio:SRWebSocket? = nil
@@ -12,8 +17,12 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     
     var delegate : NetworkListener?
     
+    var currentMethod : NetworkMethod = NetworkMethod.LevelData
+    
     var guid : String = ""
 
+    private var completedBlock : ([AnyObject] -> Void)?
+    
     class var sharedInstance: NetworkManager {
         struct Static {
             static var onceToken: dispatch_once_t = 0
@@ -51,15 +60,26 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         
     }
     
-    func getLastChallenges(completed: ([Challenge]) -> Void) -> Void {
+    func getLastChallenges(completed: ([AnyObject]) -> Void) -> Void {
+        
         var ch = [Challenge]()
         
         ch.append(Challenge(name: "schnellste maus von mexiko"))
         ch.append(Challenge(name: "refactor this"))
         ch.append(Challenge(name: "lorem huso"))
         
-        completed(ch)
+        self.completedBlock = completed
+        
+        //socketio!.send("{\"method\":\"getSaveGames\"}")
     }
+    
+    func get(method : NetworkMethod, completed: [AnyObject] -> Void) -> Void {
+        self.currentMethod = method
+        self.completedBlock = completed
+    }
+    
+    // {"method":"getSaveGames"}
+    
     
     @objc func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
         // All incoming messages ( socket.on() ) are received in this function. Parsed with JSON
@@ -68,16 +88,81 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
 
         var json = JSON(data: data!)
         
+        
         // get guid from server
         if let id = json["guid"].string {
             guid = id
-            socketio!.send("{\"method\":\"createLevel\"}")
+            
+            switch(self.currentMethod) {
+                case .SaveGames:
+                    socketio!.send("{\"method\":\"getSaveGames\"}")
+                break
+            default:
+                socketio!.send("{\"method\":\"createLevel\"}")
+            }
         }
         
-        // get level stuff form server
+        println(json)
+        
+        // get level stuff from server
         if let process : [String : JSON] = json["process"].dictionary {
             println("daten erhalten" + json.description)
             delegate?.getLevelData(json)
+        }
+        
+        // GameName
+        
+        if let method : String = json["method"].string {
+            
+            switch(method) {
+                case NetworkMethod.SaveGames.rawValue:
+                    println("savegames daten erhalten" + method)
+                    var list = [Challenge]()
+                
+                    
+                    if let process = json["process"].dictionary {
+                        
+                        if let games = process["games"]?.array {
+                            
+                            var list = [Challenge]()
+                            
+                            for game in games {
+                                
+
+                                //             completedBlock!(list)
+                                var c = Challenge(name: game["gameName"].string!)
+                                c.owner = game["owner"].string!
+                                c.playerScore = game["playerScore"].floatValue
+                                c.date = game["date"].intValue
+                                
+                                if let level = game["level"].dictionary {
+                                    if let levelparts = level["dasd"]?.array {
+                                        c.levelData = levelparts
+                                    }
+                                    
+                                    
+                                }
+                                
+                                list.append(c)
+                            }
+                            
+                            completedBlock!(list)
+                            
+                        }
+                        
+                        
+                    }
+                    
+                
+                        
+            
+            
+                    break
+            default:
+                var x = 1
+            }
+            
+            
         }
     }
 
