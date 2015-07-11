@@ -28,6 +28,8 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         }
     }
     
+    var myTimer : NSTimer?
+    
     var ghost : Player = Player(atlasName: "Ghost")
 
     required init?(coder aDecoder: NSCoder) {
@@ -40,22 +42,28 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         addChild(ghost)
         
         println("didmovetoview")
+        
+        var timerInterval = NSTimeInterval(currentAction / 1000)
+        
+        myTimer = NSTimer(timeInterval: timerInterval, target: self, selector:"doGhostAction", userInfo: nil, repeats: false)
+        myTimer?.fire()
     }
     
-    var msSum = 0
+    func doGhostAction() {
+        currentActionIndex++
+        ghost.jump()
+        println("ghost jump")
+        if currentAction != -1 {
+            var timerInterval = NSTimeInterval(currentAction / 1000)
+            myTimer = NSTimer(timeInterval: timerInterval, target: self, selector:"doGhostAction", userInfo: nil, repeats: false)
+            myTimer?.fire()
+        }
+        
+    }
+    
     
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
-        var x : Int = Int(currentTime / 10000.0)
-        msSum += x
-
-
-        println(msSum.description + " >= " + currentAction.description)
-        if currentAction > -1 && msSum >= currentAction / 100 {
-            currentActionIndex++
-            ghost.jump()
-
-        }
-        //
+       
     }
 }
