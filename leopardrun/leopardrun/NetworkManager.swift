@@ -102,7 +102,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
             }
         }
         
-        println(json)
+//        println(json)
         
         // get level stuff from server
         if let process : [String : JSON] = json["process"].dictionary {

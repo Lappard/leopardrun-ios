@@ -2,7 +2,7 @@ import SpriteKit
 
 class ScoreManager {
     
-    var scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+    var scoreLabel = SKLabelNode(fontNamed: "Shojumaru")
     internal let scorePerSecound:Double = 50
     internal var shouldCounting = false
     

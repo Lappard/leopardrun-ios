@@ -6,18 +6,22 @@ public enum PlayerState: Int {
     case Stand = 0
     case Run = 1
     case Jump = 2
-    case Duck = 3
-    case Dead = 4
+    case Fly = 3;
+    case Duck = 4
+    case Dead = 5
 }
 
 class Player: SpriteEntity {
 
-    var items:Array<Item> = Array<Item>();
-    
+    var hasFeather = false;
     var countRunning = 0
     var currentState: PlayerState = PlayerState.Run
     var oldState: PlayerState = PlayerState.Stand
 
+    var velocity = 150;
+    
+    var itemCount = 0;
+    
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = false
     
@@ -26,12 +30,8 @@ class Player: SpriteEntity {
         super.init(atlasName: atlasName, count: 10)
         self.xScale = 0.3
         self.yScale = 0.3
-
+        self.position = CGPoint(x: 200, y: 450)
         self.generateBodyByWidthHeigth(self.size.width)
-        println(self.size.width)
-        self.position = CGPoint(x: 300, y: 700)
-        
-        
         if let physics = physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = false
@@ -45,7 +45,7 @@ class Player: SpriteEntity {
     }
     
     func reset() -> Void {
-        self.position = CGPoint(x: 200, y: 600)
+        self.position = CGPoint(x: 200, y: 450)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,16 +58,36 @@ class Player: SpriteEntity {
             self.updateAnimation(currentState)
             oldState = currentState
         }
+        
+        if(hasFeather && itemCount > 0){
+            itemCount -= 1;
+            println(itemCount)
+            if(itemCount == 0){
+                self.hasFeather = false;
+                updateAnimation(PlayerState.Run)
+                SoundManager.sharedInstance.stopMusic()
+                SoundManager.sharedInstance.playMusic("music")
+            }
+        }
 
     }
     
     func isOnGround(onGround: Bool ) -> Void {
-        self.isOnGround = onGround
-        if(onGround == true){
-            currentState = PlayerState.Run
-        }else{
-            currentState = PlayerState.Jump
-        }
+        
+            self.isOnGround = onGround
+        
+            if(onGround && !hasFeather){
+                currentState = PlayerState.Run
+                velocity = 150;
+            }
+             else if (onGround && hasFeather){
+                currentState = PlayerState.Fly
+                velocity = 50;
+            } else {
+                currentState = PlayerState.Jump
+                velocity = 150;
+            }
+        
     }
     
     func refreshState(state: PlayerState) -> Void {
@@ -75,19 +95,13 @@ class Player: SpriteEntity {
     }
     
     func jump() -> Void {
-        if atlasName == "Ghost" {
-            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
 
-        }
-        if self.isOnGround {
+        if self.isOnGround || self.hasFeather {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
-            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: 150))
-            isOnGround(false)
+            self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: velocity))
+            if(!self.hasFeather){
+                isOnGround(false)
+            }
         }
     }
-    
-    func addItem(var i:Item) -> Void{
-        self.items.append(i);
-    }
-    
 }

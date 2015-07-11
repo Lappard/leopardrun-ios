@@ -18,9 +18,11 @@ class LevelManager : NetworkListener {
     
     private var levelPartIndex : Int = 0
     
-    private var nextXpos: CGFloat = 0
-    
     private var ground = Obstacle.ground(CGPoint(x: 0, y: 0))
+    
+    private var lastX : CGFloat = 0
+    
+    private var levelPartSize : Int = 0
     
     var obstacles = [Obstacle]()
     var coins = [Item]()
@@ -59,6 +61,15 @@ class LevelManager : NetworkListener {
     }
     
     
+    func reset(){
+        self.levelPartSize = 0;
+        self.levelPartIndex = 0;
+        self.lastX = 0;
+        self.obstacles = [Obstacle]()
+        self.coins = [Item]()
+    }
+    
+    
     
     /**
     desc
@@ -72,11 +83,11 @@ class LevelManager : NetworkListener {
         case (gridPos == 0):
             return 100
         case (gridPos == 1):
-            return 200
+            return 100 + ground.size.height
         case (gridPos == 2):
-            return 300
+            return 100 + ground.size.height * 2
         case (gridPos == 3):
-            return 400
+            return 100 + ground.size.height * 3
         default:
             return 0;
         }
@@ -91,8 +102,8 @@ class LevelManager : NetworkListener {
     :returns:
     */
     func nextX(gridPos : CGFloat, obs: Obstacle) -> CGFloat {
-        let nextPos : CGFloat = gridPos * ground.size.width
-        //println(gridPos.description + " " + nextPos.description + "body width: " + obs.size.width.description)
+        //we have 28 grounds in every level part. shound not be used as number here. calculate earlier!
+        let nextPos : CGFloat = ((CGFloat(levelPartIndex) * CGFloat(28)) + gridPos) * ground.size.width
         return nextPos
     }
     
@@ -102,11 +113,12 @@ class LevelManager : NetworkListener {
     :returns: Array of obstacles which should be rendered
     */
     func getLevelPart() -> ([Obstacle],[Item]) {
-        obstacles = [Obstacle]()
-        coins = [Item]()
+        var obstacles = [Obstacle]()
+        var coins = [Item]()
         var top : Bool = false
         if let levelPart = levelPartData {
             var part = levelPart[levelPartIndex]
+            self.levelPartSize = part.array!.count
             
             for object in part.array! {
                 let x : CGFloat = CGFloat(object["x"].number!),
@@ -134,16 +146,20 @@ class LevelManager : NetworkListener {
             }
         }
         
-        let item = Item(kind: "Coin",x: 500,y: 150)
-        coins.append(item)
-        let item2 = Item(kind: "Coin",x: 1600,y: 150)
+        
+        let item2 = Item(kind: "Coin",spriteCount: 6,x: 800,y: 150)
         coins.append(item2)
-        let item3 = Item(kind: "Coin",x: 2900,y: 150)
+        let item3 = Item(kind: "Coin",spriteCount: 6,x: 1700,y: 150)
         coins.append(item3)
+        let item4 = Item(kind: "Feather",spriteCount:10,x: 1000,y: 250)
+        coins.append(item4)
         
         if levelPartData?.count > levelPartIndex {
             levelPartIndex++
         }
+        self.lastX = obstacles.last!.position.x
+        self.obstacles.extend(obstacles)
+        self.coins.extend(coins)
         return (obstacles, coins)
     }
     
@@ -152,7 +168,6 @@ class LevelManager : NetworkListener {
     }
     
     func getLevelData(data : JSON) -> Void {
-        
         levelPartData = data["process"]["level"]["levelparts"].array!
         delegate?.ReceivedData()
     }

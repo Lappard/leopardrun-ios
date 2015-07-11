@@ -6,11 +6,11 @@ class Item: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var kind:String
     
-    init(var kind:String, x:Int, y:Int) {
+    init(var kind:String, var spriteCount:UInt, x:Int, y:Int) {
         
         self.kind=kind
         
-        super.init(atlasName: kind, count: 6)
+        super.init(atlasName: kind, count: spriteCount)
         
         self.xScale = 1.0
         self.yScale = 1.0

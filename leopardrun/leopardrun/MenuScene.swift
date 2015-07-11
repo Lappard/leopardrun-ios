@@ -3,7 +3,10 @@ import SpriteKit
 
 class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     
-    let startLabel = SKLabelNode(fontNamed: "Chalkduster")
+    var font:String = "Shojumaru"
+    
+    var backgroundImage = SKSpriteNode(imageNamed: "Background")
+    
     var nextScene : SKScene?
     // 6
     
@@ -15,28 +18,30 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     override func didMoveToView(view: SKView) {
         
         // 1
-        backgroundColor = SKColor.whiteColor()
+        //backgroundColor = SKColor.whiteColor()
         
-        // 2
-        var message = "Leopard Run!"
+        self.backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        self.backgroundImage.zPosition = 0
+        self.backgroundImage.size = self.size
         
-        // 3
-        let label = SKLabelNode(fontNamed: "Chalkduster")
-        label.text = message
-        label.fontSize = 40
-        label.fontColor = SKColor.blackColor()
-        label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
-        addChild(label)
+        addChild(backgroundImage)
         
-        startLabel.text = "Single Player"
+        let logo = SKSpriteNode(imageNamed: "Logo")
+        logo.position = CGPoint(x: size.width/2, y: size.height/2 + 60)
+        logo.size = CGSize(width: 150, height: 150)
+        addChild(logo)
+        
+        
+        var startLabel = SKLabelNode(fontNamed: font)
+        startLabel.text = "New Game"
         startLabel.fontSize = 40
         startLabel.name = "single"
         startLabel.fontColor = SKColor.blackColor()
-        startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 50)
+        startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 60)
         addChild(startLabel)
         
-        var multiLabel = SKLabelNode(fontNamed: "Chalkduster")
-        multiLabel.text = "Multi Player"
+        var multiLabel = SKLabelNode(fontNamed: font)
+        multiLabel.text = "Challenge-Mode"
         multiLabel.name = "multi"
         multiLabel.fontSize = 40
         multiLabel.fontColor = SKColor.blackColor()
@@ -63,10 +68,7 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
             if touchedNode.name == "single" {
                 nextScene = GameScene.unarchiveFromFile("GameScene") as? GameScene
                 nextScene!.scaleMode = SKSceneScaleMode.AspectFill
-                
-                
                 LevelManager.sharedInstance.delegate = self
-
             }
         }
     }

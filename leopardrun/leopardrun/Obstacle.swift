@@ -65,8 +65,9 @@ class Obstacle: SpriteEntity {
     */
     func burn(){
         if(!burned){
-            let rotate = SKAction.rotateToAngle(CGFloat(3.14), duration: NSTimeInterval(1))
-            self.runAction(rotate)
+            let rotate = SKAction.rotateByAngle(CGFloat(M_PI), duration: NSTimeInterval(1))
+            let rotateInfinit = SKAction.repeatActionForever(rotate)
+            self.runAction(rotateInfinit)
             self.texture = self.textureBurned
             self.burned = true;
         }

@@ -91,14 +91,19 @@ class SpriteEntity : Entity {
     }
     
     func startAnimating() -> Void {
-        self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.1, resize: false, restore: true)), withKey:"walking")
+        self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.07, resize: false, restore: true)), withKey:"walking")
     }
-    
     
     /**
         this should not be in the sprite entity..
     */
     func updateAnimation(state: PlayerState) -> Void {
+        
+        if(state == PlayerState.Fly){
+            self.atlasName = "LeopardFly"
+        } else {
+            self.atlasName = "Leopard"
+        }
         
         //Jump-State
         if(state == PlayerState.Jump){
@@ -106,7 +111,7 @@ class SpriteEntity : Entity {
             let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
             
             //Nur das Springsprite
-            let t = textureAtlas.textureNamed(self.atlasName + "\(6)")
+            let t = textureAtlas.textureNamed(atlasName + "\(6)")
             textures.append(t)
             
         }
@@ -115,7 +120,7 @@ class SpriteEntity : Entity {
         if(state == PlayerState.Run){
             textures.removeAll(keepCapacity: true)
             let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
-           
+            
             //Komplettes Spriteatlas
             for index in 1...10 {
                 let t = textureAtlas.textureNamed(atlasName + "\(index)")
@@ -123,6 +128,21 @@ class SpriteEntity : Entity {
             }
             
         }
+        
+        //Fly-State
+        if(state == PlayerState.Fly){
+            textures.removeAll(keepCapacity: true)
+            let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
+            
+            //Komplettes Spriteatlas
+            for index in 1...10 {
+                let t = textureAtlas.textureNamed(atlasName + "\(index)")
+                textures.append(t)
+            }
+            
+        }
+        
+        
         
         //Stare neue Animation!
         startAnimating()

@@ -5,6 +5,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
     var player : Player?
+    var sky : Sky?
     var levelManager = LevelManager.sharedInstance
     var scoreManager = ScoreManager.sharedInstance
     var wall = Wall()
@@ -12,7 +13,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     var gameOver = false;
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     var backgroundImage2 = SKSpriteNode(imageNamed: "Background")
-
+    
+    //Geschwindigkeiten der Bewegungen
+    var wallspeed:CGFloat = 150
+    var skyspeed:CGFloat = 150
+    var runnerspeed:CGFloat = 150
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -42,9 +47,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.view?.backgroundColor = UIColor.blackColor()
         
-        let label = SKLabelNode(fontNamed: "Chalkduster")
+        let label = SKLabelNode(fontNamed: "Shojumaru")
         
-        self.hud[scoreManager.scoreLabel] = CGPoint(x: 500, y: 500)
+        self.hud[scoreManager.scoreLabel] = CGPoint(x: size.width-150, y: size.height - 150)
         
         wall.position = CGPoint(x: 000, y: 140)
         wall.physicsBody = SKPhysicsBody()
@@ -81,31 +86,36 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             var playerNode:SKNode = contact.bodyA.node!;
             var itemNode:SKNode = contact.bodyB.node!;
             
-            self.player?.addItem(Item(kind: "Coin",x: 0,y: 0))
-            self.scoreManager.addToScore(500.0)
+            if(itemNode.userData!.valueForKey("type") as! String == "Coin"){
+                self.scoreManager.addToScore(500.0)
+            }
+            
+            if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
+                player!.hasFeather = true;
+                player!.itemCount = 450;
+                player!.updateAnimation(PlayerState.Fly)
+                SoundManager.sharedInstance.stopMusic()
+                SoundManager.sharedInstance.playMusic("fly")
+            }
             itemNode.removeFromParent()
-            
-            
-        }
-        if (contact.bodyB.contactTestBitMask == BodyType.player.rawValue && contact.bodyA.contactTestBitMask == BodyType.player.rawValue){
-            
         }
         
         //Ground
-        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue) {
-            self.player?.isOnGround(true)
-        }
+        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue)
+            {
+                self.player!.isOnGround(true)
+            }
     }
     
-    override func didSimulatePhysics() {
+     override func didSimulatePhysics() {
         
         if self.camera != nil && player != nil{
             self.centerCamera(self.player!)
         }
-//        self.camera!.physicsBody!.velocity.dx = 100
-        self.player?.physicsBody?.velocity.dx = 150
-        self.wall.physicsBody?.velocity.dx = 150
-        self.wall2.physicsBody?.velocity.dx = 150
+        self.player?.physicsBody?.velocity.dx = runnerspeed
+        self.sky?.physicsBody?.velocity.dx = skyspeed
+        self.wall.physicsBody?.velocity.dx = wallspeed
+        self.wall2.physicsBody?.velocity.dx = wallspeed
         
         reorderBackground(self.backgroundImage)
         reorderBackground(self.backgroundImage2)
@@ -119,7 +129,26 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func update(currentTime: CFTimeInterval) {
+     override func update(currentTime: CFTimeInterval) {
+        
+        let count = levelManager.obstacles.count;
+        
+        var farestAway:CGFloat = 0;
+        for index in 0...count-1 {
+            let currentObstacle:Obstacle = levelManager.obstacles[index]
+            if (farestAway < (currentObstacle.position.x - player!.position.x)){
+                farestAway = currentObstacle.position.x - player!.position.x
+            }
+            
+        }
+        
+        if(farestAway < 100 && farestAway > 0){
+            createLevelPart()
+        }
+        
+        let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
+        
+        self.sky?.position = p
         
         if(!gameOver){
             super.update()
@@ -143,13 +172,12 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             gameOver = true
         }
         
-        //Kollision mit Items abfangen
-        
     }
     
     func reset() -> Void {
         NetworkManager.sharedInstance.getLevelDataFromServer()
         ScoreManager.sharedInstance.reset()
+        levelManager.reset();
         
         if let player = self.player {
             player.reset()
@@ -157,6 +185,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         } else {
             self.player = Player(atlasName: "Leopard")
             self.appendGameObject(self.player!)
+            self.sky = Sky()
+            self.appendGameObject(self.sky!)
         }
     }
     
@@ -184,6 +214,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
                 }
             }
         }
-    }
     
-}
+        }
+    }

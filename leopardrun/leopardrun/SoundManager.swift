@@ -2,7 +2,8 @@ import Foundation
 import AVFoundation
 
 public enum Sounds : String{
-    case Theme = "theme"
+    case Music = "music"
+    case Fly = "fly"
     case Jump = "jump"
     case Dead = "dead"
 }
@@ -32,7 +33,10 @@ class SoundManager {
         AVAudioSession.sharedInstance().setActive(true, error: nil)
         
         //Musik
-        musics[Sounds.Theme.rawValue] = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(Sounds.Theme.rawValue, ofType: "wav")!)
+        musics[Sounds.Music.rawValue] = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(Sounds.Music.rawValue, ofType: "wav")!)
+        
+        //Fly
+        musics[Sounds.Fly.rawValue] = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(Sounds.Fly.rawValue, ofType: "wav")!)
         
         //Sounds
         sounds[Sounds.Jump.rawValue] = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(Sounds.Jump.rawValue, ofType: "wav")!)
@@ -41,25 +45,23 @@ class SoundManager {
     }
     
     func playSound(sound : String){
-//        var error:NSError?
-//        soundPlayer = AVAudioPlayer(contentsOfURL: sounds[sound], error:&error)
-//        soundPlayer.prepareToPlay()
-//        soundPlayer.play()
+        //var error:NSError?
+        //soundPlayer = AVAudioPlayer(contentsOfURL: sounds[sound], error:&error)
+        //soundPlayer.prepareToPlay()
+        //soundPlayer.play()
     }
     func playMusic(music : String){
-//        
-//        var error:NSError?
-//        
-//        
-//        musicPlayer = AVAudioPlayer(contentsOfURL: musics[music], error:&error)
+        
+        var error:NSError?
+        musicPlayer = AVAudioPlayer(contentsOfURL: musics[music], error:&error)
 
-//        musicPlayer.prepareToPlay()
-//        musicPlayer.play()
-//        
+        musicPlayer.prepareToPlay()
+        musicPlayer.play()
+        
     }
     
     func stopMusic(){
-//        musicPlayer.stop()
+        musicPlayer.stop()
     }
     
 }

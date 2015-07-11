@@ -16,7 +16,7 @@ class LobbyScene: SKScene {
         didSet {
             var index : Int = 0
             for c in self.challenges! {
-                let label = SKLabelNode(fontNamed: "Chalkduster")
+                let label = SKLabelNode(fontNamed: "Shojumaru")
                 label.text = c.gameName!
                 
                 // tag workaround
@@ -48,18 +48,18 @@ class LobbyScene: SKScene {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.whiteColor()
-        
-        
+        ScoreManager.sharedInstance.reset()
+        getChellenges()
+    }
+    
+    func getChellenges(){
         NetworkManager.sharedInstance.get(NetworkMethod.SaveGames, completed: {
             (ch : [AnyObject]) in
             if let challenges = ch as? [Challenge] {
                 self.challenges = challenges
             }
         })
-        
-        
         NetworkManager.sharedInstance.getLevelDataFromServer()
-        ScoreManager.sharedInstance.reset()
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -86,8 +86,6 @@ class LobbyScene: SKScene {
                                 let skView = self.view! as SKView
                                 let transition = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 1.0)
                                 nextScene!.scaleMode = .AspectFill
-                                
-                               
                                 skView.presentScene(nextScene, transition: transition)
                             }
                         }
@@ -95,9 +93,5 @@ class LobbyScene: SKScene {
                 }
             }
         }
-        
-        
-
-        
     }
 }
