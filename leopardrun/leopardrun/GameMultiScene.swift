@@ -6,6 +6,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         didSet {
             if let data = self.challenge!.levelData {
                 LevelManager.sharedInstance.setLevelJson(data)
+                 // TODO: MAKE THIS BETTER
                 LevelManager.sharedInstance.delegate = nil
             }
         }
@@ -34,14 +35,20 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        reset()
+    }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
     }
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
-        addChild(ghost)
+        ghost.zPosition = 3
+        ghost.reset()
         
-        println("didmovetoview")
+        addChild(ghost)
         
         var timerInterval = NSTimeInterval(currentAction / 1000)
         
@@ -60,7 +67,6 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         }
         
     }
-    
     
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
