@@ -15,25 +15,35 @@ class LobbyScene: SKScene {
     private var challenges : [Challenge]? {
         didSet {
             var index : Int = 0
+            
+            self.challenges?.sort({
+                (T1 : Challenge, T2 : Challenge) -> Bool in
+                if T1.playerScore > T2.playerScore {
+                    return false
+                }
+                return true
+            })
+            
             for c in self.challenges! {
                 let label = SKLabelNode(fontNamed: "Shojumaru")
-                label.text = c.gameName!
+                
+                var text = "\(c.gameName!) from \(c.owner!) - \(c.playerScore!)"
+                
+                label.text = text
                 
                 // tag workaround
                 label.name = index.description
                 
                 label.fontSize = 40
                 label.fontColor = SKColor.blackColor()
-                label.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + self.nextY)
+                label.position = CGPoint(x: self.size.width/2, y: 120 + self.nextY)
                 
-                self.nextY += 40.0
+                self.nextY += 42.0
                 index++
                 
                 self.addChild(label)
                 
-                if index == 5 {
-                    break
-                }
+               
             }
             
             dataLoadedDelegate?.DataLoaded()

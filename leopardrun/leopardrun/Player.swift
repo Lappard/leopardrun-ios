@@ -25,6 +25,8 @@ class Player: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = false
     
+    var isGhostMode = false
+    
     init(atlasName : String) {
         
         super.init(atlasName: atlasName, count: 10)
@@ -61,7 +63,7 @@ class Player: SpriteEntity {
         
         if(hasFeather && itemCount > 0){
             itemCount -= 1;
-            println(itemCount)
+
             if(itemCount == 0){
                 self.hasFeather = false;
                 updateAnimation(PlayerState.Run)
@@ -95,10 +97,10 @@ class Player: SpriteEntity {
     }
     
     func jump() -> Void {
-
-        if self.isOnGround || self.hasFeather {
+        if self.isOnGround || self.hasFeather || isGhostMode {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: velocity))
+            print("jump method hero")
             if(!self.hasFeather){
                 isOnGround(false)
             }

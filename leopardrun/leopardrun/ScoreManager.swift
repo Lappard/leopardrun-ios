@@ -9,6 +9,9 @@ class ScoreManager {
     var scores : [Int] = [Int]()
     var extraPoints: Double = 0
     
+    var normalScoreSetted : Bool = false
+    var ghostScoreSetted : Bool = false
+    
     internal var startTime : Double = 0
     internal var score : Int = 0
     
@@ -22,9 +25,10 @@ class ScoreManager {
         }
         return Static.instance!
     }
-
-    init()
+    
+    private init()
     {
+        scoreLabel = SKLabelNode(fontNamed: "Shojumaru")
         scoreLabel.name = "scoreLabel"
         reset()
         if let s = NSUserDefaults.standardUserDefaults().objectForKey("scores") as? [Int] {
@@ -35,9 +39,9 @@ class ScoreManager {
     }
     
     func reset() -> Void {
-        scoreLabel.text = "Score 0";
-        score = 0;
-        self.startTime = 0;
+        scoreLabel.text = "Score 0"
+        score = 0
+        self.startTime = 0
 
     }
 
@@ -74,6 +78,8 @@ class ScoreManager {
     
     func saveCurrrentScore() {
         
+        NetworkManager.sharedInstance
+        
         scores.append(score)
         
         scores.sort {
@@ -85,11 +91,10 @@ class ScoreManager {
         
         var max = scores.count < 10 ? scores.count - 1 : 9;
         
+        /*
         for index in 0...max {
             println("score: " + scores[index].description)
         }
-        
-        
-
+        */
     }
 }

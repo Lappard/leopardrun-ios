@@ -19,18 +19,8 @@ class GameBaseScene : SKScene {
             }
         }
     }
+       
     
-    
-    var hud : [SKNode : CGPoint] = [SKNode : CGPoint]() {
-        didSet {
-            if  let pos : CGPoint = self.hud.values.array.last,
-                let node = self.hud.keys.array.last {
-                    node.position = pos
-                    node.zPosition = 1337
-                self.addChild(node)
-            }
-        }
-    }
     
     func appendGameObject(e : SKNode) -> Void {
         e.zPosition = 2

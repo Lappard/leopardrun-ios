@@ -157,7 +157,10 @@ class LevelManager : NetworkListener {
         if levelPartData?.count > levelPartIndex {
             levelPartIndex++
         }
-        self.lastX = obstacles.last!.position.x
+
+        if let last = obstacles.last?.position.x {
+            self.lastX = last
+        }
         self.obstacles.extend(obstacles)
         self.coins.extend(coins)
         return (obstacles, coins)
@@ -165,10 +168,14 @@ class LevelManager : NetworkListener {
     
     func setLevelJson(json : [JSON]) {
         levelPartData = json
+        NetworkManager.sharedInstance.levelData = json.first
     }
     
     func getLevelData(data : JSON) -> Void {
-        levelPartData = data["process"]["level"]["levelparts"].array!
+        if let data = data["process"]["level"]["levelparts"].array {
+            levelPartData = data
+        }
+        
         delegate?.ReceivedData()
     }
     

@@ -6,7 +6,8 @@ protocol NetworkListener {
 
 public enum NetworkMethod : String {
     case SaveGames = "getSaveGames",
-         LevelData = "getLevelData"
+         LevelData = "getLevelData",
+         SaveScore = "saveGame"
 }
 
 class NetworkManager : NSObject, SRWebSocketDelegate {
@@ -22,6 +23,8 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     var guid : String = ""
 
     private var completedBlock : ([AnyObject] -> Void)?
+    
+    var levelData : JSON?
     
     class var sharedInstance: NetworkManager {
         struct Static {
@@ -47,6 +50,8 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
 
         super.init()
         
+        
+        
     }
     
     func getLevelDataFromServer() -> Void {
@@ -58,19 +63,6 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         socketio!.delegate = self
         socketio!.open()
         
-    }
-    
-    func getLastChallenges(completed: ([AnyObject]) -> Void) -> Void {
-        
-        var ch = [Challenge]()
-        
-        ch.append(Challenge(name: "schnellste maus von mexiko"))
-        ch.append(Challenge(name: "refactor this"))
-        ch.append(Challenge(name: "lorem huso"))
-        
-        self.completedBlock = completed
-        
-        //socketio!.send("{\"method\":\"getSaveGames\"}")
     }
     
     func get(method : NetworkMethod, completed: [AnyObject] -> Void) -> Void {
@@ -109,6 +101,7 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
             if currentMethod.rawValue == NetworkMethod.LevelData.rawValue {
                 println("daten erhalten" + json.description)
                 delegate?.getLevelData(json)
+                levelData = json
             }
         }
         
@@ -163,18 +156,39 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
                         
                         
                     }
-                    
-                
-                        
-            
-            
+
                     break
             default:
-                var x = 1
+                break
             }
-            
-            
         }
     }
+    
+    func saveScore(challenge : Challenge) {
+        
+        let score = Int(challenge.playerScore!)
+        var levelData = self.levelData!["process"]["level"]
+        
+        
+        self.currentMethod = NetworkMethod.SaveScore
+        
+        var jsonString = "{ "
+        jsonString += "\"method\":\"saveGame\","
+        jsonString += "\"gameData\" : {"
+        jsonString += "\"gameName\":\"\(challenge.gameName!)\","
+        jsonString += "\"owner\": \"\(challenge.owner!)\","
+        jsonString += "\"actions\":\(challenge.actions!),"
+        jsonString += " \"date\":\"\(challenge.date!)\","
+        jsonString += "\"level\":\(levelData),"
+        jsonString += "\"playerScore\": \(score.description)"
+        jsonString += "}}"
+                
+        socketio!.send(jsonString)
+       
+        
+        println(jsonString)
+        
+       
 
+    }
 }

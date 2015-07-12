@@ -19,9 +19,26 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     var skyspeed:CGFloat = 150
     var runnerspeed:CGFloat = 150
     
+    var timer : NSTimer?
+    let startTime = NSDate.timeIntervalSinceReferenceDate()
+
+    var playerActions : [Int] = [Int]()
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         reset()
+    }
+    
+    func setHud(node : SKNode, pos : CGPoint) {
+        
+        if node.parent == nil {
+            node.position = pos
+            node.zPosition = 1337
+            self.addChild(node)
+        }
+        
+        
+        
     }
     
     override init(size: CGSize) {
@@ -47,10 +64,9 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.view?.backgroundColor = UIColor.blackColor()
         
-        let label = SKLabelNode(fontNamed: "Shojumaru")
-        
-        self.hud[scoreManager.scoreLabel] = CGPoint(x: size.width-150, y: size.height - 150)
-        
+        setHud(scoreManager.scoreLabel, pos: CGPoint(x: size.width-150, y: size.height - 150))
+
+
         wall.position = CGPoint(x: 000, y: 140)
         wall.physicsBody = SKPhysicsBody()
         wall.physicsBody?.affectedByGravity = false
@@ -64,6 +80,13 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.appendGameObject(wall2)
         
         scoreManager.start()
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1.0 / 1000.0), target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
+
+    }
+    
+    func updateTime() {
+        
     }
     
     func centerCamera(node: SKNode) {
@@ -75,6 +98,12 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     func tapped(sender:UITapGestureRecognizer) {
         if let p = self.player {
             p.jump()
+            
+            var currentTime = NSDate.timeIntervalSinceReferenceDate()
+            var elapsedTime: NSTimeInterval = (currentTime - startTime) * 1000
+            
+            playerActions.append(Int(elapsedTime))
+            println("timer interval \(playerActions.last)")
         }
     }
     
@@ -139,7 +168,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             if (farestAway < (currentObstacle.position.x - player!.position.x)){
                 farestAway = currentObstacle.position.x - player!.position.x
             }
-            
         }
         
         if(farestAway < 100 && farestAway > 0){
@@ -164,6 +192,14 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             
             let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
             let scene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene
+            
+            var c : Challenge = Challenge(name: getRandomName())
+            c.actions = self.playerActions
+            c.date = Int(NSDate().timeIntervalSince1970)
+            c.playerScore = Float(ScoreManager.sharedInstance.score)
+            c.owner = "iOS User"
+            scene?.challenge = c
+            
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = true
             scene!.scaleMode = .ResizeFill
@@ -171,7 +207,24 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             skView.presentScene(scene,transition: transition)
             gameOver = true
         }
+    }
+    
+    func getRandomName() -> String {
         
+        var vs = ["a", "e", "i", "o", "u"]
+        var cs = ["b", "d", "f", "g", "k", "l", "m", "n", "p", "r", "s", "t"]
+
+        var maxVs : UInt32 = UInt32(vs.count)
+        var maxCs : UInt32 = UInt32(cs.count)
+        
+        
+        var name =  cs[Int(arc4random_uniform(maxCs))]
+            name += vs[Int(arc4random_uniform(maxVs))]
+            name += cs[Int(arc4random_uniform(maxCs))]
+            name += vs[Int(arc4random_uniform(maxVs))]
+            name += cs[Int(arc4random_uniform(maxCs))]
+        
+        return name
     }
     
     func reset() -> Void {
@@ -181,7 +234,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         if let player = self.player {
             player.reset()
-            
         } else {
             self.player = Player(atlasName: "Leopard")
             self.appendGameObject(self.player!)

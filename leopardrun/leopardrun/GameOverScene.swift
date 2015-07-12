@@ -4,6 +4,8 @@ class GameOverScene : SKScene {
     
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     
+    var challenge : Challenge?
+    
     override init(size: CGSize) {
         
         super.init(size: size)
@@ -43,6 +45,11 @@ class GameOverScene : SKScene {
         
         self.addChild(scoreLabel)
 
+        
+        if let c = self.challenge {
+            NetworkManager.sharedInstance.saveScore(c)
+        }
+        
     }
 
 

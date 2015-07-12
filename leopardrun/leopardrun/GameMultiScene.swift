@@ -32,7 +32,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     var myTimer : NSTimer?
     
     var ghost : Player = Player(atlasName: "Ghost")
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         reset()
@@ -42,30 +42,41 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         super.init(size: size)
     }
     
+    override func updateTime() {
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        var elapsedTimeInterval: NSTimeInterval = (currentTime - startTime) * 1000
+        var ms = Int(elapsedTimeInterval)
+        
+        if currentAction <= ms && currentAction != -1 {
+            ghost.jump()
+            currentActionIndex++
+            println("jump")
+        }
+    }
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
         ghost.zPosition = 3
+        
         ghost.reset()
+        ghost.position = CGPoint(x: 500, y: 450)
+        ghost.isGhostMode = true
+        
+        player?.reset()
         
         addChild(ghost)
         
-        var timerInterval = NSTimeInterval(currentAction / 1000)
         
-        myTimer = NSTimer(timeInterval: timerInterval, target: self, selector:"doGhostAction", userInfo: nil, repeats: false)
-        myTimer?.fire()
-    }
-    
-    func doGhostAction() {
-        currentActionIndex++
-        ghost.jump()
-        println("ghost jump")
-        if currentAction != -1 {
-            var timerInterval = NSTimeInterval(currentAction / 1000)
-            myTimer = NSTimer(timeInterval: timerInterval, target: self, selector:"doGhostAction", userInfo: nil, repeats: false)
-            myTimer?.fire()
+        var ghostScore = SKLabelNode(fontNamed: "Shojumaru")
+        ghostScore.name = "ghostScore"
+        if let score = self.challenge?.playerScore?.description {
+            ghostScore.text = "Challenge Score \(score)"
+            ghostScore.fontSize = CGFloat(16)
+            ghostScore.fontColor = UIColor.blueColor()
+            setHud(ghostScore, pos: CGPoint(x: 130, y: size.height - 150))
         }
-        
+
     }
     
     override func update(currentTime: CFTimeInterval) {
