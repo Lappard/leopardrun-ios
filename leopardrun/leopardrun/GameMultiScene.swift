@@ -53,8 +53,12 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         if currentAction <= ms && currentAction != -1 {
             ghost.jump()
             currentActionIndex++
-            println("jump")
         }
+    }
+    
+    override func didSimulatePhysics() {
+        super.didSimulatePhysics()
+        self.ghost.physicsBody!.velocity.dx = runnerspeed
     }
     
     override
@@ -67,20 +71,18 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
-        ghost.zPosition = 3
-        
-        ghost.reset()
-        ghost.position = CGPoint(x: 500, y: 450)
-        ghost.isGhostMode = true
-       
         player?.reset()
-        
+        ghost.zPosition = 3
+        ghost.reset()
+        ghost.isGhostMode = true
+        ghost.position = player!.position
+       
         addChild(ghost)
         
         self.skyGhost = Sky()
         if let skyGhost = self.skyGhost{
             
-            skyGhost.physicsBody?.velocity.dx = skyspeed
+            skyGhost.physicsBody?.velocity.dx = super.skyspeed
             skyGhost.position = CGPoint(x:ghost.position.x, y: 650)
             
             addChild(skyGhost)

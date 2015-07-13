@@ -23,7 +23,6 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         self.backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.backgroundImage.zPosition = 0
         self.backgroundImage.size = self.size
-        
         addChild(backgroundImage)
         
         let logo = SKSpriteNode(imageNamed: "Logo")

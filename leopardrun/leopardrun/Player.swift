@@ -52,7 +52,7 @@ class Player: SpriteEntity {
     }
     
     func reset() -> Void {
-        self.position = CGPoint(x: 200, y: 450)
+        self.position = CGPoint(x: 200, y: 600)
     }
     
     required init?(coder aDecoder: NSCoder) {

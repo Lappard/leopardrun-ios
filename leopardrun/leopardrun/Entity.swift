@@ -88,7 +88,9 @@ class SpriteEntity : Entity {
     generate PhysicsBody as rect witch is better for collisions then genrating it by texture
     */
     func generateBodyByWidthHeigth(widthHeight: CGFloat){
-        self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-widthHeight / 2, -widthHeight / 2, widthHeight, widthHeight), 10, 10, nil))
+        
+            self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-widthHeight / 2, -widthHeight / 2, widthHeight, widthHeight), 10, 10, nil))
+        
     }
     
     func startAnimating() -> Void {
