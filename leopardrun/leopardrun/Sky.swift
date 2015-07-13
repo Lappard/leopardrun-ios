@@ -10,7 +10,7 @@ class Sky: SpriteEntity {
         self.yScale = 0.3
         
         self.generateBodyByWidthHeigth(self.size.width)
-        self.position = CGPoint(x: 300, y: 600)
+        //self.position = CGPoint(x: 300, y: 600)
         
         if let physics = physicsBody {
             physics.affectedByGravity = false

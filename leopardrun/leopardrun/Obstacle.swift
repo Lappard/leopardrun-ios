@@ -31,6 +31,7 @@ class Obstacle: SpriteEntity {
             physics.friction = 0.0
             physics.categoryBitMask = BodyType.box.rawValue
             physics.contactTestBitMask = BodyType.player.rawValue
+
             physics.collisionBitMask = BodyType.player.rawValue
 
         }

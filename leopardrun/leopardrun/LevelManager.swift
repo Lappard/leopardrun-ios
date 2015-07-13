@@ -25,7 +25,7 @@ class LevelManager : NetworkListener {
     private var levelPartSize : Int = 0
     
     var obstacles = [Obstacle]()
-    var coins = [Item]()
+    var items = [Item]()
     
     var delegate : LevelManagerDelegate?
     
@@ -66,7 +66,7 @@ class LevelManager : NetworkListener {
         self.levelPartIndex = 0;
         self.lastX = 0;
         self.obstacles = [Obstacle]()
-        self.coins = [Item]()
+        self.items = [Item]()
     }
     
     
@@ -107,6 +107,12 @@ class LevelManager : NetworkListener {
         return nextPos
     }
     
+    func nextXForItems(gridPos : CGFloat, obs: Item) -> CGFloat {
+        //we have 28 grounds in every level part. shound not be used as number here. calculate earlier!
+        let nextPos : CGFloat = ((CGFloat(levelPartIndex) * CGFloat(28)) + gridPos) * ground.size.width
+        return nextPos
+    }
+    
     /**
     create the next part of the level
     
@@ -135,24 +141,23 @@ class LevelManager : NetworkListener {
                         let box = Obstacle.block(CGPoint(x: 0, y: yPos))
                         box.position.x = nextX(x, obs: box)
                         obstacles.append(box)
-                        /*case "c":
-                        let box = Item()
-                        box.position = CGPoint(x: 0, y: yPos)
-                        box.position.x = 1000.0
-                        coins.append(box)*/
+                        break
+                    case "c":
+                        let coin = Item(kind: "Coin", spriteCount: 6, x:0, y:0)
+                        coin.position.x = nextXForItems(x, obs: coin)
+                        items.append(coin)
+                        break
+                    case "f":
+                        let feather = Item(kind: "Feather", spriteCount: 10, x:0, y:0)
+                        feather.position.x = nextXForItems(x, obs: feather)
+                        items.append(feather)
+                        break
                     default:
                         break
                 }
             }
         }
         
-        
-        let item2 = Item(kind: "Coin",spriteCount: 6,x: 800,y: 150)
-        coins.append(item2)
-        let item3 = Item(kind: "Coin",spriteCount: 6,x: 1700,y: 150)
-        coins.append(item3)
-        let item4 = Item(kind: "Feather",spriteCount:10,x: 1000,y: 250)
-        coins.append(item4)
         
         if levelPartData?.count > levelPartIndex {
             levelPartIndex++
@@ -162,8 +167,8 @@ class LevelManager : NetworkListener {
             self.lastX = last
         }
         self.obstacles.extend(obstacles)
-        self.coins.extend(coins)
-        return (obstacles, coins)
+        self.items.extend(items)
+        return (obstacles, items)
     }
     
     func setLevelJson(json : [JSON]) {

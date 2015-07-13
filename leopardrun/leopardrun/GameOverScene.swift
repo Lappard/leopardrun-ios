@@ -44,7 +44,6 @@ class GameOverScene : SKScene {
         scoreLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 50)
         
         self.addChild(scoreLabel)
-
         
         if let c = self.challenge {
             NetworkManager.sharedInstance.saveScore(c)
@@ -52,8 +51,6 @@ class GameOverScene : SKScene {
         
     }
 
-
-    
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let transition = SKTransition.revealWithDirection(SKTransitionDirection.Left, duration: 1.0)
         var scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene
