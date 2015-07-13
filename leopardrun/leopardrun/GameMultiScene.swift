@@ -39,6 +39,14 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         reset()
+        
+        ghost.zPosition = 3
+        
+        //ghost.reset()
+        if let p = self.player {
+            ghost.position = CGPoint(x: p.position.x + 290, y: p.position.y)
+            ghost.isGhostMode = true
+        }
     }
     
     override init(size: CGSize) {
@@ -67,13 +75,9 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
-        ghost.zPosition = 3
+
         
-        ghost.reset()
-        ghost.position = CGPoint(x: 500, y: 450)
-        ghost.isGhostMode = true
-       
-        player?.reset()
+       // player?.reset()
         
         addChild(ghost)
         
