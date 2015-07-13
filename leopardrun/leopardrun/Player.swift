@@ -78,7 +78,6 @@ class Player: SpriteEntity {
             }
             
         }
-
     }
     
     func isOnGround(onGround: Bool ) -> Void {

@@ -39,6 +39,14 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         reset()
+        
+        ghost.zPosition = 3
+        
+        //ghost.reset()
+        if let p = self.player {
+            ghost.position = CGPoint(x: p.position.x + 290, y: p.position.y)
+            ghost.isGhostMode = true
+        }
     }
     
     override init(size: CGSize) {
@@ -77,6 +85,8 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         ghost.isGhostMode = true
         ghost.position = player!.position
        
+       // player?.reset()
+        
         addChild(ghost)
         
         self.skyGhost = Sky()
