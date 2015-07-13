@@ -5,6 +5,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
     var player : Player?
+    var ghost : Player?
     var sky : Sky?
     var levelManager = LevelManager.sharedInstance
     var scoreManager = ScoreManager.sharedInstance
@@ -36,8 +37,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             node.zPosition = 1337
             self.addChild(node)
         }
-        
-        
         
     }
     
@@ -145,6 +144,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.sky?.physicsBody?.velocity.dx = skyspeed
         self.wall.physicsBody?.velocity.dx = wallspeed
         self.wall2.physicsBody?.velocity.dx = wallspeed
+        self.ghost?.physicsBody?.velocity.dx = runnerspeed
         
         reorderBackground(self.backgroundImage)
         reorderBackground(self.backgroundImage2)
@@ -175,7 +175,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
         
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
-        
         self.sky?.position = p
         
         if(!gameOver){
@@ -235,6 +234,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if let player = self.player {
             player.reset()
         } else {
+            self.ghost =  Player(kind: "ghost",atlasName: "Ghost")
             self.player = Player(kind: "player",atlasName: "Leopard")
             self.appendGameObject(self.player!)
             self.sky = Sky()
