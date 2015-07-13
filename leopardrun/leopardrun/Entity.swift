@@ -3,10 +3,11 @@ import SpriteKit
 
 enum BodyType : UInt32 {
     case player         = 2
-    case ground         = 4
-    case box            = 6
-    case item           = 8
-    case anotherBody2   = 16
+    case box            = 4
+    case ground         = 8
+    case item           = 16
+    case anotherBody2   = 32
+    case sky            = 64
 }
 
 class Entity : SKSpriteNode {

@@ -18,7 +18,20 @@ class Sky: SpriteEntity {
             physics.dynamic = false
             physics.mass = 0.1
             physics.density = 1
-            physics.contactTestBitMask = BodyType.player.rawValue
+            /*
+            planet.physicsBody.categoryBitMask = planetCategory;
+            planet.physicsBody.collisionBitMask = planetCategory | edgeCategory;
+            planet.physicsBody.contactTestBitMask = 0;
+            */
+//            physics.contactTestBitMask = BodyType.player.rawValue
+            
+            if let physic = self.physicsBody {
+                physic.categoryBitMask = BodyType.sky.rawValue
+                physic.collisionBitMask = 0
+                physic.contactTestBitMask = 0
+            }
+            
+            
         }
         
     }
