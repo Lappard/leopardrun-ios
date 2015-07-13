@@ -66,7 +66,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         setHud(scoreManager.scoreLabel, pos: CGPoint(x: size.width-150, y: size.height - 150))
 
-
         wall.position = CGPoint(x: 000, y: 140)
         wall.physicsBody = SKPhysicsBody()
         wall.physicsBody?.affectedByGravity = false
@@ -125,14 +124,16 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
                 SoundManager.sharedInstance.stopMusic()
                 SoundManager.sharedInstance.playMusic("fly")
             }
+            
             itemNode.removeFromParent()
         }
         
         //Ground
         if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue)
-            {
-                self.player!.isOnGround(true)
-            }
+        {
+            self.player!.isOnGround(true)
+        }
+        
     }
     
      override func didSimulatePhysics() {
@@ -234,7 +235,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if let player = self.player {
             player.reset()
         } else {
-            self.player = Player(atlasName: "Leopard")
+            self.player = Player(kind: "player",atlasName: "Leopard")
             self.appendGameObject(self.player!)
             self.sky = Sky()
             self.appendGameObject(self.sky!)

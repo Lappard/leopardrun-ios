@@ -25,7 +25,7 @@ class Player: SpriteEntity {
     
     var isGhostMode = false
     
-    init(atlasName : String) {
+    init(kind: String, atlasName : String) {
         
         super.init(atlasName: atlasName, count: 10)
         self.xScale = 0.3
@@ -38,10 +38,15 @@ class Player: SpriteEntity {
             physics.dynamic = true
             physics.mass = 0.1
             physics.density = 1
-            physics.contactTestBitMask = BodyType.player.rawValue
+            physics.categoryBitMask = BodyType.player.rawValue
+            physics.contactTestBitMask = BodyType.ground.rawValue
         }
         
         self.isOnGround(false)
+        
+        self.userData = NSMutableDictionary()
+        self.userData!.setValue(kind, forKey: "type")
+        
     }
     
     func reset() -> Void {

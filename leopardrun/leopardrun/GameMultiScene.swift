@@ -2,6 +2,7 @@ import SpriteKit
 
 class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     
+    
     var challenge : Challenge? {
         didSet {
             if let data = self.challenge!.levelData {
@@ -31,7 +32,9 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     
     var myTimer : NSTimer?
     
-    var ghost : Player = Player(atlasName: "Ghost")
+    var skyGhost : Sky?
+    
+    var ghost : Player = Player(kind: "ghost",atlasName: "Ghost")
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,6 +57,13 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         }
     }
     
+    override
+    func didBeginContact(contact: SKPhysicsContact) {
+        
+        super.didBeginContact(contact)
+        
+    }
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
@@ -62,11 +72,20 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         ghost.reset()
         ghost.position = CGPoint(x: 500, y: 450)
         ghost.isGhostMode = true
-        
+       
         player?.reset()
         
         addChild(ghost)
         
+        self.skyGhost = Sky()
+        if let skyGhost = self.skyGhost{
+            
+            skyGhost.physicsBody?.velocity.dx = skyspeed
+            skyGhost.position = CGPoint(x:ghost.position.x, y: 650)
+            
+            addChild(skyGhost)
+            
+        }
         
         var ghostScore = SKLabelNode(fontNamed: "Shojumaru")
         ghostScore.name = "ghostScore"
@@ -82,5 +101,8 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
        
+        let p:CGPoint = CGPoint(x: self.ghost.position.x, y: 750.0)
+        self.skyGhost?.position = p
+        
     }
 }
