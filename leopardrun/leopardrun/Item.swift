@@ -22,6 +22,8 @@ class Item: SpriteEntity {
             physics.dynamic = true
             physics.categoryBitMask = BodyType.item.rawValue
             physics.contactTestBitMask = BodyType.player.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue
+
         }
         self.physicsBody!.mass = 1
         self.physicsBody!.density = 1
