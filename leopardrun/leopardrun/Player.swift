@@ -20,8 +20,6 @@ class Player: SpriteEntity {
 
     var velocity = 150;
     
-    var itemCount = 0;
-    
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = false
     
@@ -61,15 +59,17 @@ class Player: SpriteEntity {
             oldState = currentState
         }
         
-        if(hasFeather && itemCount > 0){
-            itemCount -= 1;
-
-            if(itemCount == 0){
+        if(hasFeather){
+            
+            if(SoundManager.sharedInstance.musicPlayer.playing){
+                
+            } else {
+                hasFeather = false;
                 self.hasFeather = false;
                 updateAnimation(PlayerState.Run)
-                SoundManager.sharedInstance.stopMusic()
                 SoundManager.sharedInstance.playMusic("music")
             }
+            
         }
 
     }
