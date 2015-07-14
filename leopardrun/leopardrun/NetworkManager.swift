@@ -167,7 +167,8 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
     func saveScore(challenge : Challenge) {
         
         let score = Int(challenge.playerScore!)
-        var levelData = self.levelData!["process"]["level"]
+        
+        var levelData : [JSON?]
         
         
         self.currentMethod = NetworkMethod.SaveScore
@@ -179,7 +180,15 @@ class NetworkManager : NSObject, SRWebSocketDelegate {
         jsonString += "\"owner\": \"\(challenge.owner!)\","
         jsonString += "\"actions\":\(challenge.actions!),"
         jsonString += " \"date\":\"\(challenge.date!)\","
-        jsonString += "\"level\":\(levelData),"
+        
+        
+        if let levelDataFromChallenge = challenge.levelData {
+            jsonString += "\"level\": { \"levelparts\": \(levelDataFromChallenge)},"
+        } else {
+            var levelData = self.levelData!["process"]["level"]
+            jsonString += "\"level\":\(levelData),"
+        }
+        
         jsonString += "\"playerScore\": \(score.description)"
         jsonString += "}}"
                 
