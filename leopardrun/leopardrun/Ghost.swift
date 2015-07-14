@@ -7,7 +7,7 @@ class Ghost: Player {
     init() {
         
         super.init(kind: "ghost", atlasName : "Ghost")
-            
+        
         self.xScale = 0.3
         self.yScale = 0.3
         self.position = CGPoint(x: 200, y: 600)
@@ -26,6 +26,7 @@ class Ghost: Player {
         }
         
         self.isOnGround(false)
+        println("ghost category "+self.physicsBody!.categoryBitMask.description)
         
         self.userData = NSMutableDictionary()
         self.userData!.setValue("ghost", forKey: "type")

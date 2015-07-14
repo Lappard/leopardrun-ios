@@ -22,8 +22,8 @@ class Item: SpriteEntity {
             physics.dynamic = true
             physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.item.rawValue
-            physics.contactTestBitMask = BodyType.player.rawValue
-            physics.collisionBitMask = BodyType.player.rawValue
+            physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
 
         }
         self.physicsBody!.mass = 1

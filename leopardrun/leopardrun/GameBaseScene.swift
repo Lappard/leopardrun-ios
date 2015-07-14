@@ -24,14 +24,6 @@ class GameBaseScene : SKScene {
     
     func appendGameObject(e : SKNode) -> Void {
         e.zPosition = 2
-        println(e.description)
-    
-        if(e.parent==nil){
-        
-        } else {
-            e.removeFromParent()
-        }
-        
         self.world?.addChild(e)
         
     }

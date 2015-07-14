@@ -57,14 +57,6 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     override func didBeginContact(contact: SKPhysicsContact) {
         super.didBeginContact(contact)
         
-        print("BodyA: ")
-        println(contact.bodyA.contactTestBitMask)
-        
-        print("BodyB: ")
-        println(contact.bodyB.contactTestBitMask)
-        
-        println("")
-        
         if (contact.bodyA.contactTestBitMask == BodyType.ghost.rawValue && contact.bodyB.contactTestBitMask == BodyType.item.rawValue){
             var ghostNode:SKNode = contact.bodyA.node!;
             var itemNode:SKNode = contact.bodyB.node!;
