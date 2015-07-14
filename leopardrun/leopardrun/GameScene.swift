@@ -12,6 +12,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     var wall = Wall()
     var wall2 = Wall()
     var gameOver = false;
+    var skyHeight:CGFloat = 900.0
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     var backgroundImage2 = SKSpriteNode(imageNamed: "Background")
     
@@ -160,8 +161,16 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
      override func update(currentTime: CFTimeInterval) {
         checkLevel()
-        let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
+        
+        if(self.player!.hasFeather){
+            skyHeight = 650.0
+        } else {
+            skyHeight = 900.0
+        }
+        
+        let p:CGPoint = CGPoint(x: self.player!.position.x, y: skyHeight)
         self.sky?.position = p
+        
         
         if(!gameOver){
             super.update()

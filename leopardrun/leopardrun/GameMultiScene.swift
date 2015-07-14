@@ -2,6 +2,7 @@ import SpriteKit
 
 class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     
+    var skyGhostHeight:CGFloat = 900.0
     
     var challenge : Challenge? {
         didSet {
@@ -105,7 +106,13 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
        
-        let p:CGPoint = CGPoint(x: self.ghost!.position.x, y: 750.0)
+        if(self.ghost!.hasFeather){
+            skyGhostHeight = 650.0
+        } else {
+            skyGhostHeight = 900.0
+        }
+        
+        let p:CGPoint = CGPoint(x: self.ghost!.position.x, y: skyGhostHeight)
         self.skyGhost!.position = p
         
         println(ghost!.physicsBody?.velocity.dx)
