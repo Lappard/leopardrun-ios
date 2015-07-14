@@ -56,9 +56,10 @@
 		7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3CE7E1B42B73800B1700B /* Wall.swift */; };
 		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
-		AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */; };
-		AB1524A91B413AC7002C50E2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A51B413AB4002C50E2 /* libPods.a */; };
 		AB1524AB1B41985C002C50E2 /* GameBaseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AB1524AA1B41985C002C50E2 /* GameBaseScene.sks */; };
+		AB155B4B1B5557DA0093EDBC /* libPods-SocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */; };
+		AB155B4C1B5557DA0093EDBC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1524A51B413AB4002C50E2 /* libPods.a */; };
+		BD50DF38240B93E802E19AE3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C5FD02CA65F58CAB953683 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 259AB844946BA136A5BFCB8C;
 			remoteInfo = "Pods-SocketRocket";
+		};
+		AB424CAA1B555808004A5EB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 98609D6E262C927361C6446B;
+			remoteInfo = "Pods-GooglePlayGames";
+		};
+		AB424CAC1B555808004A5EB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2978FE04B926365DB650050B;
+			remoteInfo = "Pods-google-plus-ios-sdk";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -152,8 +167,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB1524A81B413AC7002C50E2 /* libPods-SocketRocket.a in Frameworks */,
-				AB1524A91B413AC7002C50E2 /* libPods.a in Frameworks */,
+				AB155B4B1B5557DA0093EDBC /* libPods-SocketRocket.a in Frameworks */,
+				AB155B4C1B5557DA0093EDBC /* libPods.a in Frameworks */,
+				BD50DF38240B93E802E19AE3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +379,9 @@
 			isa = PBXGroup;
 			children = (
 				AB1524A51B413AB4002C50E2 /* libPods.a */,
+				AB424CAB1B555808004A5EB0 /* libPods-GooglePlayGames.a */,
 				AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */,
+				AB424CAD1B555808004A5EB0 /* libPods-google-plus-ios-sdk.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -474,6 +492,20 @@
 			fileType = archive.ar;
 			path = "libPods-SocketRocket.a";
 			remoteRef = AB1524A61B413AB4002C50E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AB424CAB1B555808004A5EB0 /* libPods-GooglePlayGames.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-GooglePlayGames.a";
+			remoteRef = AB424CAA1B555808004A5EB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AB424CAD1B555808004A5EB0 /* libPods-google-plus-ios-sdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-google-plus-ios-sdk.a";
+			remoteRef = AB424CAC1B555808004A5EB0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
