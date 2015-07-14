@@ -161,11 +161,4 @@ class Player: SpriteEntity {
         //Stare neue Animation!
         startAnimating()
     }
-    
-    
-    func startAnimating() -> Void {
-        self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.07, resize: false, restore: true)), withKey:"walking")
-    }
-    
-    
 }

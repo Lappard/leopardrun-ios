@@ -11,6 +11,7 @@ class Wall: SpriteEntity {
         
         self.xScale = 1.5
         self.yScale = 1.0
+        startAnimating()
         
     }
     

@@ -94,8 +94,9 @@ class SpriteEntity : Entity {
     }
    
     
-    /**
-        this should not be in the sprite entity..
-    */
+    
+    func startAnimating() -> Void {
+        self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.07, resize: false, restore: true)), withKey:"walking")
+    }
 
 }
