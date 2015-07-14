@@ -18,8 +18,6 @@ class Ghost: Player {
             physics.dynamic = true
             physics.mass = 0.1
             physics.density = 1
-            
-            physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.ghost.rawValue
             physics.collisionBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.sky.rawValue
             physics.contactTestBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
