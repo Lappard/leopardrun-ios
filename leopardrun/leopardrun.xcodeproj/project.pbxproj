@@ -27,6 +27,8 @@
 		28DC022A1AF238C200B8E9DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DC02281AF238C200B8E9DE /* LaunchScreen.xib */; };
 		28DC02361AF238C200B8E9DE /* leopardrunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC02351AF238C200B8E9DE /* leopardrunTests.swift */; };
 		7B02FB041B42AFD000D52DAE /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B02FB031B42AFD000D52DAE /* Coin.atlas */; };
+		7B3002CC1B5511CC0085628E /* Ghost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3002CB1B5511CC0085628E /* Ghost.swift */; };
+		7B3002D01B5514F10085628E /* GhostFly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7B3002CF1B5514F10085628E /* GhostFly.atlas */; };
 		7B43FD1E1B32BBD70037D9AA /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD1D1B32BBD70037D9AA /* Sounds */; };
 		7B43FD241B32C3E70037D9AA /* theme.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD231B32C3E70037D9AA /* theme.wav */; };
 		7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B43FD251B32CE5A0037D9AA /* jump.wav */; };
@@ -110,6 +112,8 @@
 		28DC02351AF238C200B8E9DE /* leopardrunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leopardrunTests.swift; sourceTree = "<group>"; };
 		6CEDD501F473934333A4463F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B02FB031B42AFD000D52DAE /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
+		7B3002CB1B5511CC0085628E /* Ghost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ghost.swift; sourceTree = "<group>"; };
+		7B3002CF1B5514F10085628E /* GhostFly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GhostFly.atlas; sourceTree = "<group>"; };
 		7B43FD1D1B32BBD70037D9AA /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		7B43FD231B32C3E70037D9AA /* theme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = theme.wav; path = Sounds/theme.wav; sourceTree = "<group>"; };
 		7B43FD251B32CE5A0037D9AA /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = Sounds/jump.wav; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 		282DFBA11B0CAC5200BB9D54 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				7B3002CF1B5514F10085628E /* GhostFly.atlas */,
 				7B98672D1B50263600E46709 /* LeopardFly.atlas */,
 				7B9867291B50214B00E46709 /* Feather.atlas */,
 				7B02FB031B42AFD000D52DAE /* Coin.atlas */,
@@ -323,6 +328,7 @@
 				7BE3CE7E1B42B73800B1700B /* Wall.swift */,
 				2848919D1B43262200A08DD9 /* Challenge.swift */,
 				7BB7749C1B4FFEA700FB46D2 /* Sky.swift */,
+				7B3002CB1B5511CC0085628E /* Ghost.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 				28DC02271AF238C200B8E9DE /* Images.xcassets in Resources */,
 				7BBA94501B50551E0047B5AB /* logo_80.png in Resources */,
 				2848919B1B43250300A08DD9 /* LobbyScene.sks in Resources */,
+				7B3002D01B5514F10085628E /* GhostFly.atlas in Resources */,
 				7B98672E1B50263600E46709 /* LeopardFly.atlas in Resources */,
 				289D4F9E1B32D2CE009E8BAB /* GameMultiScene.sks in Resources */,
 				7B98672A1B50214B00E46709 /* Feather.atlas in Resources */,
@@ -567,6 +574,7 @@
 				28D3BFEE1B1F31D2000F21E5 /* SwiftyJSON.swift in Sources */,
 				7BB7749D1B4FFEA700FB46D2 /* Sky.swift in Sources */,
 				28DC02221AF238C200B8E9DE /* GameViewController.swift in Sources */,
+				7B3002CC1B5511CC0085628E /* Ghost.swift in Sources */,
 				28DC021C1AF238C200B8E9DE /* AppDelegate.swift in Sources */,
 				289D4F9F1B32D2CE009E8BAB /* GameMultiScene.swift in Sources */,
 				7B74C5D31AFF9587007748F3 /* GameBaseScene.swift in Sources */,

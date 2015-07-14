@@ -142,7 +142,7 @@ class LevelManager : NetworkListener {
                         box.position.x = nextX(x, obs: box)
                         obstacles.append(box)
                         break
-                    case "c":
+                    /*case "c":
                         let coin = Item(kind: "Coin", spriteCount: 6, x:0, y:0)
                         coin.position.x = nextXForItems(x, obs: coin)
                         items.append(coin)
@@ -151,7 +151,7 @@ class LevelManager : NetworkListener {
                         let feather = Item(kind: "Feather", spriteCount: 10, x:0, y:0)
                         feather.position.x = nextXForItems(x, obs: feather)
                         items.append(feather)
-                        break
+                        break*/
                     default:
                         break
                 }

@@ -13,6 +13,7 @@ class SoundManager {
     var sounds : Dictionary<String, NSURL> = Dictionary<String,NSURL>()
     var musics : Dictionary<String, NSURL> = Dictionary<String,NSURL>()
     var musicPlayer : AVAudioPlayer = AVAudioPlayer()
+    var ghostMusicPlayerInBackground : AVAudioPlayer = AVAudioPlayer()
     var soundPlayer : AVAudioPlayer = AVAudioPlayer()
     
     class var sharedInstance: SoundManager {
@@ -58,6 +59,16 @@ class SoundManager {
         musicPlayer.prepareToPlay()
         musicPlayer.play()
         
+    }
+    
+    func playMutedMusicForGhost(music:String){
+        
+        var error:NSError?
+        ghostMusicPlayerInBackground = AVAudioPlayer(contentsOfURL: musics[music], error:&error)
+        
+        ghostMusicPlayerInBackground.volume = 0.0
+        ghostMusicPlayerInBackground.prepareToPlay()
+        ghostMusicPlayerInBackground.play()
     }
     
     func stopMusic(){

@@ -5,7 +5,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
     var player : Player?
-
     var sky : Sky?
     var levelManager = LevelManager.sharedInstance
     var scoreManager = ScoreManager.sharedInstance
@@ -128,6 +127,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             
             itemNode.removeFromParent()
         }
+        
         
         //Ground
         if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue)

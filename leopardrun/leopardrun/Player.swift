@@ -23,8 +23,6 @@ class Player: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var isOnGround = false
     
-    var isGhostMode = false
-    
     init(kind: String, atlasName : String) {
         
         super.init(atlasName: atlasName, count: 10)
@@ -103,7 +101,7 @@ class Player: SpriteEntity {
     }
     
     func jump() -> Void {
-        if self.isOnGround || self.hasFeather || isGhostMode {
+        if self.isOnGround || self.hasFeather {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: velocity))
             print("jump method hero")
@@ -162,6 +160,11 @@ class Player: SpriteEntity {
         
         //Stare neue Animation!
         startAnimating()
+    }
+    
+    
+    func startAnimating() -> Void {
+        self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.07, resize: false, restore: true)), withKey:"walking")
     }
     
     

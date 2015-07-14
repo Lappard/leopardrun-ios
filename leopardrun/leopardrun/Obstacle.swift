@@ -30,9 +30,8 @@ class Obstacle: SpriteEntity {
             physics.angularDamping = 0.0
             physics.friction = 0.0
             physics.categoryBitMask = BodyType.box.rawValue
-            physics.contactTestBitMask = BodyType.player.rawValue
-
-            physics.collisionBitMask = BodyType.player.rawValue
+            physics.contactTestBitMask = BodyType.player.rawValue //| BodyType.ghost.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue //| BodyType.ghost.rawValue
 
         }
         return obstacle
@@ -58,15 +57,10 @@ class Obstacle: SpriteEntity {
             physics.linearDamping = 0.0
             physics.angularDamping = 0.0
             physics.friction = 0.0
-            /*
-            planet.physicsBody.categoryBitMask = planetCategory;
-            planet.physicsBody.collisionBitMask = planetCategory | edgeCategory;
-            planet.physicsBody.contactTestBitMask = 0;
-            */
             
             physics.categoryBitMask = BodyType.ground.rawValue
-            physics.collisionBitMask = BodyType.player.rawValue
-            physics.contactTestBitMask = BodyType.player.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue //| BodyType.ghost.rawValue
+            physics.contactTestBitMask = BodyType.player.rawValue //| BodyType.ghost.rawValue
 
         }
         return ground

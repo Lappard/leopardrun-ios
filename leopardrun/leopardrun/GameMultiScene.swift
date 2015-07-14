@@ -15,7 +15,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     }
 
     private var currentActionIndex : Int = 0
-    private var ghost : Player?
+    private var ghost : Ghost!
     
     var currentAction : Int {
         get {
@@ -56,19 +56,38 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     
     override func didBeginContact(contact: SKPhysicsContact) {
         super.didBeginContact(contact)
+        
+        if (contact.bodyA.contactTestBitMask == BodyType.ghost.rawValue && contact.bodyB.contactTestBitMask == BodyType.item.rawValue){
+            var ghostNode:SKNode = contact.bodyA.node!;
+            var itemNode:SKNode = contact.bodyB.node!;
+            
+            if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
+                self.ghost!.hasFeather = true;
+                self.ghost!.updateAnimation(PlayerState.Fly)
+                SoundManager.sharedInstance.stopMusic()
+                SoundManager.sharedInstance.playMutedMusicForGhost("fly")
+            }
+            
+        }
+        
+        //Ghost mit Collider
+        if (contact.bodyA.contactTestBitMask == BodyType.ghost.rawValue || contact.bodyB.contactTestBitMask == BodyType.ghost.rawValue)
+        {
+            self.ghost!.isOnGround(true)
+        }
+        
     }
     
     override func reset() {
         super.reset()
-        self.ghost =  Player(kind: "ghost",atlasName: "Ghost")
-//        self.ghost?.reset()
+        self.ghost =  Ghost()
+        self.ghost?.reset()
     }
     
     override func didMoveToView(view: SKView) {
-//        reset()
+//      reset()
         super.didMoveToView(view)
         self.ghost!.zPosition = 3
-        self.ghost!.isGhostMode = true
         self.skyGhost = Sky()
         
         if let skyGhost = self.skyGhost{

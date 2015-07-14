@@ -2,12 +2,12 @@ import Foundation
 import SpriteKit
 
 enum BodyType : UInt32 {
-    case player         = 2
-    case box            = 4
-    case ground         = 8
-    case item           = 16
-    case anotherBody2   = 32
-    case sky            = 64
+    case player         = 1
+    case box            = 2
+    case ground         = 4
+    case item           = 8
+    case ghost          = 16
+    case sky            = 32
 }
 
 class Entity : SKSpriteNode {
@@ -65,7 +65,7 @@ class SpriteEntity : Entity {
         super.init(texture: textures.first)
         
         generateBodyByTexture(textures.first!)
-        startAnimating()
+        
     }
     
     init(texturename : String){
@@ -92,10 +92,7 @@ class SpriteEntity : Entity {
             self.physicsBody = SKPhysicsBody(polygonFromPath: CGPathCreateWithRoundedRect(CGRectMake(-widthHeight / 2, -widthHeight / 2, widthHeight, widthHeight), 10, 10, nil))
         
     }
-    
-    func startAnimating() -> Void {
-        self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.07, resize: false, restore: true)), withKey:"walking")
-    }
+   
     
     /**
         this should not be in the sprite entity..
