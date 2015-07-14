@@ -45,7 +45,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
-        view.showsPhysics = true
+        //view.showsPhysics = true
         view.showsFPS = true
         view.showsNodeCount = true
         super.didMoveToView(view)
@@ -57,8 +57,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.backgroundImage2.zPosition = 0
         self.backgroundImage2.size = self.size
 
-
-        
         self.addChild(backgroundImage)
         self.addChild(backgroundImage2)
         self.physicsWorld.contactDelegate = self
@@ -282,5 +280,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             }
         }
     
-        }
     }
+    
+}

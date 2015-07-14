@@ -6,6 +6,7 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     var font:String = "Shojumaru"
     var startLabel:SKLabelNode = SKLabelNode()
     var multiLabel:SKLabelNode = SKLabelNode()
+    
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     
     var nextScene : SKScene?
@@ -31,20 +32,50 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         logo.size = CGSize(width: 150, height: 150)
         addChild(logo)
         
+        let buttonStart = SKSpriteNode(imageNamed: "Button")
+        buttonStart.position = CGPoint(x: size.width/2, y: size.height/2 - 50)
+        buttonStart.size = CGSize(width: buttonStart.size.width+40, height: buttonStart.size.height)
+        addChild(buttonStart)
+        
+        let buttonChallenge = SKSpriteNode(imageNamed: "Button")
+        buttonChallenge.position = CGPoint(x: size.width/2, y: size.height/2 - 110)
+        buttonChallenge.size = CGSize(width: buttonStart.size.width+130, height: buttonChallenge.size.height)
+        addChild(buttonChallenge)
+        
+        var shadow:SKLabelNode = SKLabelNode()
+        shadow.fontName = font
+        shadow.text = "New Game"
+        shadow.fontSize = 30
+        shadow.name = "single"
+        shadow.fontColor = SKColor.blackColor()
+        shadow.position = CGPoint(x: buttonStart.position.x-1, y: buttonStart.position.y-12)
+        
         startLabel.fontName = font
         startLabel.text = "New Game"
-        startLabel.fontSize = 40
+        startLabel.fontSize = 30
         startLabel.name = "single"
-        startLabel.fontColor = SKColor.blackColor()
-        startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 60)
+        startLabel.fontColor = SKColor.whiteColor()
+        startLabel.position = CGPoint(x: buttonStart.position.x, y: buttonStart.position.y-10)
+        
+        addChild(shadow)
         addChild(startLabel)
+        
+        var shadow2:SKLabelNode = SKLabelNode()
+        shadow2.fontName = font
+        shadow2.text = "Challenge-Mode"
+        shadow2.fontSize = 30
+        shadow2.name = "single"
+        shadow2.fontColor = SKColor.blackColor()
+        shadow2.position = CGPoint(x: buttonChallenge.position.x-1, y: buttonChallenge.position.y-12)
         
         multiLabel.fontName = font
         multiLabel.text = "Challenge-Mode"
         multiLabel.name = "multi"
-        multiLabel.fontSize = 40
-        multiLabel.fontColor = SKColor.blackColor()
-        multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
+        multiLabel.fontSize = 30
+        startLabel.fontColor = SKColor.whiteColor()
+        multiLabel.position = CGPoint(x: buttonChallenge.position.x, y: buttonChallenge.position.y-10)
+        
+        addChild(shadow2)
         addChild(multiLabel)
         
     }

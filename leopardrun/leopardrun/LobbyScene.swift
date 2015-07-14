@@ -67,13 +67,27 @@ class LobbyScene: SKScene {
         
         ScoreManager.sharedInstance.reset()
         
+        let buttonBack = SKSpriteNode(imageNamed: "Button")
+        buttonBack.position = CGPoint(x: size.width/2, y: size.height/2 - 250)
+        buttonBack.size = CGSize(width: buttonBack.size.width+110, height: buttonBack.size.height)
+
+        var shadow:SKLabelNode = SKLabelNode(fontNamed: "Shojumaru")
+        shadow.text = "Back"
+        shadow.fontSize = 30
+        shadow.name = "single"
+        shadow.fontColor = SKColor.blackColor()
+        shadow.position = CGPoint(x: buttonBack.position.x-1, y: buttonBack.position.y-8)
+        
         let back = SKLabelNode(fontNamed: "Shojumaru")
         let name = "Back"
         back.name = name
         back.text = name
-        back.fontSize = 40
-        back.fontColor = SKColor.blackColor()
-        back.position = CGPoint(x: size.width/2, y: size.height/2 - 250)
+        back.fontSize = 30
+        back.fontColor = SKColor.whiteColor()
+        back.position = CGPoint(x: buttonBack.position.x, y: buttonBack.position.y-7)
+        
+        self.addChild(buttonBack)
+        self.addChild(shadow)
         self.addChild(back)
         
         getChellenges()

@@ -60,14 +60,30 @@ class GameOverScene : SKScene {
         if let center = self.view?.center {
             self.okBtn?.position = CGPoint(x: center.x + 240, y: center.y+40)
         }
-        self.okBtn?.fontColor = SKColor.blackColor()
+        self.okBtn?.fontColor = SKColor.whiteColor()
+        
+        let buttonSave = SKSpriteNode(imageNamed: "Button")
+        buttonSave.position = CGPoint(x: self.okBtn!.position.x, y: self.okBtn!.position.y+8)
+        buttonSave.size = CGSize(width: buttonSave.size.width-80, height: buttonSave.size.height-5)
+        addChild(buttonSave)
+        
+        var shadow:SKLabelNode = SKLabelNode(fontNamed: "Shojumaru")
+        shadow.text = "Save"
+        shadow.name = "Save"
+        shadow.fontSize = 30
+        if let center = self.view?.center {
+            shadow.position = CGPoint(x: center.x + 239, y: center.y+39)
+        }
+        shadow.fontColor = SKColor.blackColor()
+        
+        addChild(shadow)
         addChild(self.okBtn!)
         
         // 3
         let label = SKLabelNode(fontNamed: "Shojumaru")
         label.text = message
         label.fontSize = 40
-        label.fontColor = SKColor.blackColor()
+        label.fontColor = SKColor.whiteColor()
         label.position = CGPoint(x: size.width/2, y: size.height/2 + 100)
         self.addChild(label)
         
@@ -82,15 +98,28 @@ class GameOverScene : SKScene {
         self.addChild(scoreLabel)
         
         
-        
         let nextLabel = SKLabelNode(fontNamed: "Shojumaru")
         nextLabel.text = "Continue"
         nextLabel.name = "Next"
-
-        nextLabel.fontSize = 40
-        nextLabel.fontColor = SKColor.blackColor()
+        
+        nextLabel.fontSize = 30
+        nextLabel.fontColor = SKColor.whiteColor()
         nextLabel.position = CGPoint(x: size.width/2, y: 10)
         
+        let nextLabelShadow = SKLabelNode(fontNamed: "Shojumaru")
+        nextLabelShadow.text = "Continue"
+        nextLabelShadow.name = "NextShadow"
+        
+        nextLabelShadow.fontSize = 30
+        nextLabelShadow.fontColor = SKColor.blackColor()
+        nextLabelShadow.position = CGPoint(x: size.width/2-1, y: 9)
+        
+        let buttonContinue = SKSpriteNode(imageNamed: "Button")
+        buttonContinue.position = CGPoint(x: nextLabel.position.x, y: nextLabel.position.y+10)
+        buttonContinue.size = CGSize(width: buttonContinue.size.width+10, height: buttonContinue.size.height)
+        
+        self.addChild(buttonContinue)
+        self.addChild(nextLabelShadow)
         self.addChild(nextLabel)
 
     }

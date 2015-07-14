@@ -55,18 +55,48 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     }
     
     override func didBeginContact(contact: SKPhysicsContact) {
-        super.didBeginContact(contact)
         
-        if (contact.bodyA.categoryBitMask == BodyType.item.rawValue && contact.bodyB.categoryBitMask == BodyType.ghost.rawValue){
-            var itemNode:SKNode = contact.bodyA.node!;
-            var ghostNode:SKNode = contact.bodyB.node!;
+        //Items
+        if (contact.bodyA.categoryBitMask == BodyType.player.rawValue && contact.bodyB.categoryBitMask == BodyType.item.rawValue){
+            var playerNode:SKNode = contact.bodyA.node!
+            var itemNode:SKNode = contact.bodyB.node!
+            
+            if(itemNode.userData!.valueForKey("type") as! String == "Coin"){
+                self.scoreManager.addToScore(500.0)
+                itemNode.removeFromParent()
+            }
             
             if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
-                self.ghost!.hasFeather = true;
+                player!.hasFeather = true
+                player!.velocity = 50
+                player!.updateAnimation(PlayerState.Fly)
+                SoundManager.sharedInstance.stopMusic()
+                SoundManager.sharedInstance.playMusic("fly")
+            }
+            
+            if(isPlayerLeading()){
+                
+            } else {
+                itemNode.removeFromParent()
+            }
+            
+        }
+        
+        if (contact.bodyA.categoryBitMask == BodyType.item.rawValue && contact.bodyB.categoryBitMask == BodyType.ghost.rawValue){
+            var itemNode:SKNode = contact.bodyA.node!
+            var ghostNode:SKNode = contact.bodyB.node!
+            
+            if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
+                self.ghost!.hasFeather = true
                 self.ghost!.updateAnimation(PlayerState.Fly)
                 self.ghost!.velocity = 50
                 
                 SoundManager.sharedInstance.playMutedMusicForGhost("fly")
+                
+                if(isPlayerLeading()){
+                    itemNode.removeFromParent()
+                }
+                
             }
             
         }
@@ -136,4 +166,15 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         
         
     }
+    
+    func isPlayerLeading() -> Bool{
+        
+        if(player!.position.x > ghost!.position.x){
+            return true;
+        } else {
+            return false
+        }
+        
+    }
+    
 }
