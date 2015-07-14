@@ -101,13 +101,7 @@ class LevelManager : NetworkListener {
     
     :returns:
     */
-    func nextX(gridPos : CGFloat, obs: Obstacle) -> CGFloat {
-        //we have 28 grounds in every level part. shound not be used as number here. calculate earlier!
-        let nextPos : CGFloat = ((CGFloat(levelPartIndex) * CGFloat(28)) + gridPos) * ground.size.width
-        return nextPos
-    }
-    
-    func nextXForItems(gridPos : CGFloat, obs: Item) -> CGFloat {
+    func nextX(gridPos : CGFloat) -> CGFloat {
         //we have 28 grounds in every level part. shound not be used as number here. calculate earlier!
         let nextPos : CGFloat = ((CGFloat(levelPartIndex) * CGFloat(28)) + gridPos) * ground.size.width
         return nextPos
@@ -120,7 +114,7 @@ class LevelManager : NetworkListener {
     */
     func getLevelPart() -> ([Obstacle],[Item]) {
         var obstacles = [Obstacle]()
-        var coins = [Item]()
+        var items = [Item]()
         var top : Bool = false
         if let levelPart = levelPartData {
             var part = levelPart[levelPartIndex]
@@ -134,22 +128,22 @@ class LevelManager : NetworkListener {
                 switch(object["type"].string!) {
                     case "g":
                         let ground = Obstacle.ground(CGPoint(x: 0, y: yPos))
-                        ground.position.x = nextX(x, obs: ground)
+                        ground.position.x = nextX(x)
                         obstacles.append(ground)
                         break
                     case "b":
                         let box = Obstacle.block(CGPoint(x: 0, y: yPos))
-                        box.position.x = nextX(x, obs: box)
+                        box.position.x = nextX(x)
                         obstacles.append(box)
                         break
                     /*case "c":
                         let coin = Item(kind: "Coin", spriteCount: 6, x:0, y:0)
-                        coin.position.x = nextXForItems(x, obs: coin)
+                        coin.position.x = nextX(x)
                         items.append(coin)
                         break
                     case "f":
                         let feather = Item(kind: "Feather", spriteCount: 10, x:0, y:0)
-                        feather.position.x = nextXForItems(x, obs: feather)
+                        feather.position.x = nextX(x)
                         items.append(feather)
                         break*/
                     default:
