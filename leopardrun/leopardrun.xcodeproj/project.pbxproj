@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28091E791B5537200091B3E1 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28091E781B5537200091B3E1 /* readme.txt */; };
 		282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */; };
 		2848919B1B43250300A08DD9 /* LobbyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 284891991B43250300A08DD9 /* LobbyScene.sks */; };
 		2848919C1B43250300A08DD9 /* LobbyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2848919A1B43250300A08DD9 /* LobbyScene.swift */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		03C5FD02CA65F58CAB953683 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		28091E781B5537200091B3E1 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		282DFBA41B0CB0BF00BB9D54 /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
 		283C74DA1AF23EC3005CD9B4 /* leopardrun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "leopardrun-Bridging-Header.h"; sourceTree = "<group>"; };
 		284891991B43250300A08DD9 /* LobbyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LobbyScene.sks; sourceTree = "<group>"; };
@@ -265,12 +267,8 @@
 				7B74C5CE1AFF9522007748F3 /* Screens */,
 				7B74C5CD1AFF9516007748F3 /* Manager */,
 				7B74C5CC1AFF94EB007748F3 /* Entity */,
-				28DC021B1AF238C200B8E9DE /* AppDelegate.swift */,
-				28DC02231AF238C200B8E9DE /* Main.storyboard */,
-				28DC02261AF238C200B8E9DE /* Images.xcassets */,
-				28DC02281AF238C200B8E9DE /* LaunchScreen.xib */,
 				28DC02191AF238C200B8E9DE /* Supporting Files */,
-				283C74DA1AF23EC3005CD9B4 /* leopardrun-Bridging-Header.h */,
+				28091E781B5537200091B3E1 /* readme.txt */,
 			);
 			path = leopardrun;
 			sourceTree = "<group>";
@@ -278,6 +276,11 @@
 		28DC02191AF238C200B8E9DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				283C74DA1AF23EC3005CD9B4 /* leopardrun-Bridging-Header.h */,
+				28DC02281AF238C200B8E9DE /* LaunchScreen.xib */,
+				28DC021B1AF238C200B8E9DE /* AppDelegate.swift */,
+				28DC02231AF238C200B8E9DE /* Main.storyboard */,
+				28DC02261AF238C200B8E9DE /* Images.xcassets */,
 				7B8E7AFA1B507B1600EA8580 /* fly.wav */,
 				7B8E7AFB1B507B1600EA8580 /* music.wav */,
 				7BBA94531B5057C80047B5AB /* Shojumaru-Regular.ttf */,
@@ -498,6 +501,7 @@
 				28B665691B303D260094C888 /* GameOverScene.sks in Resources */,
 				7B43FD241B32C3E70037D9AA /* theme.wav in Resources */,
 				7BBA944E1B50551E0047B5AB /* logo_58.png in Resources */,
+				28091E791B5537200091B3E1 /* readme.txt in Resources */,
 				28DC02251AF238C200B8E9DE /* Main.storyboard in Resources */,
 				7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */,
 				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
