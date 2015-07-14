@@ -5,7 +5,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     var distance = 0;
     var player : Player?
-    var ghost : Player?
+
     var sky : Sky?
     var levelManager = LevelManager.sharedInstance
     var scoreManager = ScoreManager.sharedInstance
@@ -56,6 +56,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         self.backgroundImage2.position = CGPoint(x: self.backgroundImage.size.width + (self.backgroundImage.size.width / 2), y: self.size.height / 2)
         self.backgroundImage2.zPosition = 0
         self.backgroundImage2.size = self.size
+
 
         
         self.addChild(backgroundImage)
@@ -140,11 +141,12 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if self.camera != nil && player != nil{
             self.centerCamera(self.player!)
         }
+
         self.player?.physicsBody?.velocity.dx = runnerspeed
         self.sky?.physicsBody?.velocity.dx = skyspeed
         self.wall.physicsBody?.velocity.dx = wallspeed
         self.wall2.physicsBody?.velocity.dx = wallspeed
-        self.ghost?.physicsBody?.velocity.dx = runnerspeed
+
         
         reorderBackground(self.backgroundImage)
         reorderBackground(self.backgroundImage2)
@@ -159,7 +161,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
-        checkLevel()
+
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
         self.sky?.position = p
         
@@ -169,6 +171,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         }
         
         isObstacleBehindWall()
+        checkLevel()
         
         if (player?.currentState == .Dead || !isPlayerBeforeWall()) && !gameOver {
             
@@ -238,7 +241,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         if let player = self.player {
             player.reset()
         } else {
-            self.ghost =  Player(kind: "ghost",atlasName: "Ghost")
             self.player = Player(kind: "player",atlasName: "Leopard")
             self.appendGameObject(self.player!)
             self.sky = Sky()

@@ -14,6 +14,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     }
 
     private var currentActionIndex : Int = 0
+    private var ghost : Player?
     
     var currentAction : Int {
         get {
@@ -31,19 +32,10 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     }
     
     var myTimer : NSTimer?
-    
     var skyGhost : Sky?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        reset()
-        
-        self.ghost!.zPosition = 3
-        
-        if let p = self.player {
-            self.ghost!.position = CGPoint(x: p.position.x+290, y: p.position.y)
-            self.ghost!.isGhostMode = true
-        }
     }
     
     override init(size: CGSize) {
@@ -61,35 +53,30 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func didSimulatePhysics() {
-        super.didSimulatePhysics()
+    override func didBeginContact(contact: SKPhysicsContact) {
+        super.didBeginContact(contact)
     }
     
-    override
-    func didBeginContact(contact: SKPhysicsContact) {
-        
-        super.didBeginContact(contact)
-        
+    override func reset() {
+        super.reset()
+        self.ghost =  Player(kind: "ghost",atlasName: "Ghost")
+//        self.ghost?.reset()
     }
     
     override func didMoveToView(view: SKView) {
+//        reset()
         super.didMoveToView(view)
-        
-        player?.reset()
         self.ghost!.zPosition = 3
         self.ghost!.isGhostMode = true
         self.skyGhost = Sky()
         
         if let skyGhost = self.skyGhost{
-            
             skyGhost.physicsBody?.velocity.dx = super.skyspeed
             skyGhost.position = CGPoint(x:self.ghost!.position.x, y: 650)
-            
             addChild(skyGhost)
-            
         }
         
-        addChild(self.ghost!)
+        self.world?.addChild(self.ghost!)
         
         var ghostScore = SKLabelNode(fontNamed: "Shojumaru")
         ghostScore.name = "ghostScore"
@@ -102,13 +89,16 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
 
     }
     
+    override func didSimulatePhysics() {
+        super.didSimulatePhysics()
+        self.ghost?.physicsBody?.velocity.dx = runnerspeed
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
        
         let p:CGPoint = CGPoint(x: self.ghost!.position.x, y: 750.0)
         self.skyGhost!.position = p
-        
-        println(ghost!.physicsBody?.velocity.dx)
         
     }
 }

@@ -30,7 +30,7 @@ class Player: SpriteEntity {
         super.init(atlasName: atlasName, count: 10)
         self.xScale = 0.3
         self.yScale = 0.3
-        self.position = CGPoint(x: 200, y: 450)
+        self.position = CGPoint(x: 200, y: 600)
         self.generateBodyByWidthHeigth(self.size.width)
         if let physics = physicsBody {
             physics.affectedByGravity = true
