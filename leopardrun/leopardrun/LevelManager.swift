@@ -137,8 +137,15 @@ class LevelManager : NetworkListener {
                         obstacles.append(box)
                         break
                     case "c":
-                        let coin = Item(kind: "Coin", spriteCount: 6, x:0, y:0)
+                        let coin = Item(kind: "Coin", spriteCount: 6, x:0, y:yPos)
                         coin.position.x = nextX(x)
+                        
+                        
+                        println("Coin: X:")
+                        print(coin.position.x)
+                        print(" Y: ")
+                        println(coin.position.y)
+                        
                         items.append(coin)
                         break
                     case "f":

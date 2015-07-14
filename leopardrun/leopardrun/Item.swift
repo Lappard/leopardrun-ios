@@ -6,7 +6,7 @@ class Item: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var kind:String
     
-    init(var kind:String, var spriteCount:UInt, x:Int, y:Int) {
+    init(var kind:String, var spriteCount:UInt, x:CGFloat, y:CGFloat) {
         
         self.kind=kind
         

@@ -96,17 +96,19 @@ class LobbyScene: SKScene {
             let touchedNode = self.nodeAtPoint(location)
             let skLabel = touchedNode as? SKLabelNode
             
-            if(skLabel!.name == "Back"){
-                
-                if let scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
-                    prevScene = scene
-                    let skView = self.view! as SKView
-                    let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
-                    prevScene!.size = skView.bounds.size
-                    prevScene!.scaleMode = .AspectFill
-                    skView.presentScene(prevScene, transition: transition)
-                }
-                
+            
+            if(skLabel != nil){
+                if(skLabel!.name == "Back"){
+                    
+                    if let scene = MenuScene.unarchiveFromFile("MenuScene") as? MenuScene {
+                        prevScene = scene
+                        let skView = self.view! as SKView
+                        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0)
+                        prevScene!.size = skView.bounds.size
+                        prevScene!.scaleMode = .AspectFill
+                        skView.presentScene(prevScene, transition: transition)
+                    }
+               
             } else{
                 
                 // check label
@@ -131,6 +133,7 @@ class LobbyScene: SKScene {
                             }
                         }
                     }
+                }
                 }
             }
         }

@@ -162,6 +162,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
+        
+        
+        print("Position: ")
+        println(self.player!.position.x)
+        
         checkLevel()
         
         if(self.player!.hasFeather){
