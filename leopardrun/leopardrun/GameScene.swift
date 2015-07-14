@@ -159,21 +159,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
-        
-        let count = levelManager.obstacles.count;
-        
-        var farestAway:CGFloat = 0;
-        for index in 0...count-1 {
-            let currentObstacle:Obstacle = levelManager.obstacles[index]
-            if (farestAway < (currentObstacle.position.x - player!.position.x)){
-                farestAway = currentObstacle.position.x - player!.position.x
-            }
-        }
-        
-        if(farestAway < 100 && farestAway > 0){
-            createLevelPart()
-        }
-        
+        checkLevel()
         let p:CGPoint = CGPoint(x: self.player!.position.x, y: 650.0)
         self.sky?.position = p
         
@@ -205,6 +191,24 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
             scene!.size = skView.bounds.size
             skView.presentScene(scene,transition: transition)
             gameOver = true
+        }
+    }
+    
+    
+    
+    func checkLevel(){
+        let count = levelManager.obstacles.count;
+        
+        var farestAway:CGFloat = 0;
+        for index in 0...count-1 {
+            let currentObstacle:Obstacle = levelManager.obstacles[index]
+            if (farestAway < (currentObstacle.position.x - player!.position.x)){
+                farestAway = currentObstacle.position.x - player!.position.x
+            }
+        }
+        
+        if(farestAway < 500 && farestAway > 0){
+            createLevelPart()
         }
     }
     
