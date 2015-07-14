@@ -43,7 +43,7 @@ class Player: SpriteEntity {
             physics.contactTestBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
         }
         
-        self.isOnGround(false)
+        self.isCharacterOnGround(false)
         
         self.userData = NSMutableDictionary()
         self.userData!.setValue(kind, forKey: "type")
@@ -79,7 +79,7 @@ class Player: SpriteEntity {
         }
     }
     
-    func isOnGround(onGround: Bool ) -> Void {
+    func isCharacterOnGround(onGround: Bool ) -> Void {
         
             self.isOnGround = onGround
         
@@ -97,17 +97,13 @@ class Player: SpriteEntity {
         
     }
     
-    func refreshState(state: PlayerState) -> Void {
-        self.currentState = state
-    }
-    
     func jump() -> Void {
         if self.isOnGround || self.hasFeather {
             SoundManager.sharedInstance.playSound(Sounds.Jump.rawValue)
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: velocity))
             print("jump method hero")
             if(!self.hasFeather){
-                isOnGround(false)
+                isCharacterOnGround(false)
             }
         }
     }

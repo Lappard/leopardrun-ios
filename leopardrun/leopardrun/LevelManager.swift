@@ -139,17 +139,10 @@ class LevelManager : NetworkListener {
                     case "c":
                         let coin = Item(kind: "Coin", spriteCount: 6, x:0, y:yPos)
                         coin.position.x = nextX(x)
-                        
-                        
-                        println("Coin: X:")
-                        print(coin.position.x)
-                        print(" Y: ")
-                        println(coin.position.y)
-                        
                         items.append(coin)
                         break
                     case "f":
-                        let feather = Item(kind: "Feather", spriteCount: 10, x:0, y:0)
+                        let feather = Item(kind: "Feather", spriteCount: 10, x:0, y:yPos)
                         feather.position.x = nextX(x)
                         items.append(feather)
                         break

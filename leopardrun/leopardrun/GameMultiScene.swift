@@ -57,14 +57,15 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     override func didBeginContact(contact: SKPhysicsContact) {
         super.didBeginContact(contact)
         
-        if (contact.bodyA.contactTestBitMask == BodyType.ghost.rawValue && contact.bodyB.contactTestBitMask == BodyType.item.rawValue){
-            var ghostNode:SKNode = contact.bodyA.node!;
-            var itemNode:SKNode = contact.bodyB.node!;
+        if (contact.bodyA.categoryBitMask == BodyType.item.rawValue && contact.bodyB.categoryBitMask == BodyType.ghost.rawValue){
+            var itemNode:SKNode = contact.bodyA.node!;
+            var ghostNode:SKNode = contact.bodyB.node!;
             
             if(itemNode.userData!.valueForKey("type") as! String == "Feather"){
                 self.ghost!.hasFeather = true;
                 self.ghost!.updateAnimation(PlayerState.Fly)
-                SoundManager.sharedInstance.stopMusic()
+                self.ghost!.velocity = 50
+                
                 SoundManager.sharedInstance.playMutedMusicForGhost("fly")
             }
             
@@ -74,14 +75,14 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == BodyType.player.rawValue && contact.bodyB.categoryBitMask == BodyType.ground.rawValue
             || contact.bodyA.categoryBitMask == BodyType.ground.rawValue && contact.bodyB.categoryBitMask == BodyType.player.rawValue)
         {
-            self.player!.isOnGround(true)
+            self.player!.isCharacterOnGround(true)
         }
         
         //Ground
         if (contact.bodyA.categoryBitMask == BodyType.ghost.rawValue && contact.bodyB.categoryBitMask == BodyType.ground.rawValue
             || contact.bodyA.categoryBitMask == BodyType.ground.rawValue && contact.bodyB.categoryBitMask == BodyType.ghost.rawValue)
         {
-            self.ghost!.isOnGround(true)
+            self.ghost!.isCharacterOnGround(true)
         }
         
     }
@@ -93,7 +94,6 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
-//      reset()
         super.didMoveToView(view)
         self.ghost!.zPosition = 3
         self.skyGhost = Sky()
@@ -101,10 +101,10 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         if let skyGhost = self.skyGhost{
             skyGhost.physicsBody?.velocity.dx = super.skyspeed
             skyGhost.position = CGPoint(x:self.ghost!.position.x, y: 650)
-            addChild(skyGhost)
         }
         
         self.world?.addChild(self.ghost!)
+        self.world?.addChild(self.skyGhost!)
         
         var ghostScore = SKLabelNode(fontNamed: "Shojumaru")
         ghostScore.name = "ghostScore"
@@ -124,15 +124,16 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         super.update(currentTime)
-       
-        if(self.ghost!.hasFeather){
-            skyGhostHeight = 650.0
-        } else {
-            skyGhostHeight = 900.0
-        }
         
         let p:CGPoint = CGPoint(x: self.ghost!.position.x, y: skyGhostHeight)
         self.skyGhost!.position = p
+        
+        if(self.ghost!.hasFeather){
+            skyGhostHeight = 650
+        } else {
+            skyGhostHeight = 900
+        }
+        
         
     }
 }

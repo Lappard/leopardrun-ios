@@ -21,11 +21,11 @@ class Ghost: Player {
             
             physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.ghost.rawValue
-            physics.collisionBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
+            physics.collisionBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.sky.rawValue
             physics.contactTestBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
         }
         
-        self.isOnGround(false)
+        self.isCharacterOnGround(false)
         println("ghost category "+self.physicsBody!.categoryBitMask.description)
         
         self.userData = NSMutableDictionary()
@@ -51,6 +51,7 @@ class Ghost: Player {
             } else {
                 self.hasFeather = false;
                 self.updateAnimation(PlayerState.Run)
+                self.velocity = 150
                 SoundManager.sharedInstance.ghostMusicPlayerInBackground.stop()
             }
         }
@@ -61,10 +62,28 @@ class Ghost: Player {
         if self.isOnGround || self.hasFeather {
             self.physicsBody?.applyImpulse( CGVector(dx: 0, dy: self.velocity))
             print("jump method ghost")
-            if(self.hasFeather){
-                self.isOnGround(false)
+            if(!self.hasFeather){
+                self.isCharacterOnGround(false)
             }
         }
+    }
+    
+    override func isCharacterOnGround(onGround: Bool ) -> Void {
+        
+        self.isOnGround = onGround
+        
+        if(self.isOnGround == true && !hasFeather){
+            currentState = PlayerState.Run
+            velocity = 150;
+        }
+        else if (isOnGround && hasFeather){
+            currentState = PlayerState.Fly
+            velocity = 50;
+        } else {
+            currentState = PlayerState.Jump
+            velocity = 150;
+        }
+        
     }
     
     override func updateAnimation(state: PlayerState) -> Void {

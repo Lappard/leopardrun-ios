@@ -109,7 +109,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         
         //Items
-        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue && contact.bodyB.contactTestBitMask == BodyType.item.rawValue){
+        if (contact.bodyA.categoryBitMask == BodyType.player.rawValue && contact.bodyB.categoryBitMask == BodyType.item.rawValue){
             var playerNode:SKNode = contact.bodyA.node!;
             var itemNode:SKNode = contact.bodyB.node!;
             
@@ -131,7 +131,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         //Ground
         if (contact.bodyA.categoryBitMask == BodyType.player.rawValue || contact.bodyB.categoryBitMask == BodyType.player.rawValue)
         {
-            self.player!.isOnGround(true)
+            self.player!.isCharacterOnGround(true)
         }
         
     }
@@ -161,10 +161,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
-        
-        
-        print("Position: ")
-        println(self.player!.position.x)
         
         checkLevel()
         
