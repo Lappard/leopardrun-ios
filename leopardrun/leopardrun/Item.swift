@@ -21,8 +21,8 @@ class Item: SpriteEntity {
             physics.allowsRotation = false
             physics.dynamic = true
             physics.categoryBitMask = BodyType.item.rawValue
-            physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
-            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
+            physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.ground.rawValue | BodyType.box.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.ground.rawValue | BodyType.box.rawValue
 
         }
         self.physicsBody!.mass = 1

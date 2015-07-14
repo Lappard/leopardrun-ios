@@ -81,13 +81,14 @@ class GameBaseScene : SKScene {
     func createLevelPart() -> Void {
         var part = LevelManager.sharedInstance.getLevelPart()
         var obstacles = part.0;
-        var coins = part.1;
+        var items = part.1;
         for o in obstacles {
             self.appendGameObject(o)
         }
         
-        for c in coins {
+        for c in items {
             self.appendGameObject(c)
+            println("item pos: " + c.kind + " " + c.position.x.description)
         }
     }
     
