@@ -130,7 +130,7 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         
         
         //Ground
-        if (contact.bodyA.contactTestBitMask == BodyType.player.rawValue || contact.bodyB.contactTestBitMask == BodyType.player.rawValue)
+        if (contact.bodyA.categoryBitMask == BodyType.player.rawValue || contact.bodyB.categoryBitMask == BodyType.player.rawValue)
         {
             self.player!.isOnGround(true)
         }
