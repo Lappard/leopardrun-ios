@@ -71,7 +71,7 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
         }
         
         //Ghost mit Collider
-        if (contact.bodyA.contactTestBitMask == BodyType.ghost.rawValue || contact.bodyB.contactTestBitMask == BodyType.ghost.rawValue)
+        if (contact.bodyA.categoryBitMask == BodyType.ghost.rawValue || contact.bodyB.categoryBitMask == BodyType.ghost.rawValue)
         {
             self.ghost!.isOnGround(true)
         }

@@ -30,8 +30,8 @@ class Obstacle: SpriteEntity {
             physics.angularDamping = 0.0
             physics.friction = 0.0
             physics.categoryBitMask = BodyType.box.rawValue
-            physics.contactTestBitMask = BodyType.player.rawValue //| BodyType.ghost.rawValue
-            physics.collisionBitMask = BodyType.player.rawValue //| BodyType.ghost.rawValue
+            physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
 
         }
         return obstacle
