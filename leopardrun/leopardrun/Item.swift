@@ -6,7 +6,7 @@ class Item: SpriteEntity {
     var runnerTextures:Array<SKTexture> = Array<SKTexture>()
     var kind:String
     
-    init(var kind:String, var spriteCount:UInt, x:Int, y:Int) {
+    init(var kind:String, var spriteCount:UInt, x:CGFloat, y:CGFloat) {
         
         self.kind=kind
         
@@ -20,10 +20,9 @@ class Item: SpriteEntity {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = true
-            physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.item.rawValue
-            physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
-            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue
+            physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.ground.rawValue | BodyType.box.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.ground.rawValue | BodyType.box.rawValue
 
         }
         self.physicsBody!.mass = 1

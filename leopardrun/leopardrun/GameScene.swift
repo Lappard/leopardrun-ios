@@ -81,7 +81,6 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         scoreManager.start()
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1.0 / 1000.0), target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
-
     }
     
     func updateTime() {
@@ -162,6 +161,11 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     }
     
      override func update(currentTime: CFTimeInterval) {
+        
+        
+        print("Position: ")
+        println(self.player!.position.x)
+        
         checkLevel()
         
         if(self.player!.hasFeather){

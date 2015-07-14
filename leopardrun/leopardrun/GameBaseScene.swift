@@ -25,7 +25,6 @@ class GameBaseScene : SKScene {
     func appendGameObject(e : SKNode) -> Void {
         e.zPosition = 2
         self.world?.addChild(e)
-        
     }
     
     func update() -> Void {
@@ -81,13 +80,13 @@ class GameBaseScene : SKScene {
     func createLevelPart() -> Void {
         var part = LevelManager.sharedInstance.getLevelPart()
         var obstacles = part.0;
-        var coins = part.1;
+        var items = part.1;
         for o in obstacles {
             self.appendGameObject(o)
         }
         
-        for c in coins {
-            self.appendGameObject(c)
+        for i in items {
+            self.appendGameObject(i)
         }
     }
     
