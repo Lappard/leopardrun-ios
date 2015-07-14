@@ -87,7 +87,6 @@ class GameBaseScene : SKScene {
         
         for i in items {
             self.appendGameObject(i)
-            println("item pos: " + i.kind + " " + i.position.x.description)
         }
     }
     
