@@ -34,7 +34,6 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         startLabel.fontName = font
         startLabel.text = "New Game"
         startLabel.fontSize = 40
-        startLabel.alpha = 0.0
         startLabel.name = "single"
         startLabel.fontColor = SKColor.blackColor()
         startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 60)
@@ -43,7 +42,6 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         multiLabel.fontName = font
         multiLabel.text = "Challenge-Mode"
         multiLabel.name = "multi"
-        multiLabel.alpha = 0.0
         multiLabel.fontSize = 40
         multiLabel.fontColor = SKColor.blackColor()
         multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
