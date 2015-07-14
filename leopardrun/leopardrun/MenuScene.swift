@@ -4,7 +4,8 @@ import SpriteKit
 class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
     
     var font:String = "Shojumaru"
-    
+    var startLabel:SKLabelNode = SKLabelNode()
+    var multiLabel:SKLabelNode = SKLabelNode()
     var backgroundImage = SKSpriteNode(imageNamed: "Background")
     
     var nextScene : SKScene?
@@ -30,8 +31,7 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         logo.size = CGSize(width: 150, height: 150)
         addChild(logo)
         
-        
-        var startLabel = SKLabelNode(fontNamed: font)
+        startLabel.fontName = font
         startLabel.text = "New Game"
         startLabel.fontSize = 40
         startLabel.name = "single"
@@ -39,13 +39,14 @@ class MenuScene: SKScene, LevelManagerDelegate, LobbyDataLoaded {
         startLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 60)
         addChild(startLabel)
         
-        var multiLabel = SKLabelNode(fontNamed: font)
+        multiLabel.fontName = font
         multiLabel.text = "Challenge-Mode"
         multiLabel.name = "multi"
         multiLabel.fontSize = 40
         multiLabel.fontColor = SKColor.blackColor()
         multiLabel.position = CGPoint(x: size.width/2, y: size.height/2 - 120)
         addChild(multiLabel)
+        
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {

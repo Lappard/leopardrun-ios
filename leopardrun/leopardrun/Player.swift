@@ -112,4 +112,57 @@ class Player: SpriteEntity {
             }
         }
     }
+    
+    func updateAnimation(state: PlayerState) -> Void {
+        
+        if(state == PlayerState.Fly){
+            self.atlasName = "LeopardFly"
+        } else {
+            self.atlasName = "Leopard"
+        }
+        
+        //Jump-State
+        if(state == PlayerState.Jump){
+            textures.removeAll(keepCapacity: true)
+            let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
+            
+            //Nur das Springsprite
+            let t = textureAtlas.textureNamed(atlasName + "\(6)")
+            textures.append(t)
+            
+        }
+        
+        //Run-State
+        if(state == PlayerState.Run){
+            textures.removeAll(keepCapacity: true)
+            let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
+            
+            //Komplettes Spriteatlas
+            for index in 1...10 {
+                let t = textureAtlas.textureNamed(atlasName + "\(index)")
+                textures.append(t)
+            }
+            
+        }
+        
+        //Fly-State
+        if(state == PlayerState.Fly){
+            textures.removeAll(keepCapacity: true)
+            let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
+            
+            //Komplettes Spriteatlas
+            for index in 1...10 {
+                let t = textureAtlas.textureNamed(atlasName + "\(index)")
+                textures.append(t)
+            }
+            
+        }
+        
+        
+        
+        //Stare neue Animation!
+        startAnimating()
+    }
+    
+    
 }
