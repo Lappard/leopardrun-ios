@@ -65,7 +65,7 @@ class SpriteEntity : Entity {
         super.init(texture: textures.first)
         
         generateBodyByTexture(textures.first!)
-        
+        startAnimating()
     }
     
     init(texturename : String){
@@ -93,6 +93,9 @@ class SpriteEntity : Entity {
         
     }
    
+    func startAnimating() -> Void {
+        self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.07, resize: false, restore: true)), withKey:"walking")
+    }
     
     /**
         this should not be in the sprite entity..

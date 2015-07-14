@@ -37,6 +37,7 @@ class Player: SpriteEntity {
             physics.mass = 0.1
             physics.density = 1
             
+            physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.player.rawValue
             physics.collisionBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
             physics.contactTestBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
@@ -156,14 +157,12 @@ class Player: SpriteEntity {
             
         }
         
-        
-        
         //Stare neue Animation!
         startAnimating()
     }
     
     
-    func startAnimating() -> Void {
+    override func startAnimating() -> Void {
         self.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.07, resize: false, restore: true)), withKey:"walking")
     }
     

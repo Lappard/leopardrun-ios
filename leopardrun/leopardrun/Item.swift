@@ -20,6 +20,7 @@ class Item: SpriteEntity {
             physics.affectedByGravity = true
             physics.allowsRotation = false
             physics.dynamic = true
+            physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.item.rawValue
             physics.contactTestBitMask = BodyType.player.rawValue
             physics.collisionBitMask = BodyType.player.rawValue

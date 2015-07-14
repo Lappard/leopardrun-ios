@@ -19,6 +19,7 @@ class Sky: SpriteEntity {
             physics.mass = 0.1
             physics.density = 1
 
+            physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.sky.rawValue
             physics.collisionBitMask = 0
             physics.contactTestBitMask = 0
