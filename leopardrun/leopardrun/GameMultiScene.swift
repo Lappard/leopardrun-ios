@@ -70,8 +70,16 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
             
         }
         
-        //Ghost mit Collider
-        if (contact.bodyA.categoryBitMask == BodyType.ghost.rawValue || contact.bodyB.categoryBitMask == BodyType.ghost.rawValue)
+        //Ground
+        if (contact.bodyA.categoryBitMask == BodyType.player.rawValue && contact.bodyB.categoryBitMask == BodyType.ground.rawValue
+            || contact.bodyA.categoryBitMask == BodyType.ground.rawValue && contact.bodyB.categoryBitMask == BodyType.player.rawValue)
+        {
+            self.player!.isOnGround(true)
+        }
+        
+        //Ground
+        if (contact.bodyA.categoryBitMask == BodyType.ghost.rawValue && contact.bodyB.categoryBitMask == BodyType.ground.rawValue
+            || contact.bodyA.categoryBitMask == BodyType.ground.rawValue && contact.bodyB.categoryBitMask == BodyType.ghost.rawValue)
         {
             self.ghost!.isOnGround(true)
         }

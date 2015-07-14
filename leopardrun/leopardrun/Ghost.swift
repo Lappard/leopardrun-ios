@@ -19,6 +19,7 @@ class Ghost: Player {
             physics.mass = 0.1
             physics.density = 1
             
+            physics.usesPreciseCollisionDetection = true
             physics.categoryBitMask = BodyType.ghost.rawValue
             physics.collisionBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
             physics.contactTestBitMask = BodyType.box.rawValue | BodyType.ground.rawValue | BodyType.item.rawValue | BodyType.sky.rawValue
@@ -103,15 +104,13 @@ class Ghost: Player {
             textures.removeAll(keepCapacity: true)
             let textureAtlas = SKTextureAtlas(named: self.atlasName + ".atlas")
             
-            //Komplettes Spriteatlas
+            //Komplettes Spriteatlas (Fly)
             for index in 1...10 {
                 let t = textureAtlas.textureNamed(self.atlasName + "\(index)")
                 self.textures.append(t)
             }
             
         }
-        
-        
         
         //Stare neue Animation!
         self.startAnimating()
