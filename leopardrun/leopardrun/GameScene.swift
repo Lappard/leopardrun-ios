@@ -183,30 +183,32 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
         checkLevel()
         
         if (player?.currentState == .Dead || !isPlayerBeforeWall()) && !gameOver {
-            
             SoundManager.sharedInstance.stopMusic()
             SoundManager.sharedInstance.playSound(Sounds.Dead.rawValue)
             
-            let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
-            let scene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene
-            
-            var c : Challenge = Challenge(name: getRandomName())
-            c.actions = self.playerActions
-            c.date = Int(NSDate().timeIntervalSince1970)
-            c.playerScore = Float(ScoreManager.sharedInstance.score)
-            c.owner = "iOS User"
-            scene?.challenge = c
-            
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            scene!.scaleMode = .ResizeFill
-            scene!.size = skView.bounds.size
-            skView.presentScene(scene,transition: transition)
-            gameOver = true
+            loadGameOver()
         }
     }
     
-    
+    func loadGameOver() {
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+        let scene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene
+        
+        var c : Challenge = Challenge(name: getRandomName())
+        c.actions = self.playerActions
+        c.date = Int(NSDate().timeIntervalSince1970)
+        c.playerScore = Float(ScoreManager.sharedInstance.score)
+        c.owner = "iOS User"
+        scene?.challenge = c
+        
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        scene!.scaleMode = .ResizeFill
+        scene!.size = skView.bounds.size
+        skView.presentScene(scene,transition: transition)
+        gameOver = true
+
+    }
     
     func checkLevel(){
         let count = levelManager.obstacles.count;

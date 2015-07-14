@@ -117,6 +117,27 @@ class GameMultiScene: GameScene, SKPhysicsContactDelegate {
 
     }
     
+    override func loadGameOver() {
+        let transition = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+        let scene = GameOverScene.unarchiveFromFile("GameOverScene") as? GameOverScene
+        
+        var c : Challenge = Challenge(name: getRandomName())
+        c.actions = self.playerActions
+        c.date = Int(NSDate().timeIntervalSince1970)
+        c.playerScore = Float(ScoreManager.sharedInstance.score)
+        c.owner = "iOS User"
+        c.levelData = self.challenge?.levelData
+        scene?.challenge = c
+        
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        scene!.scaleMode = .ResizeFill
+        scene!.size = skView.bounds.size
+        skView.presentScene(scene,transition: transition)
+        gameOver = true
+
+    }
+    
     override func didSimulatePhysics() {
         super.didSimulatePhysics()
         self.ghost?.physicsBody?.velocity.dx = runnerspeed
