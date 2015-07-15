@@ -46,8 +46,8 @@ class GameScene: GameBaseScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         //view.showsPhysics = true
-        view.showsFPS = true
-        view.showsNodeCount = true
+//        view.showsFPS = true
+//        view.showsNodeCount = true
         super.didMoveToView(view)
         self.backgroundImage.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.backgroundImage.zPosition = 0
