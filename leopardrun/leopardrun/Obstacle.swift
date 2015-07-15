@@ -31,7 +31,7 @@ class Obstacle: SpriteEntity {
             physics.friction = 0.0
             physics.categoryBitMask = BodyType.box.rawValue
             physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.item.rawValue
-            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.item.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.item.rawValue | BodyType.box.rawValue
 
         }
         return obstacle
@@ -60,7 +60,7 @@ class Obstacle: SpriteEntity {
             
             physics.categoryBitMask = BodyType.ground.rawValue
             physics.contactTestBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.item.rawValue
-            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.item.rawValue
+            physics.collisionBitMask = BodyType.player.rawValue | BodyType.ghost.rawValue | BodyType.item.rawValue | BodyType.ground.rawValue
 
 
         }

@@ -53,6 +53,8 @@
 		7BBA944F1B50551E0047B5AB /* logo_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944C1B50551E0047B5AB /* logo_120.png */; };
 		7BBA94501B50551E0047B5AB /* logo_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA944D1B50551E0047B5AB /* logo_80.png */; };
 		7BBA94541B505A0C0047B5AB /* Shojumaru-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BBA94531B5057C80047B5AB /* Shojumaru-Regular.ttf */; };
+		7BC1BA571B56568D00DA92C6 /* Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC1BA561B56568D00DA92C6 /* Ground.png */; };
+		7BC1BA591B5656FE00DA92C6 /* GroundFired.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC1BA581B5656FE00DA92C6 /* GroundFired.png */; };
 		7BE3CE7F1B42B73800B1700B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3CE7E1B42B73800B1700B /* Wall.swift */; };
 		7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BE5952C1B419CA80055F646 /* Ghost.atlas */; };
 		7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */; };
@@ -83,20 +85,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 259AB844946BA136A5BFCB8C;
 			remoteInfo = "Pods-SocketRocket";
-		};
-		AB424CAA1B555808004A5EB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 98609D6E262C927361C6446B;
-			remoteInfo = "Pods-GooglePlayGames";
-		};
-		AB424CAC1B555808004A5EB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AB15249F1B413AB4002C50E2 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2978FE04B926365DB650050B;
-			remoteInfo = "Pods-google-plus-ios-sdk";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -154,6 +142,8 @@
 		7BBA944C1B50551E0047B5AB /* logo_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_120.png; sourceTree = "<group>"; };
 		7BBA944D1B50551E0047B5AB /* logo_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_80.png; sourceTree = "<group>"; };
 		7BBA94531B5057C80047B5AB /* Shojumaru-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shojumaru-Regular.ttf"; sourceTree = "<group>"; };
+		7BC1BA561B56568D00DA92C6 /* Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Ground.png; path = Images.xcassets/Ground.imageset/Ground.png; sourceTree = "<group>"; };
+		7BC1BA581B5656FE00DA92C6 /* GroundFired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GroundFired.png; path = Images.xcassets/GroundFired.imageset/GroundFired.png; sourceTree = "<group>"; };
 		7BE3CE7E1B42B73800B1700B /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		7BE5952C1B419CA80055F646 /* Ghost.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ghost.atlas; sourceTree = "<group>"; };
 		7BFA9DFA1B2055CF00E92F03 /* Leopard.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopard.atlas; sourceTree = "<group>"; };
@@ -292,6 +282,8 @@
 		28DC02191AF238C200B8E9DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7BC1BA581B5656FE00DA92C6 /* GroundFired.png */,
+				7BC1BA561B56568D00DA92C6 /* Ground.png */,
 				7B5BC8451B55617000FFE48F /* button.png */,
 				283C74DA1AF23EC3005CD9B4 /* leopardrun-Bridging-Header.h */,
 				28DC02281AF238C200B8E9DE /* LaunchScreen.xib */,
@@ -379,9 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				AB1524A51B413AB4002C50E2 /* libPods.a */,
-				AB424CAB1B555808004A5EB0 /* libPods-GooglePlayGames.a */,
 				AB1524A71B413AB4002C50E2 /* libPods-SocketRocket.a */,
-				AB424CAD1B555808004A5EB0 /* libPods-google-plus-ios-sdk.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -446,6 +436,7 @@
 				TargetAttributes = {
 					28DC02151AF238C200B8E9DE = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = DW39USPMG2;
 					};
 					28DC022E1AF238C200B8E9DE = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -494,20 +485,6 @@
 			remoteRef = AB1524A61B413AB4002C50E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		AB424CAB1B555808004A5EB0 /* libPods-GooglePlayGames.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-GooglePlayGames.a";
-			remoteRef = AB424CAA1B555808004A5EB0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AB424CAD1B555808004A5EB0 /* libPods-google-plus-ios-sdk.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-google-plus-ios-sdk.a";
-			remoteRef = AB424CAC1B555808004A5EB0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -529,6 +506,7 @@
 				7B98672A1B50214B00E46709 /* Feather.atlas in Resources */,
 				28DC021E1AF238C200B8E9DE /* GameScene.sks in Resources */,
 				7B8E7AFD1B507B1600EA8580 /* music.wav in Resources */,
+				7BC1BA571B56568D00DA92C6 /* Ground.png in Resources */,
 				282DFBA51B0CB0BF00BB9D54 /* BearImages.atlas in Resources */,
 				28B665691B303D260094C888 /* GameOverScene.sks in Resources */,
 				7BBA944E1B50551E0047B5AB /* logo_58.png in Resources */,
@@ -537,6 +515,7 @@
 				7BE5952D1B419CA80055F646 /* Ghost.atlas in Resources */,
 				7B43FD261B32CE5A0037D9AA /* jump.wav in Resources */,
 				7B5BC8461B55617000FFE48F /* button.png in Resources */,
+				7BC1BA591B5656FE00DA92C6 /* GroundFired.png in Resources */,
 				7B8E7AFC1B507B1600EA8580 /* fly.wav in Resources */,
 				28B6656C1B303D600094C888 /* MenuScene.sks in Resources */,
 				7BFA9DFB1B2055CF00E92F03 /* Leopard.atlas in Resources */,
@@ -744,11 +723,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
 				INFOPLIST_FILE = leopardrun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "leopardrun/leopardrun-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -760,11 +741,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Felix Boettger (9YNSEQ7TYA)";
 				INFOPLIST_FILE = leopardrun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "leopardrun/leopardrun-Bridging-Header.h";
 			};
 			name = Release;
